@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@300;400;600&family=Prompt:wght@200;300;400;500;600;700;800&family=Roboto+Mono:wght@300;400;500;600;700&family=Roboto:wght@300;400&display=swap");
+
 :root {
   --color-white-0: #ffffff;
 
@@ -38,9 +40,11 @@
 
 html {
   font-size: 62.5%;
+  font-family: "Prompt", sans-serif;
 }
 
 body {
   box-sizing: border-box;
-  font-size: var(--font-size-m);
+  font-size: var(--font-size-sm);
+  width: 100dvw;
 }
