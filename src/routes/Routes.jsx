@@ -5,12 +5,13 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import AppLayout from "../components/AppLayout";
+import Home from "../pages/Home";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route element={<AppLayout />}>
-        <Route path="/" element={<p>Home</p>} />
+        <Route path="/" element={<Home />} />
       </Route>
       <Route path="*" element={<p>Wrong path</p>} />
     </>

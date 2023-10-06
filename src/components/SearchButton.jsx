@@ -5,12 +5,14 @@ const Button = styled.button`
   border: none;
   background-color: var(--color-yellow-600);
   border-radius: 0.5rem;
+  height: 3.5rem;
+  cursor: pointer;
 `;
 
 function SearchButton() {
   return (
     <Button>
-      <span class="material-symbols-outlined">search</span>
+      <span className="material-symbols-outlined">search</span>
     </Button>
   );
 }

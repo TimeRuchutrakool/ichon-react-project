@@ -6,6 +6,7 @@ const InputBoxStyled = styled.input`
   border-bottom: 0.1rem solid var(--color-gray-800);
   padding: 1rem;
   font-family: "Prompt", sans-serif;
+  font-size: var(--font-size-xsm);
 
   &:focus {
     outline: none;
