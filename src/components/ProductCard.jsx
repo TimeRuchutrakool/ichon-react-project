@@ -9,10 +9,11 @@ const ProductCardStyled = styled.div`
   padding: 2rem;
   box-shadow: var(--shadow-light);
   border-radius: 1rem;
+  margin: 1rem;
 `;
 
-function ProductCard() {
-  return <ProductCardStyled></ProductCardStyled>;
+function ProductCard({product}) {
+  return <ProductCardStyled>{product}</ProductCardStyled>;
 }
 
 export default ProductCard;

@@ -17,6 +17,7 @@ const HeaderStyled = styled.nav`
   position: sticky;
   top: 0;
   background-color: var(--color-white-0);
+  z-index: 100;
 `;
 
 const SectionHeaderStyled = styled.div`
