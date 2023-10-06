@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Button = styled.button`
+const SearchButtonStyled = styled.button`
   width: 7rem;
   border: none;
   background-color: var(--color-yellow-600);
@@ -11,9 +11,9 @@ const Button = styled.button`
 
 function SearchButton() {
   return (
-    <Button>
+    <SearchButtonStyled>
       <span className="material-symbols-outlined">search</span>
-    </Button>
+    </SearchButtonStyled>
   );
 }
 

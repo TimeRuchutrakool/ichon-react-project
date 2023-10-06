@@ -1,18 +1,16 @@
 import styled from "styled-components";
 
-
-const Button = styled.button`
+const CategoryMenuButtonStyled = styled.button`
   border: none;
   background-color: transparent;
   cursor: pointer;
-
 `;
 
-function CategoryMenuButton({onOpen}) {
+function CategoryMenuButton({ onOpen }) {
   return (
-    <Button onClick={onOpen}>
+    <CategoryMenuButtonStyled onClick={onOpen}>
       <span className="material-symbols-outlined">menu</span>
-    </Button>
+    </CategoryMenuButtonStyled>
   );
 }
 

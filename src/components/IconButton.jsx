@@ -5,6 +5,7 @@ const IconButtonStyled = styled.div`
   align-items: center;
   gap: 1.5rem;
   cursor: pointer;
+  font-size: var(--font-size-xsm);
 `;
 
 function IconButton({ Icon = undefined, iconLabel = "" }) {

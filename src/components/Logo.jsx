@@ -1,17 +1,17 @@
 import styled from "styled-components";
 
-const Label = styled.span`
+const LabelStyled = styled.span`
   font-size: var(--font-size-l);
 `;
-const YellowLabel = styled.span`
+const YellowLabelStyled = styled.span`
   color: var(--color-yellow-600);
 `;
 
 function Logo() {
   return (
-    <Label>
-      IC<YellowLabel>H</YellowLabel>ON
-    </Label>
+    <LabelStyled>
+      IC<YellowLabelStyled>H</YellowLabelStyled>ON
+    </LabelStyled>
   );
 }
 
