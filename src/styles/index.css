@@ -38,6 +38,8 @@
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
   --font-weight-extrabold: 800;
+
+  --shadow-light: 0.1rem 0.1rem 0.5rem 0.1rem #b4b4b4;
 }
 
 *,

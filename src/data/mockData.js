@@ -1,4 +1,4 @@
-const mockCategories = [
+export const mockCategories = [
   {
     categoryId: 153414,
     categoryTitle: "Mobile",
@@ -100,4 +100,48 @@ const mockCategories = [
   },
 ];
 
-export { mockCategories };
+export const mockProductsForCarousel = [
+  { id: 1 },
+  { id: 2 },
+  { id: 3 },
+  { id: 4 },
+  { id: 5 },
+  { id: 6 },
+  { id: 7 },
+  { id: 8 },
+  { id: 9 },
+  { id: 10 },
+  { id: 11 },
+  { id: 12 },
+  { id: 13 },
+  { id: 14 },
+  { id: 15 },
+  { id: 16 },
+];
+
+export const mockImagesCarousel = [
+  {
+    id: 1,
+    src: "https://media-cdn.bnn.in.th/336702/BNN_Hero_PC_Launch_iPhone_15_Series_220923_2000x720_copy_5final-homepage_desktop_banner_retina_medium.jpg",
+  },
+  {
+    id: 2,
+    src: "https://media-cdn.bnn.in.th/336707/BNN_Hero_PC_Launch_iPhone_15_Series_220923_2000x720_final-homepage_desktop_banner_retina_medium.jpg",
+  },
+  {
+    id: 3,
+    src: "https://media-cdn.bnn.in.th/340954/BNN_Hero_PC_6_DGipad&macbook_ipadgen9_021023-151023_2000x720-homepage_desktop_banner_retina_medium.jpg",
+  },
+  {
+    id: 4,
+    src: "https://media-cdn.bnn.in.th/340043/BNN_Hero_PC_3_LenovoWeeklyDeal_021023-081023_2000x720-homepage_desktop_banner_retina_medium.jpg",
+  },
+  {
+    id: 5,
+    src: "https://media-cdn.bnn.in.th/338323/BNN_Hero_PC_4_Apple-Watch-Series-9_Ultra_270923-151023_2000x720_launch-homepage_desktop_banner_retina_medium.jpg",
+  },
+  {
+    id: 6,
+    src: "https://media-cdn.bnn.in.th/340917/BNN_Hero_PC_9_iPhone11_031023-311023_2000x720-homepage_desktop_banner_retina_medium.jpg",
+  },
+];

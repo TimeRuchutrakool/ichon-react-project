@@ -1,5 +1,5 @@
 function ProductsViewHeader() {
-  return <div>ProductsViewHeader</div>;
+  return <></>;
 }
 
 export default ProductsViewHeader;
