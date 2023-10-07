@@ -3,7 +3,7 @@ import "swiper/css/scrollbar";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
-import { Keyboard } from "swiper/modules";
+import { FreeMode, Mousewheel } from 'swiper/modules';
 import ProductCard from "./ProductCard";
 import styled from "styled-components";
 
@@ -19,6 +19,8 @@ const PaginationButton = styled.button`
   border: none;
   border-radius: 0.5rem;
   background-color: var(--color-gray-500);
+  opacity: 0.6;
+  cursor: pointer;
   padding: 2rem 0;
   & span {
     color: var(--color-black-900);
@@ -57,15 +59,15 @@ function ProductsCarousel({products}) {
       <Swiper
         slidesPerView={5}
         centeredSlides={false}
-        keyboard={{
-          enabled: true,
-        }}
-        modules={[Keyboard]}
+        freeMode={true}
+     
+        mousewheel={true}
+        modules={[FreeMode, Mousewheel]}
         className="swiper"
       >
-        {products.map((value) => (
-          <SwiperSlide key={value}>
-            <ProductCard product={value} />
+        {products.map((product) => (
+          <SwiperSlide key={product.productId}>
+            <ProductCard product={product} />
           </SwiperSlide>
         ))}
         <NextButton>

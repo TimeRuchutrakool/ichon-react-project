@@ -100,25 +100,6 @@ export const mockCategories = [
   },
 ];
 
-export const mockProductsForCarousel = [
-  { id: 1 },
-  { id: 2 },
-  { id: 3 },
-  { id: 4 },
-  { id: 5 },
-  { id: 6 },
-  { id: 7 },
-  { id: 8 },
-  { id: 9 },
-  { id: 10 },
-  { id: 11 },
-  { id: 12 },
-  { id: 13 },
-  { id: 14 },
-  { id: 15 },
-  { id: 16 },
-];
-
 export const mockImagesCarousel = [
   {
     id: 1,
@@ -143,5 +124,98 @@ export const mockImagesCarousel = [
   {
     id: 6,
     src: "https://media-cdn.bnn.in.th/340917/BNN_Hero_PC_9_iPhone11_031023-311023_2000x720-homepage_desktop_banner_retina_medium.jpg",
+  },
+];
+
+export const mockProductsCarousel = [
+  {
+    productId: 1,
+    brandTitle: "SAMSUNG",
+    productImage:
+      "https://media-cdn.bnn.in.th/277229/Samsung-Smartphone-Galaxy-A14-1-square_medium.jpg",
+    productTitle: "สมาร์ทโฟน Samsung Galaxy A14 (4+128GB) Silver",
+    productDesc:
+      "Galaxy A14 เร็วแรง ความจุเยอะ สมาร์ทโฟนราคาย่อมเยา สัมผัสประสบการณ์และโปรเซสเซอร์อันทรงพลัง มาพร้อมกับหน้าจอขนาดใหญ่ กล้องที่ยอดเยี่ยมภาพเซลฟี่ที่คู่ควรกับการแชร์ด้วยระบบกล้องสามเลนส์เต็มรูปแบบ มุ่งเน้นไปที่การใช้ชีวิตมากขึ้นและชาร์จน้อยลง แบตเตอรี่ขนาด 5000mAh ให้พลังงานอย่างไม่รู้จบทั้งกลางวันและกลางคืน",
+    productPrice: 5299,
+  },
+  {
+    productId: 2,
+    brandTitle: "APPLE",
+    productImage:
+      "https://media-cdn.bnn.in.th/140783/iPad_10.2_inch_Wi-Fi_Space_Gray_2-square_medium.jpg",
+    productTitle: "Apple iPad 9 (2021) Wi-Fi 64GB 10.2 inch Space Gray",
+    productDesc:
+      'ทั้งทรงพลัง ทั้งใช้งานง่าย ทั้งอเนกประสงค์ iPad 9 Gen มาพร้อมจอภาพ Retina ขนาด 10.2 นิ้วที่สวยงาม, ชิป A13 Bionic อันทรงพลัง, กล้องหน้าอัลตร้าไวด์พร้อมคุณสมบัติ "จัดให้อยู่ตรงกลาง" และใช้งานได้กับ Apple Pencil และ Smart Keyboard iPad จะช่วยให้คุณทำสิ่งต่างๆ ได้มากขึ้นในแบบที่ง่ายยิ่งขึ้น ทั้งหมดนี้ในราคาที่ไม่น่าเชื่อ',
+    productPrice: 12400,
+  },
+  {
+    productId: 3,
+    brandTitle: "XIAOMI",
+    productImage:
+      "https://media-cdn.bnn.in.th/338656/Xiaomi-13T-Pro---Alpine-Blue--3-square_medium.jpg",
+    productTitle: "สมาร์ทโฟน Xiaomi 13T Pro (12+512) Alpine Blue (5G)",
+    productDesc:
+      "Xiaomi 13T  Pro   ดีไซน์พรีเมียม รองรับคุณสมบัติป้องกันน้ำ ประสิทธิภาพการใช้พลังงานที่ไม่มีใครเทียบได้ ระบบกล้องระดับมืออาชีพของ Leica เป็นการก้าวกระโดดครั้งใหญ่ในด้านความสามารถในการถ่ายภาพ แบตเตอรี่ 5000 mAh ใช้งานได้ตลอดทั้งวัน",
+    productPrice: 19990,
+  },
+  {
+    productId: 4,
+    brandTitle: "APPLE",
+    productImage:
+      "https://media-cdn.bnn.in.th/334671/Apple_Watch_SE_GPS_40mm_Starlight_Aluminum_Starlight_Sport_Loop_2-square_medium.jpg",
+    productTitle: "Apple Watch SE GPS 40mm Starlight Aluminium Case with Starlight Sport Loop - 2nd Gen (New)",
+    productDesc:
+      "Apple Watch SE ให้พบกับคุณสมบัติสำคัญที่จะช่วยให้คุณต่อติดกับทุกเรื่อง แอ็คทีฟ มีสุขภาพดี และปลอดภัยอยู่เสมอ เหมาะอย่างยิ่งสำหรับเด็กๆ และผู้สูงอายุที่ใช้คุณสมบัติการตั้งค่าครอบครัว",
+    productPrice: 9490,
+  },
+  {
+    productId: 5,
+    brandTitle: "APPLE",
+    productImage:
+      "https://media-cdn.bnn.in.th/332577/iPhone_15_Plus_Pink_2-square_medium.jpg",
+    productTitle: "Apple iPhone 15 Plus 128GB Pink",
+    productDesc:
+      "iPhone 15 Plus Dynamic Island มาอยู่บน iPhone 15 แล้วทำให้ถึงคุณจะทำอย่างอื่นอยู่ คุณก็ไม่พลาดเรื่องราวต่าง ๆ พร้อมเก็บเรื่องราวสุดประทับใจด้วยกล้องหลัก 48 MP สามารถถ่ายภาพที่มีความละเอียดสูงเป็นพิเศษ ทั้งยังมีเทเลโฟโต้ 2 เท่า และช่องต่อ USB-C ซึ่งทั้งหมดมาในดีไซน์แบบกระจกแต่งสีและอะลูมิเนียมที่ทนทาน",
+    productPrice: 19990,
+  },
+  {
+    productId: 6,
+    brandTitle: "APPLE",
+    productImage:
+      "https://media-cdn.bnn.in.th/332523/iPhone_15_Pro_Blue_Titanium_2-square_medium.jpg",
+    productTitle: "Apple iPhone 15 Plus 128GB Pink",
+    productDesc:
+      "iPhone 15 Plus Dynamic Island มาอยู่บน iPhone 15 แล้วทำให้ถึงคุณจะทำอย่างอื่นอยู่ คุณก็ไม่พลาดเรื่องราวต่าง ๆ พร้อมเก็บเรื่องราวสุดประทับใจด้วยกล้องหลัก 48 MP สามารถถ่ายภาพที่มีความละเอียดสูงเป็นพิเศษ ทั้งยังมีเทเลโฟโต้ 2 เท่า และช่องต่อ USB-C ซึ่งทั้งหมดมาในดีไซน์แบบกระจกแต่งสีและอะลูมิเนียมที่ทนทาน",
+    productPrice: 19990,
+  },
+  {
+    productId: 7,
+    brandTitle: "APPLE",
+    productImage:
+      "https://media-cdn.bnn.in.th/268864/HP-Notebook-15s-eq3065AU-02-square_medium.jpg",
+    productTitle: "Apple iPhone 15 Plus 128GB Pink",
+    productDesc:
+      "iPhone 15 Plus Dynamic Island มาอยู่บน iPhone 15 แล้วทำให้ถึงคุณจะทำอย่างอื่นอยู่ คุณก็ไม่พลาดเรื่องราวต่าง ๆ พร้อมเก็บเรื่องราวสุดประทับใจด้วยกล้องหลัก 48 MP สามารถถ่ายภาพที่มีความละเอียดสูงเป็นพิเศษ ทั้งยังมีเทเลโฟโต้ 2 เท่า และช่องต่อ USB-C ซึ่งทั้งหมดมาในดีไซน์แบบกระจกแต่งสีและอะลูมิเนียมที่ทนทาน",
+    productPrice: 19990,
+  },
+  {
+    productId: 8,
+    brandTitle: "APPLE",
+    productImage:
+      "https://media-cdn.bnn.in.th/306930/acer-aspire-a515-56g-55kf-silver-2-square_medium.jpg",
+    productTitle: "Apple iPhone 15 Plus 128GB Pink",
+    productDesc:
+      "iPhone 15 Plus Dynamic Island มาอยู่บน iPhone 15 แล้วทำให้ถึงคุณจะทำอย่างอื่นอยู่ คุณก็ไม่พลาดเรื่องราวต่าง ๆ พร้อมเก็บเรื่องราวสุดประทับใจด้วยกล้องหลัก 48 MP สามารถถ่ายภาพที่มีความละเอียดสูงเป็นพิเศษ ทั้งยังมีเทเลโฟโต้ 2 เท่า และช่องต่อ USB-C ซึ่งทั้งหมดมาในดีไซน์แบบกระจกแต่งสีและอะลูมิเนียมที่ทนทาน",
+    productPrice: 19990,
+  },
+  {
+    productId: 9,
+    brandTitle: "APPLE",
+    productImage:
+      "https://media-cdn.bnn.in.th/337765/Sony-PlayStation-5-EA-Sports-FC-24-Bundle-3-square_medium.jpg",
+    productTitle: "Apple iPhone 15 Plus 128GB Pink",
+    productDesc:
+      "iPhone 15 Plus Dynamic Island มาอยู่บน iPhone 15 แล้วทำให้ถึงคุณจะทำอย่างอื่นอยู่ คุณก็ไม่พลาดเรื่องราวต่าง ๆ พร้อมเก็บเรื่องราวสุดประทับใจด้วยกล้องหลัก 48 MP สามารถถ่ายภาพที่มีความละเอียดสูงเป็นพิเศษ ทั้งยังมีเทเลโฟโต้ 2 เท่า และช่องต่อ USB-C ซึ่งทั้งหมดมาในดีไซน์แบบกระจกแต่งสีและอะลูมิเนียมที่ทนทาน",
+    productPrice: 19990,
   },
 ];

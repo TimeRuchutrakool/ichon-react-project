@@ -29,7 +29,8 @@
   --font-size-l: 3.2rem;
   --font-size-m: 2.4rem;
   --font-size-sm: 2rem;
-  --font-size-xsm: 1.8rem;
+  --font-size-xsm: 1.4rem;
+  --font-size-xxsm: 1.2rem;
 
   --font-weight-extralight: 200;
   --font-weight-light: 300;
@@ -39,7 +40,7 @@
   --font-weight-bold: 700;
   --font-weight-extrabold: 800;
 
-  --shadow-light: 0.1rem 0.1rem 0.5rem 0.1rem #b4b4b4;
+  --shadow-light: 0.1rem 0.1rem 1rem 0.1rem #c4c4c4;
 }
 
 *,
@@ -63,4 +64,7 @@ body {
 
 .swiper{
   position: relative;
+}
+.swiper-slide{
+  height: 100%;
 }
