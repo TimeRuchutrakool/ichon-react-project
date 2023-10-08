@@ -4,7 +4,7 @@ import Footer from "./Footer";
 import styled from "styled-components";
 
 const OutletStyled = styled.section`
-  min-height: 70vh;
+  min-height: 78vh;
   background-color: var(--color-gray-200);
 `;
 

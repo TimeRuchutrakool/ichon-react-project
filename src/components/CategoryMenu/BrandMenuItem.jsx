@@ -6,7 +6,7 @@ const BrandMenuItemStyled = styled.li`
   display: flex;
   gap: 3rem;
   padding: 1rem 0;
-  border-bottom: 0.1rem solid var(--color-gray-500);
+  border-bottom: 0.1rem solid var(--color-gray-300);
 `;
 
 const ProductListStyled = styled.aside`

@@ -3,8 +3,10 @@ import styled from "styled-components";
 import ProductsHeader from "./ProductsHeader";
 import ProductsCarousel from "./ProductsCarousel";
 import { mockProductsCarousel } from "../data/mockData";
+import { SwiperSlide } from "swiper/react";
+import ProductCard from "./ProductCard";
 const ProductsViewStyled = styled.div`
-  margin: 3rem 3rem 1rem;
+  margin: 10rem 3rem;
 `;
 
 function ProductsView({ view }) {
@@ -17,7 +19,15 @@ function ProductsView({ view }) {
   return (
     <ProductsViewStyled>
       <ProductsHeader headerTitle={view.headerTitle} />
-      <ProductsCarousel products={products} />
+      <ProductsCarousel
+        products={products}
+        slidesPerView={5}
+        render={(product) => (
+          <SwiperSlide key={product.productId} className="swiper-slide-products">
+            <ProductCard product={product} />
+          </SwiperSlide>
+        )}
+      />
     </ProductsViewStyled>
   );
 }

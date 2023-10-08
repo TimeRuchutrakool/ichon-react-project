@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const LabelStyled = styled.span`
   font-size: var(--font-size-l);
+  cursor: pointer;
 `;
 const YellowLabelStyled = styled.span`
   color: var(--color-yellow-600);
@@ -9,9 +11,11 @@ const YellowLabelStyled = styled.span`
 
 function Logo() {
   return (
-    <LabelStyled>
-      IC<YellowLabelStyled>H</YellowLabelStyled>ON
-    </LabelStyled>
+    <Link to="/">
+      <LabelStyled>
+        IC<YellowLabelStyled>H</YellowLabelStyled>ON
+      </LabelStyled>
+    </Link>
   );
 }
 

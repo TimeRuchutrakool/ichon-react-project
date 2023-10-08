@@ -1,14 +1,14 @@
 import styled from "styled-components";
-import { cutOffWord, formatCurrency } from "../utils/helper";
+import { cutOffWord } from "../utils/helper";
+import { Link } from "react-router-dom";
+import PriceLabel from "./PriceLabel";
 
 const ProductCardStyled = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 45rem;
   background-color: var(--color-white-0);
   border-radius: 1rem;
-  margin: 1rem 2rem;
   padding: 2rem;
   cursor: pointer;
   transition: box-shadow 0.3s;
@@ -44,22 +44,23 @@ const ProductDesc = styled.p`
   font-size: var(--font-size-xxsm);
   text-align: justify;
 `;
-const PriceLabel = styled.h3`
-  color: var(--color-red-500);
-  font-size: var(--font-size-sm);
-`;
+
 
 function ProductCard({ product }) {
   return (
-    <ProductCardStyled>
-      <BrandLabel>{product.brandTitle}</BrandLabel>
-      <ProductImage src={product.productImage} alt={product.productTitle} />
-      <TextContentStyled>
-        <ProductName>{cutOffWord(product.productTitle, 70)}</ProductName>
-        <ProductDesc>{cutOffWord(product.productDesc, 80)}</ProductDesc>
-        <PriceLabel>{formatCurrency(product.productPrice)}</PriceLabel>
-      </TextContentStyled>
-    </ProductCardStyled>
+    <Link to={`/product/${product.brandTitle}/${product.productId}`}>
+      <div style={{padding:'1rem'}}>
+        <ProductCardStyled>
+          <BrandLabel>{product.brandTitle}</BrandLabel>
+          <ProductImage src={product.productImage} alt={product.productTitle} />
+          <TextContentStyled>
+            <ProductName>{cutOffWord(product.productTitle, 70)}</ProductName>
+            <ProductDesc>{cutOffWord(product.productDesc, 90)}</ProductDesc>
+            <PriceLabel price={product.productPrice}/>
+          </TextContentStyled>
+        </ProductCardStyled>
+      </div>
+    </Link>
   );
 }
 

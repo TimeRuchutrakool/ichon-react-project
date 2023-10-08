@@ -11,7 +11,7 @@ const FooterStyled = styled.footer`
   flex-direction: column;
   justify-content: end;
   align-items: center;
-  min-height: 20vh;
+  min-height: 12vh;
   background-color: var(--color-gray-200);
 `;
 

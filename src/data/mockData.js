@@ -163,7 +163,8 @@ export const mockProductsCarousel = [
     brandTitle: "APPLE",
     productImage:
       "https://media-cdn.bnn.in.th/334671/Apple_Watch_SE_GPS_40mm_Starlight_Aluminum_Starlight_Sport_Loop_2-square_medium.jpg",
-    productTitle: "Apple Watch SE GPS 40mm Starlight Aluminium Case with Starlight Sport Loop - 2nd Gen (New)",
+    productTitle:
+      "Apple Watch SE GPS 40mm Starlight Aluminium Case with Starlight Sport Loop - 2nd Gen (New)",
     productDesc:
       "Apple Watch SE ให้พบกับคุณสมบัติสำคัญที่จะช่วยให้คุณต่อติดกับทุกเรื่อง แอ็คทีฟ มีสุขภาพดี และปลอดภัยอยู่เสมอ เหมาะอย่างยิ่งสำหรับเด็กๆ และผู้สูงอายุที่ใช้คุณสมบัติการตั้งค่าครอบครัว",
     productPrice: 9490,
@@ -218,4 +219,13 @@ export const mockProductsCarousel = [
       "iPhone 15 Plus Dynamic Island มาอยู่บน iPhone 15 แล้วทำให้ถึงคุณจะทำอย่างอื่นอยู่ คุณก็ไม่พลาดเรื่องราวต่าง ๆ พร้อมเก็บเรื่องราวสุดประทับใจด้วยกล้องหลัก 48 MP สามารถถ่ายภาพที่มีความละเอียดสูงเป็นพิเศษ ทั้งยังมีเทเลโฟโต้ 2 เท่า และช่องต่อ USB-C ซึ่งทั้งหมดมาในดีไซน์แบบกระจกแต่งสีและอะลูมิเนียมที่ทนทาน",
     productPrice: 19990,
   },
+];
+
+export const mockProductImages = [
+  "https://media-cdn.bnn.in.th/220969/Anitech-Keyboard-(P505)-square_medium.jpg",
+  "https://media-cdn.bnn.in.th/220971/Anitech-Keyboard-(P505).jpg-3-square_medium.jpg",
+  "https://media-cdn.bnn.in.th/220970/Anitech-Keyboard-(P505).jpg-2-square_medium.jpg",
+  "https://media-cdn.bnn.in.th/220969/Anitech-Keyboard-(P505)-square_medium.jpg",
+  "https://media-cdn.bnn.in.th/220971/Anitech-Keyboard-(P505).jpg-3-square_medium.jpg",
+  "https://media-cdn.bnn.in.th/220970/Anitech-Keyboard-(P505).jpg-2-square_medium.jpg",
 ];

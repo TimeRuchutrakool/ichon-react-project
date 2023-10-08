@@ -13,6 +13,7 @@ const CategoryMenuStyled = styled.div`
   top: 10vh;
   display: grid;
   grid-template-columns: 1fr 2fr;
+  border-bottom: 0.1rem solid var(--color-gray-300);
 `;
 
 const CategoryMenuListStyled = styled.aside`

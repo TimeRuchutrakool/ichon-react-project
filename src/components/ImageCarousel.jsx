@@ -6,6 +6,7 @@ const ImageCarouselStyled = styled.div`
   width: 100%;
   overflow: hidden;
   position: relative;
+  
 `;
 
 const ImageContainer = styled.div`
