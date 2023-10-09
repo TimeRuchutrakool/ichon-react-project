@@ -1,14 +1,16 @@
-import { useState } from "react";
 import SearchedProductHeader from "../features/search/SearchedProductHeader";
+import { SortContextProvider } from "../context/SortContext";
+import SearchedProductBody from "../features/search/SearchedProductBody";
+import SearchedProductFooter from "../features/search/SearchedProductFooter";
 
 function SearchedProducts() {
-  const [showDropdown, setShowDropdown] = useState(false);
   return (
     <>
-      <SearchedProductHeader
-        showDropdown={showDropdown}
-        setShowDropdown={setShowDropdown}
-      />
+      <SortContextProvider>
+        <SearchedProductHeader />
+        <SearchedProductBody />
+        <SearchedProductFooter />
+      </SortContextProvider>
     </>
   );
 }
