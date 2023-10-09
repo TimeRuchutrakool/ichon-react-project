@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import ProductDetailImages from "../components/ProductDetailImages";
-import ProductDetailContent from "../components/ProductDetailContent";
+
+import ProductDetailContent from "../features/product/ProductDetailContent";
+import ProductDetailImages from "../features/product/ProductDetailImages";
 
 const ProductContainerStyled = styled.div`
   display: flex;

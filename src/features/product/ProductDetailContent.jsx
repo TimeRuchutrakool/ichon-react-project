@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import PriceLabel from "./PriceLabel";
-import Counter from "./Counter";
-import ActionButton from "./ActionButton";
-import IconButton from "./IconButton";
+import PriceLabel from "../../components/PriceLabel";
+import Counter from "../../components/Counter";
+import ActionButton from "../../components/ActionButton";
+import IconButton from "../../components/IconButton";
 
 const ProductTitleStyles = styled.h1`
-  font-size: var(--font-size-m);
+  font-size: var(--font-size-sm);
 `;
 const BrandTitleStyles = styled.p`
   font-size: var(--font-size-sm);
@@ -43,7 +43,7 @@ function ProductDetailContent() {
         <Counter.Decrease
           icon={<span className="material-symbols-outlined">remove</span>}
         />
-        <Counter.CountInput />
+        <Counter.CountLabel />
         <Counter.Increase
           icon={<span className="material-symbols-outlined">add</span>}
         />

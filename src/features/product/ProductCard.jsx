@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { cutOffWord } from "../utils/helper";
+import { cutOffWord } from "../../utils/helper";
 import { Link } from "react-router-dom";
-import PriceLabel from "./PriceLabel";
+import PriceLabel from "../../components/PriceLabel";
 
 const ProductCardStyled = styled.div`
   display: flex;
@@ -45,18 +45,17 @@ const ProductDesc = styled.p`
   text-align: justify;
 `;
 
-
 function ProductCard({ product }) {
   return (
     <Link to={`/product/${product.brandTitle}/${product.productId}`}>
-      <div style={{padding:'1rem'}}>
+      <div style={{ padding: "1rem" }}>
         <ProductCardStyled>
           <BrandLabel>{product.brandTitle}</BrandLabel>
           <ProductImage src={product.productImage} alt={product.productTitle} />
           <TextContentStyled>
             <ProductName>{cutOffWord(product.productTitle, 70)}</ProductName>
             <ProductDesc>{cutOffWord(product.productDesc, 90)}</ProductDesc>
-            <PriceLabel price={product.productPrice}/>
+            <PriceLabel price={product.productPrice} />
           </TextContentStyled>
         </ProductCardStyled>
       </div>

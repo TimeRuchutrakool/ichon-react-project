@@ -2,7 +2,7 @@ import styled from "styled-components";
 import CategoryMenuButton from "./CategoryMenuButton";
 import Logo from "./Logo";
 import InputBox from "./InputBox";
-import SearchButton from "./SearchButton";
+import SearchButton from "../features/search/SearchButton";
 import IconButton from "./IconButton";
 import { useState } from "react";
 import CategoryMenu from "./CategoryMenu/CategoryMenu";
@@ -34,7 +34,7 @@ const VerticalLineStyled = styled.div`
   margin: 0 1.5rem;
 `;
 
-function Header() {
+function Header({ setIsOpenModal }) {
   const [isOpenCategoryMenu, setIsOpenCategoryMenu] = useState(false);
 
   const handleClickCategoryMenu = () => {
@@ -44,7 +44,7 @@ function Header() {
     <HeaderStyled>
       <SectionHeaderStyled>
         <CategoryMenuButton onOpen={handleClickCategoryMenu} />
-        <Logo />
+        <Logo disabled={false} />
       </SectionHeaderStyled>
 
       <SectionHeaderStyled>
@@ -56,6 +56,7 @@ function Header() {
         <IconButton
           Icon={<span className="material-symbols-outlined">person</span>}
           iconLabel="เข้าสู่ระบบ"
+          onClick={() => setIsOpenModal(true)}
         />
         <VerticalLineStyled />
         <IconButton

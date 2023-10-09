@@ -1,13 +1,14 @@
 import ImageCarousel from "../components/ImageCarousel";
-import ProductsView from "../components/ProductsView";
 import { mockImagesCarousel } from "../data/mockData";
+import ProductsView from "../features/product/ProductsView";
+
 import { BACKEND_ROOT } from "../utils/config";
 
 function Home() {
   const images = mockImagesCarousel;
   return (
     <>
-      <ImageCarousel contents={images}/>
+      <ImageCarousel contents={images} />
       <ProductsView
         view={{
           headerTitle: "Best Seller รวมสินค้าขายดี",

@@ -12,19 +12,18 @@ const IconButtonStyled = styled.button`
   font-family: "Prompt", sans-serif;
   color: ${(props) => props.$color};
 `;
-const IconLabel = styled.span`
-  
-`;
+const IconLabel = styled.span``;
 
 function IconButton({
   Icon = undefined,
-  iconLabel = "",
+  iconLabel,
   color = "var(--color-black-900)",
+  onClick,
 }) {
   return (
-    <IconButtonStyled $color={color}>
+    <IconButtonStyled $color={color} onClick={onClick}>
       {Icon}
-      <IconLabel>{iconLabel}</IconLabel>
+      {iconLabel && <IconLabel>{iconLabel}</IconLabel>}
     </IconButtonStyled>
   );
 }

@@ -1,8 +1,9 @@
 import { SwiperSlide } from "swiper/react";
 import ProductsCarousel from "./ProductsCarousel";
-import { mockProductImages } from "../data/mockData";
+
 import { useState } from "react";
 import styled from "styled-components";
+import { mockProductImages } from "../../data/mockData";
 
 const Image = styled.img`
   cursor: pointer;

@@ -13,10 +13,12 @@ const HeaderStyled = styled.p`
   color: var(--color-gray-700);
 `;
 
-const CountInputStyled = styled.input`
+const CountInputStyled = styled.p`
   font-size: var(--font-size-xsm);
   font-weight: var(--font-weight-bold);
-  padding: 0.5rem 0;
+  background-color: var(--color-white-0);
+  width: 5rem;
+  padding: 0.5rem 0rem;
   text-align: center;
   border: 0.1rem solid var(--color-gray-500);
   border-radius: 0.5rem;
@@ -46,17 +48,9 @@ function CountHeader({ title }) {
   return <HeaderStyled>{title}</HeaderStyled>;
 }
 
-function CountInput() {
-  const { count, setCount } = useContext(CounterContext);
-  return (
-    <CountInputStyled
-      type="number"
-      value={count}
-      min='1'
-      readOnly={true}
-      onChange={(e) => setCount(+e.target.value)}
-    />
-  );
+function CountLabel() {
+  const { count } = useContext(CounterContext);
+  return <CountInputStyled>{count}</CountInputStyled>;
 }
 
 function Increase({ icon }) {
@@ -74,7 +68,7 @@ function Decrease({ icon }) {
 }
 
 Counter.CountHeader = CountHeader;
-Counter.CountInput = CountInput;
+Counter.CountLabel = CountLabel;
 Counter.Increase = Increase;
 Counter.Decrease = Decrease;
 

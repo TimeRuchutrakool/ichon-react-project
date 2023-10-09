@@ -7,7 +7,7 @@ const ButtonStyled = styled.button`
   background-color: ${(props) =>
     props.$isOutlined ? "var(--color-yellow-300)" : "var(--color-yellow-600)"};
   box-shadow: ${(props) =>
-    props.$isOutlined ? "none" : "0.2rem 0.2rem 0.1rem var(--color-gray-700)"};
+    props.$isOutlined ? "none" : "0.1rem 0.1rem 0.1rem var(--color-gray-500)"};
   border-radius: 0.5rem;
   padding: 1rem;
   font-family: "Prompt", sans-serif;

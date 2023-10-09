@@ -7,6 +7,7 @@ import {
 import AppLayout from "../components/AppLayout";
 import Home from "../pages/Home";
 import Product from "../pages/Product";
+import SearchedProducts from "../pages/SearchedProducts";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -14,6 +15,7 @@ const router = createBrowserRouter(
       <Route element={<AppLayout />}>
         <Route path="/" element={<Home />} />
         <Route path="/product/:brandTitle/:productId" element={<Product />} />
+        <Route path="/search/:searchedName" element={<SearchedProducts />} />
       </Route>
       <Route path="*" element={<p>Wrong path</p>} />
     </>

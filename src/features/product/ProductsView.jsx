@@ -1,10 +1,10 @@
-// import { useState } from "react";
 import styled from "styled-components";
 import ProductsHeader from "./ProductsHeader";
 import ProductsCarousel from "./ProductsCarousel";
-import { mockProductsCarousel } from "../data/mockData";
+
 import { SwiperSlide } from "swiper/react";
 import ProductCard from "./ProductCard";
+import { mockProductsCarousel } from "../../data/mockData";
 const ProductsViewStyled = styled.div`
   margin: 10rem 3rem;
 `;
@@ -23,7 +23,10 @@ function ProductsView({ view }) {
         products={products}
         slidesPerView={5}
         render={(product) => (
-          <SwiperSlide key={product.productId} className="swiper-slide-products">
+          <SwiperSlide
+            key={product.productId}
+            className="swiper-slide-products"
+          >
             <ProductCard product={product} />
           </SwiperSlide>
         )}

@@ -11,7 +11,7 @@ const FooterStyled = styled.footer`
   flex-direction: column;
   justify-content: end;
   align-items: center;
-  min-height: 12vh;
+  height: 12vh;
   background-color: var(--color-gray-200);
 `;
 
@@ -41,9 +41,9 @@ function Footer() {
     <FooterStyled>
       <HorizontalLine />
       <FooterContentStyled>
-        <Logo />
+        <Logo disabled={true}/>
         <SocialMediaBoxStyled>
-          <span>Stay Connected</span>
+          <div>Stay Connected</div>
           <SocialMediaStackStyled>
             <FacebookIcon fontSize="large" color="inherit" />
             <InstagramIcon fontSize="large" color="inherit" />
