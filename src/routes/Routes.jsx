@@ -1,7 +1,7 @@
 import {
   createBrowserRouter,
   createRoutesFromElements,
-  // Navigate,
+  Navigate,
   Route,
   RouterProvider,
 } from "react-router-dom";
@@ -11,9 +11,9 @@ import Product from "../pages/Product";
 import SearchedProducts from "../pages/SearchedProducts";
 import Cart from "../pages/Cart";
 import Order from "../pages/Order";
-// import UserLayout from "../components/UserLayout";
-// import Orders from "../pages/Orders";
-// import Wishlist from "../pages/Wishlist";
+import UserLayout from "../components/UserLayout";
+import Orders from "../pages/Orders";
+import Wishlist from "../pages/Wishlist";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -24,13 +24,11 @@ const router = createBrowserRouter(
         <Route path="/search/:searchedName" element={<SearchedProducts />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/order" element={<Order />} />
-        {/* <Route path="/user" element={<UserLayout />}>
-          <Route
-            path="/orders"
-            element={<Navigate replace to={<Orders />} />}
-          />
-          <Route path="/wishlist" element={<Wishlist />} />
-        </Route> */}
+        <Route path="/user" element={<UserLayout />}>
+          <Route index element={<Navigate replace to='orders' />} />
+          <Route path="orders" element={<Orders />} />
+          <Route path="wishlist" element={<Wishlist />} />
+        </Route>
       </Route>
       <Route path="*" element={<p>Wrong path</p>} />
     </>

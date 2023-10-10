@@ -4,7 +4,7 @@ import Routes from "./routes/Routes";
 function App() {
   return (
     <ModalContextProvider>
-      <Routes />;
+      <Routes />
     </ModalContextProvider>
   );
 }
