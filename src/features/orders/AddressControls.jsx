@@ -2,6 +2,7 @@ import styled from "styled-components";
 import ActionButton from "../../components/ActionButton";
 import IconHeader from "../../components/IconHeader";
 import Paragraph from "../../components/Paragraph";
+import { useModal } from "../../hooks/useModal";
 
 const AddressControlsStyled = styled.div`
   width: 100%;
@@ -28,6 +29,7 @@ const NameAndPhone = styled.div`
 `;
 
 function AddressControls() {
+  const { dispatch } = useModal();
   return (
     <AddressControlsStyled>
       <AddressHeader>
@@ -37,7 +39,12 @@ function AddressControls() {
           small={true}
           text="ที่อยู่ในการจัดส่ง"
         />
-        <ActionButton text="แก้ไขที่อยู่" width="10rem" small={true} />
+        <ActionButton
+          text="แก้ไขที่อยู่"
+          width="10rem"
+          small={true}
+          onClick={() => dispatch({ type: "address" })}
+        />
       </AddressHeader>
       <InformationContainer>
         <NameAndPhone>

@@ -2,10 +2,8 @@ import { Outlet } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
 import styled from "styled-components";
-import { useState } from "react";
 import Modal from "./Modal";
-import LoginForm from "../features/auth/LoginForm";
-import SignUpForm from "../features/auth/SignUpForm";
+import { useModal } from "../hooks/useModal";
 
 const OutletStyled = styled.section`
   min-height: 78vh;
@@ -27,20 +25,16 @@ const BlurBackgroundStyled = styled.div`
 `;
 
 function AppLayout() {
-  const [isOpenModal, setIsOpenModal] = useState(false);
-  const [toSignUp, setToSignUp] = useState(false);
+  const { formModal } = useModal();
 
   return (
     <>
-      {isOpenModal && (
+      {formModal.form && (
         <BlurBackgroundStyled>
-          <Modal setIsOpenModal={setIsOpenModal}>
-            {!toSignUp && <LoginForm setToSignUp={setToSignUp} />}
-            {toSignUp && <SignUpForm setToSignUp={setToSignUp} />}
-          </Modal>
+          <Modal>{formModal.form}</Modal>
         </BlurBackgroundStyled>
       )}
-      <Header setIsOpenModal={setIsOpenModal} />
+      <Header />
       <OutletStyled>
         <Outlet />
       </OutletStyled>

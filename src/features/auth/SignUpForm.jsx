@@ -7,8 +7,10 @@ import {
   AccountButtonStyled,
   Text,
 } from "./AuthFormStyled";
+import { useModal } from "../../hooks/useModal";
 
-function SignUpForm({ setToSignUp }) {
+function SignUpForm() {
+  const { dispatch } = useModal();
   return (
     <FormStyled>
       <Text $isBold={true}>สร้างบัญชีใหม่</Text>
@@ -26,7 +28,7 @@ function SignUpForm({ setToSignUp }) {
         <AccountButton
           onClick={(e) => {
             e.preventDefault();
-            setToSignUp(false);
+            dispatch({type:"login"});
           }}
         >
           เข้าสู่ระบบ

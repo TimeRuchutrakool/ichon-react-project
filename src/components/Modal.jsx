@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import IconButton from "./IconButton";
+import { useModal } from "../hooks/useModal";
+import useClickOutside from "../hooks/useClickOutside";
 
 const ModalStyled = styled.div`
   background-color: var(--color-white-0);
@@ -12,13 +14,15 @@ const CloseButtonStyled = styled.div`
   justify-content: end;
 `;
 
-function Modal({ children, setIsOpenModal }) {
+function Modal({ children }) {
+  const { dispatch } = useModal();
+  const dropRef = useClickOutside(() => dispatch({ type: "close" }));
   return (
-    <ModalStyled>
+    <ModalStyled ref={dropRef}>
       <CloseButtonStyled>
         <IconButton
           Icon={<span className="material-symbols-outlined">close</span>}
-          onClick={() => setIsOpenModal(false)}
+          onClick={() => dispatch({ type: "close" })}
         ></IconButton>
       </CloseButtonStyled>
       {children}

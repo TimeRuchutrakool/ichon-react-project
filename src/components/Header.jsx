@@ -6,6 +6,7 @@ import SearchButton from "../features/search/SearchButton";
 import IconButton from "./IconButton";
 import { useState } from "react";
 import CategoryMenu from "./CategoryMenu/CategoryMenu";
+import { useModal } from "../hooks/useModal";
 
 const HeaderStyled = styled.nav`
   width: 100%;
@@ -34,9 +35,9 @@ const VerticalLineStyled = styled.div`
   margin: 0 1.5rem;
 `;
 
-function Header({ setIsOpenModal }) {
+function Header() {
   const [isOpenCategoryMenu, setIsOpenCategoryMenu] = useState(false);
-
+  const { dispatch } = useModal();
   const handleClickCategoryMenu = () => {
     setIsOpenCategoryMenu((isOpen) => !isOpen);
   };
@@ -56,7 +57,7 @@ function Header({ setIsOpenModal }) {
         <IconButton
           Icon={<span className="material-symbols-outlined">person</span>}
           iconLabel="เข้าสู่ระบบ"
-          onClick={() => setIsOpenModal(true)}
+          onClick={() => dispatch({ type: "login" })}
         />
         <VerticalLineStyled />
         <IconButton

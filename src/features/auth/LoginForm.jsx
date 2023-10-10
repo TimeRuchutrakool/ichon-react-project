@@ -8,8 +8,10 @@ import {
   AccountButtonStyled,
   Text,
 } from "./AuthFormStyled";
+import { useModal } from "../../hooks/useModal";
 
-function LoginForm({ setToSignUp }) {
+function LoginForm() {
+  const { dispatch } = useModal();
   return (
     <FormStyled>
       <Logo disabled={true} />
@@ -25,7 +27,7 @@ function LoginForm({ setToSignUp }) {
         <AccountButton
           onClick={(e) => {
             e.preventDefault();
-            setToSignUp(true);
+            dispatch({ type: "signup" });
           }}
         >
           สมัครสมาชิกใหม่

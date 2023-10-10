@@ -6,7 +6,7 @@ export const FormStyled = styled.form`
   justify-content: center;
   text-align: center;
   gap: 2rem;
-  margin: 0 2rem;
+  /* margin */
 `;
 
 export const Text = styled.p`
