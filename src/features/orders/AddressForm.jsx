@@ -1,18 +1,24 @@
 import styled from "styled-components";
 import IconHeader from "../../components/IconHeader";
 import InputBox from "../../components/InputBox";
+import ActionButton from "../../components/ActionButton";
 
 const AddressFormStyled = styled.form`
   min-width: 30%;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 2.5rem;
 `;
 
 const CompositeInput = styled.div`
   display: grid;
   column-gap: 1rem;
   grid-template-columns: ${(props) => props.$columns};
+`;
+
+const ButtonLayout = styled.div`
+  display: flex;
+  justify-content: end;
 `;
 
 function AddressForm() {
@@ -39,6 +45,9 @@ function AddressForm() {
         <InputBox placeholder="รหัสไปรษณีย์" width="fit-content" />
         <InputBox placeholder="เบอร์โทรศัพท์" width="fit-content" />
       </CompositeInput>
+      <ButtonLayout>
+        <ActionButton text="ยืนยันแก้ไข" width="10rem" small={true} />
+      </ButtonLayout>
     </AddressFormStyled>
   );
 }
