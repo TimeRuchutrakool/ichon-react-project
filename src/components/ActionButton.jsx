@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const ButtonStyled = styled.button`
-  width: 100%;
+  width: ${(props) => props.$width};
   border: ${(props) =>
     props.$isOutlined ? "0.2rem solid var(--color-yellow-600)" : "none"};
   background-color: ${(props) =>
@@ -11,13 +11,23 @@ const ButtonStyled = styled.button`
   border-radius: 0.5rem;
   padding: 1rem;
   font-family: "Prompt", sans-serif;
-  font-size: var(--font-size-sm);
+  font-size: ${(props) =>
+    props.$small ? "var(--font-size-xxsm)" : "var(--font-size-sm)"};
   cursor: pointer;
 `;
 
-function ActionButton({ type = "regular", text }) {
+function ActionButton({
+  type = "regular",
+  text,
+  width = "100%",
+  small = false,
+}) {
   const isOutlined = type === "outlined";
-  return <ButtonStyled $isOutlined={isOutlined}>{text}</ButtonStyled>;
+  return (
+    <ButtonStyled $isOutlined={isOutlined} $width={width} $small={small}>
+      {text}
+    </ButtonStyled>
+  );
 }
 
 export default ActionButton;
