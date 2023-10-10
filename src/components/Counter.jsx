@@ -1,16 +1,12 @@
 import styled from "styled-components";
 
 import { createContext, useContext, useState } from "react";
+import Paragraph from "./Paragraph";
 
 const CounterStyled = styled.div`
   display: flex;
   align-items: center;
   gap: 1.5rem;
-`;
-const HeaderStyled = styled.p`
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-light);
-  color: var(--color-gray-700);
 `;
 
 const CountInputStyled = styled.p`
@@ -45,7 +41,11 @@ function Counter({ children }) {
 }
 
 function CountHeader({ title }) {
-  return <HeaderStyled>{title}</HeaderStyled>;
+  return (
+    <Paragraph $subheader={true} $small={false}>
+      {title}
+    </Paragraph>
+  );
 }
 
 function CountLabel() {

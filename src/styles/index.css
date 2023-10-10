@@ -30,7 +30,7 @@
   --font-size-l: 3.2rem;
   --font-size-m: 2.4rem;
   --font-size-sm: 2rem;
-  --font-size-xsm: 1.6rem;
+  --font-size-xsm: 1.4rem;
   --font-size-xxsm: 1.2rem;
 
   --font-weight-extralight: 200;
@@ -80,6 +80,6 @@ a {
   all: unset;
 }
 
-button:hover:disabled{
+button:hover:disabled {
   cursor: not-allowed;
 }

@@ -5,6 +5,8 @@ import { useState } from "react";
 import { useSort } from "../../hooks/useSort";
 import { sortOptions } from "../../utils/constant";
 import { useSearchParams } from "react-router-dom";
+import Heading from "../../components/Heading";
+import Paragraph from "../../components/Paragraph";
 
 const SearchedProductHeaderStyled = styled.div`
   width: 100%;
@@ -26,16 +28,6 @@ const SortStyled = styled.div`
   font-size: var(--font-size-xsm);
 `;
 
-const SearchedProductTitle = styled.h1`
-  font-size: var(--font-size-m);
-  font-weight: var(--font-weight-medium);
-`;
-const SmallLabelStyled = styled.span`
-  font-size: var(--font-size-xsm);
-  font-weight: var(--font-weight-light);
-  color: var(--color-gray-800);
-`;
-
 const DropdownBox = styled.div`
   display: flex;
   justify-content: space-between;
@@ -51,12 +43,16 @@ function SearchedProductHeader() {
     <SearchedProductHeaderStyled>
       <HeaderContainer>
         <div>
-          <SearchedProductTitle>iPad</SearchedProductTitle>
-          <SmallLabelStyled>4 รายการ</SmallLabelStyled>
+          <Heading as="h4">iPad</Heading>
+          <Paragraph $subheader={true} $small={true}>
+            4 รายการ
+          </Paragraph>
         </div>
 
         <SortStyled>
-          <SmallLabelStyled>เรียงตาม:</SmallLabelStyled>
+          <Paragraph $subheader={true} $small={true}>
+            เรียงตาม:
+          </Paragraph>
           <Dropdown
             trigger={
               <DropdownBox>

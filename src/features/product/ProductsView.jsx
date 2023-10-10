@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import ProductsHeader from "./ProductsHeader";
 import ProductsCarousel from "./ProductsCarousel";
 
 import { SwiperSlide } from "swiper/react";
 import ProductCard from "./ProductCard";
 import { mockProductsCarousel } from "../../data/mockData";
+import Heading from "../../components/Heading";
 const ProductsViewStyled = styled.div`
   margin: 10rem 3rem;
 `;
@@ -18,7 +18,7 @@ function ProductsView({ view }) {
 
   return (
     <ProductsViewStyled>
-      <ProductsHeader headerTitle={view.headerTitle} />
+      <Heading as="h1">{view.headerTitle}</Heading>
       <ProductsCarousel
         products={products}
         slidesPerView={5}
