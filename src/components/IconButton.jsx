@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const IconButtonStyled = styled.button`
-  width: auto;
+  width: ${props=>props.$widthSize};
   border: none;
   background-color: transparent;
   display: flex;
@@ -16,12 +16,14 @@ const IconLabel = styled.span``;
 
 function IconButton({
   Icon = undefined,
-  iconLabel,
+  iconLabel=undefined,
   color = "var(--color-black-900)",
   onClick,
+  width='auto',
+  disabled=false
 }) {
   return (
-    <IconButtonStyled $color={color} onClick={onClick}>
+    <IconButtonStyled $color={color} onClick={onClick} $widthSize={width} disabled={disabled}>
       {Icon}
       {iconLabel && <IconLabel>{iconLabel}</IconLabel>}
     </IconButtonStyled>

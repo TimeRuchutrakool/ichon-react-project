@@ -229,3 +229,114 @@ export const mockProductImages = [
   "https://media-cdn.bnn.in.th/220971/Anitech-Keyboard-(P505).jpg-3-square_medium.jpg",
   "https://media-cdn.bnn.in.th/220970/Anitech-Keyboard-(P505).jpg-2-square_medium.jpg",
 ];
+
+export const mockOrders = [
+  {
+    orderId: "39143904294738",
+    createdAt: Date.now(),
+    products: [
+      {
+        productId: "1242156892416",
+        productTitle:
+          "Apple Watch SE GPS 40mm Starlight Aluminium Case with Starlight Sport Loop - 2nd Gen (New)",
+        productImage:
+          "https://media-cdn.bnn.in.th/334671/Apple_Watch_SE_GPS_40mm_Starlight_Aluminum_Starlight_Sport_Loop_2-square_medium.jpg",
+        quantity: 1,
+        productPrice: 16900,
+      },
+      {
+        productId: "1242156892416",
+        productTitle: "สมาร์ทโฟน Samsung Galaxy A14 (4+128GB) Silver",
+        productImage:
+          "https://media-cdn.bnn.in.th/277229/Samsung-Smartphone-Galaxy-A14-1-square_medium.jpg",
+        quantity: 1,
+        productPrice: 16900,
+      },
+    ],
+    orderStatus: 1,
+    total: 33800,
+  },
+  {
+    orderId: "2521345",
+    createdAt: Date.now(),
+    products: [
+      {
+        productId: "13421342341",
+        productTitle: "Apple iPad 9 (2021) Wi-Fi 64GB 10.2 inch Space Gray",
+        productImage:
+          "https://media-cdn.bnn.in.th/140783/iPad_10.2_inch_Wi-Fi_Space_Gray_2-square_medium.jpg",
+        quantity: 1,
+        productPrice: 16900,
+      },
+    ],
+    orderStatus: 0,
+    total: 16900,
+  },
+];
+
+export const mockWishList = [
+  {
+    productId: "nfiewnfoi32",
+    productImage:
+      "https://media-cdn.bnn.in.th/140783/iPad_10.2_inch_Wi-Fi_Space_Gray_2-square_medium.jpg",
+    productTitle: "Apple iPad 9 (2021) Wi-Fi 64GB 10.2 inch Space Gray",
+    productPrice: 23045,
+  },
+  {
+    productId: "gegtwh53h3h",
+    productImage:
+      "https://media-cdn.bnn.in.th/277229/Samsung-Smartphone-Galaxy-A14-1-square_medium.jpg",
+    productTitle: "สมาร์ทโฟน Samsung Galaxy A14 (4+128GB) Silver",
+    productPrice: 435436,
+  },
+  {
+    productId: "hej53j5jye",
+    productImage:
+      "https://media-cdn.bnn.in.th/140783/iPad_10.2_inch_Wi-Fi_Space_Gray_2-square_medium.jpg",
+    productTitle: "Apple iPad 9 (2021) Wi-Fi 64GB 10.2 inch Space Gray",
+    productPrice: 656464,
+  },
+  {
+    productId: "reqgg45h",
+    productImage:
+      "https://media-cdn.bnn.in.th/334671/Apple_Watch_SE_GPS_40mm_Starlight_Aluminum_Starlight_Sport_Loop_2-square_medium.jpg",
+    productTitle:
+      "Apple Watch SE GPS 40mm Starlight Aluminium Case with Starlight Sport Loop - 2nd Gen (New)",
+    productPrice: 436556,
+  },
+  {
+    productId: "hghtwehw4thwt",
+    productImage:
+      "https://media-cdn.bnn.in.th/334671/Apple_Watch_SE_GPS_40mm_Starlight_Aluminum_Starlight_Sport_Loop_2-square_medium.jpg",
+    productTitle:
+      "Apple Watch SE GPS 40mm Starlight Aluminium Case with Starlight Sport Loop - 2nd Gen (New)",
+    productPrice: 436556,
+  },
+  {
+    productId: "hewhwteh54h45g",
+    productImage:
+      "https://media-cdn.bnn.in.th/334671/Apple_Watch_SE_GPS_40mm_Starlight_Aluminum_Starlight_Sport_Loop_2-square_medium.jpg",
+    productTitle:
+      "Apple Watch SE GPS 40mm Starlight Aluminium Case with Starlight Sport Loop - 2nd Gen (New)",
+    productPrice: 436556,
+  },
+  {
+    productId: "th6hw6hyrwgh",
+    productImage:
+      "https://media-cdn.bnn.in.th/334671/Apple_Watch_SE_GPS_40mm_Starlight_Aluminum_Starlight_Sport_Loop_2-square_medium.jpg",
+    productTitle:
+      "Apple Watch SE GPS 40mm Starlight Aluminium Case with Starlight Sport Loop - 2nd Gen (New)",
+    productPrice: 436556,
+  },
+];
+
+export const mockUser = {
+  userId: "fr3igo3ngio",
+  firstName: "Time",
+  lastName: "Ruchutrakool",
+  phone: "0293847569",
+  email: "time@gmail.com",
+  createdAt: Date.now(),
+  address:
+    "1064 ถนนเจริญกรุง แขวงสี่พระยา, เขตบางรัก, จังหวัดกรุงเทพมหานคร, 10500",
+};

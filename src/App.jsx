@@ -1,11 +1,14 @@
+import { MockUserContextProvider } from "./context/MockUserContext";
 import { ModalContextProvider } from "./context/ModalContext";
 import Routes from "./routes/Routes";
 
 function App() {
   return (
-    <ModalContextProvider>
-      <Routes />
-    </ModalContextProvider>
+    <MockUserContextProvider>
+      <ModalContextProvider>
+        <Routes />
+      </ModalContextProvider>
+    </MockUserContextProvider>
   );
 }
 

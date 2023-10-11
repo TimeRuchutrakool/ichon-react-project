@@ -7,6 +7,10 @@ import IconButton from "./IconButton";
 import { useState } from "react";
 import CategoryMenu from "./CategoryMenu/CategoryMenu";
 import { useModal } from "../hooks/useModal";
+import useMockUser from "../hooks/useMockUser";
+import Dropdown from "./Dropdown";
+import DropdownItem from "./DropdownItem";
+import { useNavigate } from "react-router-dom";
 
 const HeaderStyled = styled.nav`
   width: 100%;
@@ -36,15 +40,16 @@ const VerticalLineStyled = styled.div`
 `;
 
 function Header() {
+  const user = useMockUser();
+  const [showDropdown, setShowDropdown] = useState(false);
   const [isOpenCategoryMenu, setIsOpenCategoryMenu] = useState(false);
+  const navigate = useNavigate();
   const { dispatch } = useModal();
-  const handleClickCategoryMenu = () => {
-    setIsOpenCategoryMenu((isOpen) => !isOpen);
-  };
+  
   return (
     <HeaderStyled>
       <SectionHeaderStyled>
-        <CategoryMenuButton onOpen={handleClickCategoryMenu} />
+        <CategoryMenuButton isOpenCategoryMenu={isOpenCategoryMenu} setIsOpenCategoryMenu={setIsOpenCategoryMenu}/>
         <Logo disabled={false} />
       </SectionHeaderStyled>
 
@@ -54,11 +59,31 @@ function Header() {
       </SectionHeaderStyled>
 
       <SectionHeaderStyled>
-        <IconButton
-          Icon={<span className="material-symbols-outlined">person</span>}
-          iconLabel="เข้าสู่ระบบ"
-          onClick={() => dispatch({ type: "login" })}
-        />
+        {user ? (
+          <Dropdown
+            trigger={
+              <IconButton iconLabel={user.firstName} onClick={() => {}} />
+            }
+            showDropdown={showDropdown}
+            setShowDropdown={setShowDropdown}
+          >
+            <DropdownItem
+              onClick={() => {
+                setShowDropdown(false)
+                navigate("/user");
+              }}
+            >
+              บัญชี
+            </DropdownItem>
+            <DropdownItem onClick={() => {}}>ออกจากระบบ</DropdownItem>
+          </Dropdown>
+        ) : (
+          <IconButton
+            Icon={<span className="material-symbols-outlined">person</span>}
+            iconLabel="เข้าสู่ระบบ"
+            onClick={() => dispatch({ type: "login" })}
+          />
+        )}
         <VerticalLineStyled />
         <IconButton
           Icon={
