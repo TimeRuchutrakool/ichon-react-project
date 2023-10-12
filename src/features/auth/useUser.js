@@ -1,6 +1,6 @@
-// import { mockUser } from "../../data/mockData";
+import { mockUser } from "../../data/mockData";
 
 export function useUser() {
-  const user = null;
+  const user = mockUser;
   return user;
 }
