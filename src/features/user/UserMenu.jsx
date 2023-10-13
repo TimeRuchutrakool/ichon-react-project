@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Paragraph from "../../components/Paragraph";
 import IconButton from "../../components/IconButton";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useLogout } from "../auth/useLogout";
 
 const UserMenuStyled = styled.aside`
   display: flex;
@@ -44,6 +45,7 @@ const menus = [
 ];
 
 function UserMenu() {
+  const {logout} = useLogout()
   const navigate = useNavigate();
   const location = useLocation();
   const isActive = location.pathname.split("/")[2];
@@ -71,6 +73,7 @@ function UserMenu() {
               <span className="material-symbols-outlined">exit_to_app</span>
             }
             iconLabel="ออกจากระบบ"
+            onClick={logout}
           />
         </ButtonContainer>
       </MenuContainer>

@@ -10,5 +10,8 @@ export function useUser() {
     retry: false,
   });
 
-  return { isLoading, user, isLogin: Boolean(user?.data) };
+  return {
+    isLoading,
+    user,
+  };
 }

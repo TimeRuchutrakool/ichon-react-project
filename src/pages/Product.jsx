@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 import ProductDetailContent from "../features/product/ProductDetailContent";
 import ProductDetailImages from "../features/product/ProductDetailImages";
+import { useUser } from "../features/auth/useUser";
 
 const ProductContainerStyled = styled.div`
   display: flex;
@@ -24,6 +25,8 @@ const ContentContainer = styled.aside`
 `;
 
 function Product() {
+  const { user } = useUser();
+  console.log(user)
   return (
     <ProductContainerStyled>
       <ImageContainer>

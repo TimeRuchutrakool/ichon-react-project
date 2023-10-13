@@ -15,6 +15,7 @@ import UserLayout from "../components/UserLayout";
 import Orders from "../pages/Orders";
 import Wishlist from "../pages/Wishlist";
 import ProtectedRoute from "../components/ProtectedRoute";
+import Admin from "../pages/Admin";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -25,7 +26,7 @@ const router = createBrowserRouter(
         <Route path="/search/:searchedName" element={<SearchedProducts />} />
 
         <Route
-          path="cart"
+          path="/cart"
           element={
             <ProtectedRoute>
               <Cart />
@@ -33,7 +34,7 @@ const router = createBrowserRouter(
           }
         />
         <Route
-          path="order"
+          path="/order"
           element={
             <ProtectedRoute>
               <Order />
@@ -53,6 +54,14 @@ const router = createBrowserRouter(
           <Route path="wishlist" element={<Wishlist />} />
         </Route>
       </Route>
+      <Route
+        path="/admin"
+        element={
+          <ProtectedRoute>
+            <Admin />
+          </ProtectedRoute>
+        }
+      />
       <Route path="*" element={<p>Wrong path</p>} />
     </>
   )

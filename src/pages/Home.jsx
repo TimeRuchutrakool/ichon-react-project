@@ -4,6 +4,7 @@ import ProductsView from "../features/product/ProductsView";
 
 function Home() {
   const images = mockImagesCarousel;
+
   return (
     <>
       <ImageCarousel contents={images} />

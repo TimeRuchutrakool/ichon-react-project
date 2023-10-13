@@ -11,6 +11,7 @@ import Dropdown from "./Dropdown";
 import DropdownItem from "./DropdownItem";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../features/auth/useUser";
+import { useLogout } from "../features/auth/useLogout";
 
 const HeaderStyled = styled.nav`
   width: 100%;
@@ -41,6 +42,7 @@ const VerticalLineStyled = styled.div`
 
 function Header() {
   const { user } = useUser();
+  const { logout } = useLogout();
   const [showDropdown, setShowDropdown] = useState(false);
   const [isOpenCategoryMenu, setIsOpenCategoryMenu] = useState(false);
   const navigate = useNavigate();
@@ -78,7 +80,7 @@ function Header() {
             >
               บัญชี
             </DropdownItem>
-            <DropdownItem onClick={() => {}}>ออกจากระบบ</DropdownItem>
+            <DropdownItem onClick={logout}>ออกจากระบบ</DropdownItem>
           </Dropdown>
         ) : (
           <IconButton
@@ -92,6 +94,7 @@ function Header() {
           Icon={
             <span className="material-symbols-outlined">shopping_cart</span>
           }
+          onClick={() => navigate("/cart")}
         />
       </SectionHeaderStyled>
       {isOpenCategoryMenu && <CategoryMenu />}

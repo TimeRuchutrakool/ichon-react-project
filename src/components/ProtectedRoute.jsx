@@ -1,21 +1,24 @@
-import { useEffect } from "react";
 import { useUser } from "../features/auth/useUser";
-import { useModal } from "../hooks/useModal";
 import { useNavigate } from "react-router-dom";
+import { useModal } from "../hooks/useModal";
+import { useEffect } from "react";
 
 function ProtectedRoute({ children }) {
+  const { user } = useUser();
   const { dispatch } = useModal();
-  const { isLogin, user } = useUser();
-  console.log(isLogin);
-  console.log(user?.data);
   const navigate = useNavigate();
+  console.log(user);
+  console.log(user?.data);
+
   useEffect(() => {
-    if (!isLogin) {
+    if (!user?.data) {
       navigate("/");
       dispatch({ type: "login" });
+    } else if (user?.data.role === "ADMIN") {
+      navigate("/admin", { replace: false });
     }
-  }, [dispatch, navigate, isLogin]);
-  return children;
+  }, [dispatch, navigate, user?.data]);
+  if (user?.data) return children;
 }
 
 export default ProtectedRoute;

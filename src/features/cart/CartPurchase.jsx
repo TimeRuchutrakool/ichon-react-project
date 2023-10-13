@@ -3,6 +3,7 @@ import Paragraph from "../../components/Paragraph";
 import { formatCurrency } from "../../utils/helper";
 import Heading from "../../components/Heading";
 import ActionButton from "../../components/ActionButton";
+import { useNavigate } from "react-router-dom";
 
 const TotalPurchaseContainer = styled.div`
   display: flex;
@@ -17,6 +18,7 @@ const TotalNumberRow = styled.div`
 `;
 
 function CartPurchase() {
+  const navigate = useNavigate();
   return (
     <TotalPurchaseContainer>
       <TotalNumberRow>
@@ -43,7 +45,10 @@ function CartPurchase() {
           {formatCurrency(33800)}
         </Heading>
       </TotalNumberRow>
-      <ActionButton text="ดำเนินการสั่งซื้อ" />
+      <ActionButton
+        text="ดำเนินการสั่งซื้อ"
+        onClick={() => navigate("/order")}
+      />
     </TotalPurchaseContainer>
   );
 }
