@@ -4,6 +4,8 @@ import Footer from "./Footer";
 import styled from "styled-components";
 import Modal from "./Modal";
 import { useModal } from "../hooks/useModal";
+import Spinner from "./Spinner";
+import { useLogin } from "../features/auth/useLogin";
 
 const OutletStyled = styled.section`
   min-height: 78vh;
@@ -25,7 +27,9 @@ const BlurBackgroundStyled = styled.div`
 `;
 
 function AppLayout() {
+  const { isLoading } = useLogin();
   const { formModal } = useModal();
+  if (isLoading) return <Spinner />;
 
   return (
     <>

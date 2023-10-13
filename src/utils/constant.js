@@ -5,3 +5,4 @@ export const sortOptions = [
 ];
 
 export const PAGE_SIZE = 10;
+

@@ -14,6 +14,7 @@ import Order from "../pages/Order";
 import UserLayout from "../components/UserLayout";
 import Orders from "../pages/Orders";
 import Wishlist from "../pages/Wishlist";
+import ProtectedRoute from "../components/ProtectedRoute";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -22,10 +23,32 @@ const router = createBrowserRouter(
         <Route path="/" element={<Home />} />
         <Route path="/product/:brandTitle/:productId" element={<Product />} />
         <Route path="/search/:searchedName" element={<SearchedProducts />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/order" element={<Order />} />
-        <Route path="/user" element={<UserLayout />}>
-          <Route index element={<Navigate replace to='orders' />} />
+
+        <Route
+          path="cart"
+          element={
+            <ProtectedRoute>
+              <Cart />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="order"
+          element={
+            <ProtectedRoute>
+              <Order />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/user"
+          element={
+            <ProtectedRoute>
+              <UserLayout />
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<Navigate replace to="orders" />} />
           <Route path="orders" element={<Orders />} />
           <Route path="wishlist" element={<Wishlist />} />
         </Route>

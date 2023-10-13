@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-const InputBoxStyled = styled.input`
-  width: ${(props) => props.$widthSize};
+const Input = styled.input`
+  width: ${(props) => (props.$width ? props.$width : "30rem")};
   border: none;
   border-bottom: 0.1rem solid var(--color-gray-800);
   padding: 1rem;
@@ -14,10 +14,4 @@ const InputBoxStyled = styled.input`
   }
 `;
 
-function InputBox({ type = "text", placeholder, width = "30rem" }) {
-  return (
-    <InputBoxStyled type={type} placeholder={placeholder} $widthSize={width} />
-  );
-}
-
-export default InputBox;
+export default Input;

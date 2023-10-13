@@ -1,16 +1,16 @@
 import styled from "styled-components";
 import CategoryMenuButton from "./CategoryMenuButton";
 import Logo from "./Logo";
-import InputBox from "./InputBox";
+import Input from "./Input";
 import SearchButton from "../features/search/SearchButton";
 import IconButton from "./IconButton";
 import { useState } from "react";
 import CategoryMenu from "./CategoryMenu/CategoryMenu";
 import { useModal } from "../hooks/useModal";
-import useMockUser from "../hooks/useMockUser";
 import Dropdown from "./Dropdown";
 import DropdownItem from "./DropdownItem";
 import { useNavigate } from "react-router-dom";
+import { useUser } from "../features/auth/useUser";
 
 const HeaderStyled = styled.nav`
   width: 100%;
@@ -40,21 +40,24 @@ const VerticalLineStyled = styled.div`
 `;
 
 function Header() {
-  const user = useMockUser();
+  const { user } = useUser();
   const [showDropdown, setShowDropdown] = useState(false);
   const [isOpenCategoryMenu, setIsOpenCategoryMenu] = useState(false);
   const navigate = useNavigate();
   const { dispatch } = useModal();
-  
+
   return (
     <HeaderStyled>
       <SectionHeaderStyled>
-        <CategoryMenuButton isOpenCategoryMenu={isOpenCategoryMenu} setIsOpenCategoryMenu={setIsOpenCategoryMenu}/>
+        <CategoryMenuButton
+          isOpenCategoryMenu={isOpenCategoryMenu}
+          setIsOpenCategoryMenu={setIsOpenCategoryMenu}
+        />
         <Logo disabled={false} />
       </SectionHeaderStyled>
 
       <SectionHeaderStyled>
-        <InputBox placeholder="ค้นหาสินค้าที่นี่" />
+        <Input placeholder="ค้นหาสินค้าที่นี่" type="text" />
         <SearchButton />
       </SectionHeaderStyled>
 
@@ -62,14 +65,14 @@ function Header() {
         {user ? (
           <Dropdown
             trigger={
-              <IconButton iconLabel={user.firstName} onClick={() => {}} />
+              <IconButton iconLabel={user.data.firstName} onClick={() => {}} />
             }
             showDropdown={showDropdown}
             setShowDropdown={setShowDropdown}
           >
             <DropdownItem
               onClick={() => {
-                setShowDropdown(false)
+                setShowDropdown(false);
                 navigate("/user");
               }}
             >

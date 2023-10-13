@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import IconHeader from "../../components/IconHeader";
-import InputBox from "../../components/InputBox";
+import Input from "../../components/Input";
 import ActionButton from "../../components/ActionButton";
 
 const AddressFormStyled = styled.form`
@@ -30,23 +30,23 @@ function AddressForm() {
         small={true}
         text="ที่อยู่ในการจัดส่ง"
       />
-      <InputBox placeholder="ชื่อ" width="100%" />
-      <InputBox placeholder="นามสกุล" width="100%" />
+      <Input placeholder="ชื่อ" $width="100%" />
+      <Input placeholder="นามสกุล" $width="100%" />
       <CompositeInput $columns="1fr 1fr 1fr">
-        <InputBox placeholder="บ้านเลขที่" width="10rem" />
-        <InputBox placeholder="ซอย" width="10rem" />
-        <InputBox placeholder="แขวง" width="10rem" />
+        <Input placeholder="บ้านเลขที่" $width="10rem" />
+        <Input placeholder="ซอย" $width="10rem" />
+        <Input placeholder="แขวง" $width="10rem" />
       </CompositeInput>
       <CompositeInput $columns="1fr 1fr">
-        <InputBox placeholder="เขต" width="fit-content" />
-        <InputBox placeholder="จังหวัด" width="fit-content" />
+        <Input placeholder="เขต" $width="fit-content" />
+        <Input placeholder="จังหวัด" $width="fit-content" />
       </CompositeInput>
       <CompositeInput $columns="1fr 1fr">
-        <InputBox placeholder="รหัสไปรษณีย์" width="fit-content" />
-        <InputBox placeholder="เบอร์โทรศัพท์" width="fit-content" />
+        <Input placeholder="รหัสไปรษณีย์" $width="fit-content" />
+        <Input placeholder="เบอร์โทรศัพท์" $width="fit-content" />
       </CompositeInput>
       <ButtonLayout>
-        <ActionButton text="ยืนยันแก้ไข" width="10rem" small={true} />
+        <ActionButton text="ยืนยันแก้ไข" $width="10rem" small={true} />
       </ButtonLayout>
     </AddressFormStyled>
   );

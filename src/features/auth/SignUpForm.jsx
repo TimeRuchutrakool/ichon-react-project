@@ -1,4 +1,4 @@
-import InputBox from "../../components/InputBox";
+import InputBox from "../../components/Input";
 import ActionButton from "../../components/ActionButton";
 import {
   AccountButton,
