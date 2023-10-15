@@ -7,8 +7,6 @@ function ProtectedRoute({ children }) {
   const { user } = useUser();
   const { dispatch } = useModal();
   const navigate = useNavigate();
-  console.log(user);
-  console.log(user?.data);
 
   useEffect(() => {
     if (!user?.data) {

@@ -10,11 +10,11 @@ export function useLogin() {
     mutationFn: (credential) => loginApi(credential),
     onSuccess: (accessToken) => {
       setAccessToken(accessToken);
-      toast.success("Login successfully.");
+      toast.success("เข้าสู่ระบบสำเร็จ");
       dispatch({ type: "close" });
     },
     onError: () => {
-      toast.error("Provided email or password are incorrect.");
+      toast.error("อีเมล หรือรหัสผ่านไม่ถูกต้อง");
     },
   });
   return { isLoading, login };

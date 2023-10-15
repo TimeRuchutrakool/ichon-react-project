@@ -44,9 +44,10 @@ function Header() {
   const [showDropdown, setShowDropdown] = useState(false);
   const [isOpenCategoryMenu, setIsOpenCategoryMenu] = useState(false);
   const [searchTitle, setSearchTitle] = useState("");
+
+  const navigate = useNavigate();
   const { user } = useUser();
   const { logout } = useLogout();
-  const navigate = useNavigate();
   const { dispatch } = useModal();
 
   return (
@@ -68,9 +69,9 @@ function Header() {
         />
         <SearchButton
           onClick={() => {
-            if(!searchTitle) return
+            if (!searchTitle) return;
             navigate(`/search/${searchTitle}?sortBy=general&page=1`);
-            setSearchTitle('')
+            setSearchTitle("");
           }}
         />
       </SectionHeaderStyled>

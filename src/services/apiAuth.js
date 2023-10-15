@@ -11,6 +11,11 @@ export const login = async (credential) => {
   return res.data.data.accessToken;
 };
 
+export const signup =async (info)=>{
+  const res = await axios.post('/api/auth/signup',info)
+  return res.data.data.accessToken
+}
+
 export const logout = () => {
   removeAccessToken();
 };
