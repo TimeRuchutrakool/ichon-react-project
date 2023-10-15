@@ -16,6 +16,7 @@ import Orders from "../pages/Orders";
 import Wishlist from "../pages/Wishlist";
 import ProtectedRoute from "../components/ProtectedRoute";
 import Admin from "../pages/Admin";
+import { SortContextProvider } from "../context/SortContext";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,7 +24,14 @@ const router = createBrowserRouter(
       <Route element={<AppLayout />}>
         <Route path="/" element={<Home />} />
         <Route path="/product/:brandTitle/:productId" element={<Product />} />
-        <Route path="/search/:searchedName" element={<SearchedProducts />} />
+        <Route
+          path="/search/:searchedTitle"
+          element={
+            <SortContextProvider>
+              <SearchedProducts />
+            </SortContextProvider>
+          }
+        />
 
         <Route
           path="/cart"

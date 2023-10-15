@@ -25,6 +25,9 @@ const PaginationButton = styled.button`
   &:hover:not(:disabled) {
     background-color: var(--color-yellow-600);
   }
+  &:disabled{
+    color:var(--color-gray-500)
+  }
 `;
 
 const P = styled.p`
@@ -54,7 +57,7 @@ function Pagination({ count }) {
         <span>Previous</span>
       </PaginationButton>
       <P>{currentPage}</P>
-      <PaginationButton onClick={nextPage}>
+      <PaginationButton disabled={currentPage === pageCount} onClick={nextPage}>
         <span>Next</span>
         <span className="material-symbols-outlined">chevron_right</span>
       </PaginationButton>

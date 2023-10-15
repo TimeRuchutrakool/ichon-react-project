@@ -47,15 +47,15 @@ const ProductDesc = styled.p`
 
 function ProductCard({ product }) {
   return (
-    <Link to={`/product/${product.brandTitle}/${product.productId}`}>
+    <Link to={`/product/${product?.brand?.name}/${product?.id}`}>
       <div style={{ padding: "1rem" }}>
         <ProductCardStyled>
-          <BrandLabel>{product.brandTitle}</BrandLabel>
-          <ProductImage src={product.productImage} alt={product.productTitle} />
+          <BrandLabel>{product?.brand?.name}</BrandLabel>
+          <ProductImage src={product?.productImage} alt={product?.name} />
           <TextContentStyled>
-            <ProductName>{cutOffWord(product.productTitle, 70)}</ProductName>
-            <ProductDesc>{cutOffWord(product.productDesc, 90)}</ProductDesc>
-            <PriceLabel price={product.productPrice} />
+            <ProductName>{cutOffWord(product?.name, 70)}</ProductName>
+            <ProductDesc>{cutOffWord(product?.description, 90)}</ProductDesc>
+            <PriceLabel price={product?.price} />
           </TextContentStyled>
         </ProductCardStyled>
       </div>

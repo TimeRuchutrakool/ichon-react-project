@@ -41,10 +41,11 @@ const VerticalLineStyled = styled.div`
 `;
 
 function Header() {
-  const { user } = useUser();
-  const { logout } = useLogout();
   const [showDropdown, setShowDropdown] = useState(false);
   const [isOpenCategoryMenu, setIsOpenCategoryMenu] = useState(false);
+  const [searchTitle, setSearchTitle] = useState("");
+  const { user } = useUser();
+  const { logout } = useLogout();
   const navigate = useNavigate();
   const { dispatch } = useModal();
 
@@ -59,8 +60,19 @@ function Header() {
       </SectionHeaderStyled>
 
       <SectionHeaderStyled>
-        <Input placeholder="ค้นหาสินค้าที่นี่" type="text" />
-        <SearchButton />
+        <Input
+          placeholder="ค้นหาสินค้าที่นี่"
+          type="text"
+          onChange={(e) => setSearchTitle(e.target.value)}
+          value={searchTitle}
+        />
+        <SearchButton
+          onClick={() => {
+            if(!searchTitle) return
+            navigate(`/search/${searchTitle}?sortBy=general&page=1`);
+            setSearchTitle('')
+          }}
+        />
       </SectionHeaderStyled>
 
       <SectionHeaderStyled>

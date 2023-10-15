@@ -2,11 +2,11 @@ import styled from "styled-components";
 import Dropdown from "../../components/Dropdown";
 import DropdownItem from "../../components/DropdownItem";
 import { useState } from "react";
-import { useSort } from "../../hooks/useSort";
 import { sortOptions } from "../../utils/constant";
-import { useSearchParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import Heading from "../../components/Heading";
 import Paragraph from "../../components/Paragraph";
+import { useSort } from "../../hooks/useSort";
 
 const SearchedProductHeaderStyled = styled.div`
   width: 100%;
@@ -35,17 +35,20 @@ const DropdownBox = styled.div`
   width: 12rem;
 `;
 
-function SearchedProductHeader() {
-  const [searchParams, setSearchedParams] = useSearchParams();
+function SearchedProductHeader({ count }) {
+  const sorts = sortOptions;
   const [showDropdown, setShowDropdown] = useState(false);
-  const { selected, setSelected } = useSort();
+  const { searchedTitle } = useParams();
+  const [searchParams, setSearchedParams] = useSearchParams();
+  const { sortIndex, setSortIndex } = useSort();
+
   return (
     <SearchedProductHeaderStyled>
       <HeaderContainer>
         <div>
-          <Heading as="h4">iPad</Heading>
+          <Heading as="h4">{searchedTitle}</Heading>
           <Paragraph $subheader={true} $small={true}>
-            4 รายการ
+            {count} รายการ
           </Paragraph>
         </div>
 
@@ -56,7 +59,7 @@ function SearchedProductHeader() {
           <Dropdown
             trigger={
               <DropdownBox>
-                <span>{sortOptions[selected].label}</span>
+                <span>{sorts[sortIndex].label}</span>
                 {showDropdown ? (
                   <span className="material-symbols-outlined">expand_less</span>
                 ) : (
@@ -67,16 +70,17 @@ function SearchedProductHeader() {
             showDropdown={showDropdown}
             setShowDropdown={setShowDropdown}
           >
-            {sortOptions.map((option, index) => (
+            {sorts.map((option) => (
               <DropdownItem
-                key={option.value}
+                key={option.id}
                 onClick={() => {
-                  searchParams.set("sortBy", sortOptions[selected].value);
+                  setSortIndex(option.id);
+                  searchParams.set("sortBy", option.value);
                   setSearchedParams(searchParams);
-                  setSelected(index);
+                  console.log(option.id);
                 }}
               >
-                {option.label}
+                <span>{option.label}</span>
               </DropdownItem>
             ))}
           </Dropdown>

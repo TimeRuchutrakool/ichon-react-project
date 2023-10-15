@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import ProductCard from "../../features/product/ProductCard";
-import { mockProductsCarousel } from "../../data/mockData";
 
 const SearchedProductBodyStyled = styled.div`
   width: 100%;
@@ -18,13 +17,14 @@ const ProductCardContainer = styled.div`
   width: 30rem;
 `;
 
-function SearchedProductBody() {
-  const products = mockProductsCarousel;
+function SearchedProductBody({products}) {
+ 
+
   return (
     <SearchedProductBodyStyled>
       <ProductsContainer>
         {products.map((product) => (
-          <ProductCardContainer key={product.productId}>
+          <ProductCardContainer key={product?.id}>
             <ProductCard product={product} />
           </ProductCardContainer>
         ))}

@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import Pagination from "../../components/Pagination";
 
-
 const SearchedProductBodyStyled = styled.div`
   width: 100%;
   display: flex;
@@ -9,18 +8,17 @@ const SearchedProductBodyStyled = styled.div`
 `;
 
 const PaginationContainer = styled.div`
-    width: 80%;
-    display: flex;
-    justify-content: end;
-`
+  width: 80%;
+  display: flex;
+  justify-content: end;
+`;
 
-function SearchedProductFooter() {
+function SearchedProductFooter({ count }) {
   return (
     <SearchedProductBodyStyled>
-        <PaginationContainer>
-
-      <Pagination count={40}/>
-        </PaginationContainer>
+      <PaginationContainer>
+        <Pagination count={count} />
+      </PaginationContainer>
     </SearchedProductBodyStyled>
   );
 }

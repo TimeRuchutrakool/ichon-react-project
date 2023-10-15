@@ -9,9 +9,9 @@ const SearchButtonStyled = styled.button`
   cursor: pointer;
 `;
 
-function SearchButton() {
+function SearchButton({ onClick }) {
   return (
-    <SearchButtonStyled>
+    <SearchButtonStyled onClick={onClick}>
       <span className="material-symbols-outlined">search</span>
     </SearchButtonStyled>
   );

@@ -4,6 +4,6 @@ import { SortContext } from "../context/SortContext";
 export function useSort() {
   const context = useContext(SortContext);
   if (context === undefined)
-    throw new Error("SortContext was used outside of SortContextProvider");
+    throw new Error("SortContext was use outside SortContextProvider");
   return context;
 }
