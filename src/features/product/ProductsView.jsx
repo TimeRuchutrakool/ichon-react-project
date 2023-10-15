@@ -24,7 +24,7 @@ function ProductsView({ view }) {
         slidesPerView={5}
         render={(product) => (
           <SwiperSlide
-            key={product.productId}
+            key={product.id}
             className="swiper-slide-products"
           >
             <ProductCard product={product} />

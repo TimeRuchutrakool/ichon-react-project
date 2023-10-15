@@ -58,7 +58,7 @@ function ImageCarousel({ contents }) {
         {contents.map((content) => (
           <Image
             key={content.id}
-            src={content.src}
+            src={content.imageUrl}
             $currentImage={currentImage}
             alt="promotion"
           />

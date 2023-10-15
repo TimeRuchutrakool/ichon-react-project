@@ -3,7 +3,6 @@ import ProductsCarousel from "./ProductsCarousel";
 
 import { useState } from "react";
 import styled from "styled-components";
-import { mockProductImages } from "../../data/mockData";
 
 const Image = styled.img`
   cursor: pointer;
@@ -20,15 +19,14 @@ const SelectedImage = styled.img`
   transform: translateX(-50%);
 `;
 
-function ProductDetailImages() {
-  const images = mockProductImages;
+function ProductDetailImages({images}) {
   const [selectedImage, setSelectedImage] = useState(0);
   const handleSelectImage = (index) => {
     setSelectedImage(index);
   };
   return (
     <>
-      <SelectedImage src={images[selectedImage]} />
+      <SelectedImage src={images[selectedImage]?.imageUrl} />
       <ProductsCarousel
         products={images}
         slidesPerView={4}
@@ -36,7 +34,7 @@ function ProductDetailImages() {
         render={(image, index) => (
           <SwiperSlide key={index} className="swiper-slide-product-image">
             <Image
-              src={image}
+              src={image?.imageUrl}
               onClick={handleSelectImage.bind(null, index)}
               $isSelected={selectedImage === index}
             />

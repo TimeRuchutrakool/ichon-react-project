@@ -14,23 +14,19 @@ const DetailFooterStyled = styled.div`
   border-bottom: 0.1rem solid var(--color-gray-400);
 `;
 
-function ProductDetailContent() {
+function ProductDetailContent({product}) {
   return (
     <>
       <Heading as="h4">
-        คีย์บอร์ดไร้สาย Anitech Bluetooth Rechageable (P505) White (TH/EN)
+        {product.name}
       </Heading>
       <Paragraph $subheader={true} $small={false}>
-        แบรนด์: ANITECH
+        แบรนด์: {product.brand.name}
       </Paragraph>
       <Paragraph $subheader={false} $small={true}>
-        Anitech Dual Function 2.4G+BT Rechargeable Keyboard P505
-        มาพร้อมการเชื่อมต่อ แบบ 2 ฟังก์ชั่นด้วยสัญญาน 2.4G และ Bluetooth 5.0
-        สะดวกสบายเชื่อมต่อได้ทั้ง โน๊ตบุ๊ค หรือ iPad ได้ในเวลาเดียวกัน
-        สามารถชาร์ทไฟได้ ความจุแบต 400 mAh LI-Battery 100 key + Multimedia
-        ปิด-เปิด เชื่อมต่อไปไกลถึง 10 เมตร
+      {product.description}
       </Paragraph>
-      <PriceLabel price={699} />
+      <PriceLabel price={product.price} />
       <Counter>
         <Counter.CountHeader title="Quantity" />
         <Counter.Decrease

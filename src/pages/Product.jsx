@@ -2,13 +2,14 @@ import styled from "styled-components";
 
 import ProductDetailContent from "../features/product/ProductDetailContent";
 import ProductDetailImages from "../features/product/ProductDetailImages";
-import { useUser } from "../features/auth/useUser";
+import { useProduct } from "../features/product/useProduct";
+import Spinner from "../components/Spinner";
 
 const ProductContainerStyled = styled.div`
   display: flex;
   justify-content: center;
   position: relative;
-  gap: 2rem;
+  gap: 7rem;
   top: 5rem;
 `;
 
@@ -25,15 +26,15 @@ const ContentContainer = styled.aside`
 `;
 
 function Product() {
-  const { user } = useUser();
-  console.log(user)
+  const { isLoading, product } = useProduct();
+  if (isLoading) return <Spinner />;
   return (
     <ProductContainerStyled>
       <ImageContainer>
-        <ProductDetailImages />
+        <ProductDetailImages images={product.data.product.productImages} />
       </ImageContainer>
       <ContentContainer>
-        <ProductDetailContent />
+        <ProductDetailContent product={product.data.product}/>
       </ContentContainer>
     </ProductContainerStyled>
   );

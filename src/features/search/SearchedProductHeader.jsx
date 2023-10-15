@@ -77,7 +77,6 @@ function SearchedProductHeader({ count }) {
                   setSortIndex(option.id);
                   searchParams.set("sortBy", option.value);
                   setSearchedParams(searchParams);
-                  console.log(option.id);
                 }}
               >
                 <span>{option.label}</span>
