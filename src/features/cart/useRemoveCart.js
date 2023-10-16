@@ -1,11 +1,12 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { removeFromCart as removeFromCartApi } from "../../services/apiCart";
 import toast from "react-hot-toast";
 export function useRemoveCart() {
+  const queryClient = useQueryClient();
   const { mutate: removeFromCart, isLoading } = useMutation({
-    mutationFn: ({ productId, quantity }) =>
-      removeFromCartApi(productId, quantity),
+    mutationFn: ({ productId }) => removeFromCartApi(productId),
     onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["cart"] });
       toast.success("ลดสินค้าในตะกร้าสำเร็จ");
     },
     onError: () => {

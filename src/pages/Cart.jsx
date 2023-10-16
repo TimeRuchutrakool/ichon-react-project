@@ -18,12 +18,13 @@ const CartDetail = styled.div`
 
 function Cart() {
   const { cart } = useCart();
+
   return (
     <CartStyled>
       <Heading as="h2">ตะกร้าสินค้า ({cart?.data.cart.length})</Heading>
       <CartDetail>
         <CartProductsList cart={cart?.data.cart} />
-        <CartPurchase />
+        <CartPurchase total={cart?.data.total} />
       </CartDetail>
     </CartStyled>
   );

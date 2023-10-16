@@ -54,30 +54,36 @@ function CountLabel() {
 }
 
 function Increase({ icon }) {
-  const { addToCart } = useAddCart();
-  const { count, setCount, isAutoAddAndRemove, productId } =
+  const { addToCart, isLoading } = useAddCart();
+  const { setCount, isAutoAddAndRemove, productId } =
     useContext(CounterContext);
   const increase = () => {
     setCount((count) => count + 1);
     if (isAutoAddAndRemove) {
-      addToCart({ productId, quantity: count });
-    }
-  };
-  return <Button onClick={increase}>{icon}</Button>;
-}
-
-function Decrease({ icon }) {
-  const { removeFromCart } = useRemoveCart();
-  const { count, setCount, isAutoAddAndRemove, productId } =
-    useContext(CounterContext);
-  const decrease = () => {
-    setCount((count) => count - 1);
-    if (isAutoAddAndRemove) {
-      removeFromCart({ productId, quantity: count });
+      addToCart({ productId, quantity: undefined });
     }
   };
   return (
-    <Button onClick={decrease} disabled={count <= 1}>
+    <Button onClick={increase} disabled={isLoading}>
+      {icon}
+    </Button>
+  );
+}
+
+function Decrease({ icon }) {
+  const { removeFromCart, isLoading } = useRemoveCart();
+  const { count, setCount, isAutoAddAndRemove, productId } =
+    useContext(CounterContext);
+
+  const decrease = () => {
+    setCount((count) => count - 1);
+    if (isAutoAddAndRemove) {
+      removeFromCart({ productId });
+    }
+  };
+
+  return (
+    <Button onClick={decrease} disabled={count <= 1 || isLoading}>
       {icon}
     </Button>
   );

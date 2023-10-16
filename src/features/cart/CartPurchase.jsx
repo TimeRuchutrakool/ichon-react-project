@@ -17,8 +17,9 @@ const TotalNumberRow = styled.div`
   justify-content: space-between;
 `;
 
-function CartPurchase() {
+function CartPurchase({ total }) {
   const navigate = useNavigate();
+
   return (
     <TotalPurchaseContainer>
       <TotalNumberRow>
@@ -26,23 +27,16 @@ function CartPurchase() {
           ยอดรวม
         </Paragraph>
         <Paragraph $subheader={false} $small={false}>
-          {formatCurrency(33800)}
+          {formatCurrency(total)}
         </Paragraph>
       </TotalNumberRow>
-      <TotalNumberRow>
-        <Paragraph $subheader={false} $small={false}>
-          ส่วนลด
-        </Paragraph>
-        <Paragraph $subheader={false} $small={false}>
-          -{formatCurrency(0)}
-        </Paragraph>
-      </TotalNumberRow>
+
       <TotalNumberRow>
         <Heading as="h4" $small={true}>
           ยอดรวมสุทธิ
         </Heading>
         <Heading as="h4" $small={true}>
-          {formatCurrency(33800)}
+          {formatCurrency(total)}
         </Heading>
       </TotalNumberRow>
       <ActionButton

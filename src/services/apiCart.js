@@ -6,12 +6,15 @@ export const getCart = async () => {
 };
 
 export const addToCart = async (productId, quantity) => {
-  const res = await axios.patch(`/api/cart/add/${productId}/${quantity}`);
+  const path = quantity
+    ? `/api/cart/add?productId=${productId}&quantity=${quantity}`
+    : `/api/cart/add?productId=${productId}`;
+  const res = await axios.patch(path);
   return res.data;
 };
 
-export const removeFromCart = async (productId, quantity) => {
-  const res = await axios.patch(`/api/cart/remove/${productId}/${quantity}`);
+export const removeFromCart = async (productId) => {
+  const res = await axios.patch(`/api/cart/remove?productId=${productId}`);
   return res.data;
 };
 
@@ -19,4 +22,3 @@ export const deleteCart = async (productId) => {
   const res = await axios.delete(`/api/cart/delete/${productId}`);
   return res.data;
 };
-
