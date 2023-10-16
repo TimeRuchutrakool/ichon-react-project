@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Paragraph from "../../components/Paragraph";
+import { useModal } from "../../hooks/useModal";
 
 const OrderProgressStyled = styled.div`
   width: fit-content;
@@ -13,7 +14,8 @@ const OrderProgressStyled = styled.div`
 const Progress = styled.div`
   width: 20rem;
   height: 0.3rem;
-  background-color: var(--color-gray-400);
+  background-color: ${(props) =>
+    props.$isPaying ? "var(--color-yellow-600)" : "var(--color-gray-400)"};
   position: relative;
   &::before {
     content: "";
@@ -30,7 +32,8 @@ const Progress = styled.div`
     content: "";
     width: 3rem;
     height: 3rem;
-    background-color: var(--color-gray-400);
+    background-color: ${(props) =>
+      props.$isPaying ? "var(--color-yellow-600)" : "var(--color-gray-400)"};
     padding: 1rem;
     position: absolute;
     right: 0;
@@ -45,9 +48,10 @@ const ProgressLabel = styled.div`
 `;
 
 function OrderProgress() {
+  const { isPaying } = useModal();
   return (
     <OrderProgressStyled>
-      <Progress />
+      <Progress $isPaying={isPaying} />
       <ProgressLabel>
         <Paragraph
           $small={true}
@@ -58,7 +62,7 @@ function OrderProgress() {
         </Paragraph>
         <Paragraph
           $small={true}
-          $subheader={true}
+          $subheader={isPaying ? false : true}
           style={{ transform: "translateX(50%)" }}
         >
           จ่ายเงิน

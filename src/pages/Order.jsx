@@ -5,6 +5,7 @@ import OrderedProducts from "../features/orders/OrderedProducts";
 import AddressControls from "../features/orders/AddressControls";
 import { useCart } from "../features/cart/useCart";
 import { useUser } from "../features/auth/useUser";
+import { useModal } from "../hooks/useModal";
 
 const OrderStyled = styled.div`
   display: flex;
@@ -23,6 +24,7 @@ const OrderContainer = styled.div`
 function Order() {
   const { cart } = useCart();
   const { user } = useUser();
+  const { dispatch, setIsPaying } = useModal();
   const isAbleToPay = user.data.address ? false : true;
   return (
     <OrderStyled>
@@ -30,7 +32,15 @@ function Order() {
         <OrderProgress />
         <OrderedProducts cart={cart?.data.cart} total={cart?.data.total} />
         <AddressControls user={user.data} />
-        <ActionButton text="จ่ายเงิน" width="15rem" disabled={isAbleToPay} />
+        <ActionButton
+          text="จ่ายเงิน"
+          width="15rem"
+          disabled={isAbleToPay}
+          onClick={() => {
+            setIsPaying((pay) => !pay);
+            dispatch({ type: "pay" });
+          }}
+        />
       </OrderContainer>
     </OrderStyled>
   );

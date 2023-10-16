@@ -15,14 +15,21 @@ const CloseButtonStyled = styled.div`
 `;
 
 function Modal({ children }) {
-  const { dispatch } = useModal();
-  const dropRef = useClickOutside(() => dispatch({ type: "close" }));
+  const { formModal, dispatch, setIsPaying } = useModal();
+  const dropRef = useClickOutside(() => {
+    if (formModal.form.type.name === "PayForm") setIsPaying((pay) => !pay);
+    dispatch({ type: "close" });
+  });
   return (
     <ModalStyled ref={dropRef}>
       <CloseButtonStyled>
         <IconButton
           Icon={<span className="material-symbols-outlined">close</span>}
-          onClick={() => dispatch({ type: "close" })}
+          onClick={() => {
+            if (formModal.form.type.name === "PayForm")
+              setIsPaying((pay) => !pay);
+            dispatch({ type: "close" });
+          }}
         ></IconButton>
       </CloseButtonStyled>
       {children}

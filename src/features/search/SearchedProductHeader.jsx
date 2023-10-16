@@ -61,9 +61,13 @@ function SearchedProductHeader({ count }) {
               <DropdownBox>
                 <span>{sorts[sortIndex].label}</span>
                 {showDropdown ? (
-                  <span className="material-symbols-outlined">expand_less</span>
+                  <span className="material-symbols-outlined">
+                    expand_circle_up
+                  </span>
                 ) : (
-                  <span className="material-symbols-outlined">expand_more</span>
+                  <span className="material-symbols-outlined">
+                    expand_circle_down
+                  </span>
                 )}
               </DropdownBox>
             }

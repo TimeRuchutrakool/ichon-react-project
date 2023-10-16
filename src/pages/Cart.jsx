@@ -3,6 +3,7 @@ import Heading from "../components/Heading";
 import CartPurchase from "../features/cart/CartPurchase";
 import CartProductsList from "../features/cart/CartProductsList";
 import { useCart } from "../features/cart/useCart";
+import NullHandling from "../components/NullHandling";
 
 const CartStyled = styled.div`
   display: flex;
@@ -18,13 +19,16 @@ const CartDetail = styled.div`
 
 function Cart() {
   const { cart } = useCart();
+  
 
+  if (cart?.data?.cart.length === 0)
+    return <NullHandling>ยังไม่มีสินค้าในตะกร้า</NullHandling>;
   return (
     <CartStyled>
-      <Heading as="h2">ตะกร้าสินค้า ({cart?.data.cart.length})</Heading>
+      <Heading as="h2">ตะกร้าสินค้า ({cart?.data?.cart.length})</Heading>
       <CartDetail>
-        <CartProductsList cart={cart?.data.cart} />
-        <CartPurchase total={cart?.data.total} />
+        <CartProductsList cart={cart?.data?.cart} />
+        <CartPurchase total={cart?.data?.total} />
       </CartDetail>
     </CartStyled>
   );

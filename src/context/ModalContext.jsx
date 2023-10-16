@@ -1,7 +1,8 @@
-import { createContext, useReducer } from "react";
+import { createContext, useReducer, useState } from "react";
 import LoginForm from "../features/auth/LoginForm";
 import SignUpForm from "../features/auth/SignUpForm";
 import AddressForm from "../features/orders/AddressForm";
+import PayForm from "../features/orders/PayForm";
 
 export const ModalContext = createContext();
 
@@ -19,6 +20,8 @@ function reducer(state, action) {
       return { ...state, form: <SignUpForm /> };
     case "address":
       return { ...state, form: <AddressForm /> };
+    case "pay":
+      return { ...state, form: <PayForm /> };
 
     default:
       throw new Error("Unknown action");
@@ -26,9 +29,12 @@ function reducer(state, action) {
 }
 
 export function ModalContextProvider({ children }) {
+  const [isPaying, setIsPaying] = useState(false);
   const [formModal, dispatch] = useReducer(reducer, initialState);
   return (
-    <ModalContext.Provider value={{ formModal, dispatch }}>
+    <ModalContext.Provider
+      value={{ formModal, dispatch, setIsPaying, isPaying }}
+    >
       {children}
     </ModalContext.Provider>
   );
