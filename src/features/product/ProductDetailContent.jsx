@@ -5,6 +5,8 @@ import ActionButton from "../../components/ActionButton";
 import IconButton from "../../components/IconButton";
 import Heading from "../../components/Heading";
 import Paragraph from "../../components/Paragraph";
+import { useAddCart } from "../cart/useAddCart";
+import { useState } from "react";
 
 const DetailFooterStyled = styled.div`
   display: flex;
@@ -14,20 +16,20 @@ const DetailFooterStyled = styled.div`
   border-bottom: 0.1rem solid var(--color-gray-400);
 `;
 
-function ProductDetailContent({product}) {
+function ProductDetailContent({ product }) {
+  const { addToCart } = useAddCart();
+  const [count, setCount] = useState(1);
   return (
     <>
-      <Heading as="h4">
-        {product.name}
-      </Heading>
+      <Heading as="h4">{product.name}</Heading>
       <Paragraph $subheader={true} $small={false}>
         แบรนด์: {product.brand.name}
       </Paragraph>
       <Paragraph $subheader={false} $small={true}>
-      {product.description}
+        {product.description}
       </Paragraph>
       <PriceLabel price={product.price} />
-      <Counter>
+      <Counter count={count} setCount={setCount} isAutoAddAndRemove={false}>
         <Counter.CountHeader title="Quantity" />
         <Counter.Decrease
           icon={<span className="material-symbols-outlined">remove</span>}
@@ -43,7 +45,11 @@ function ProductDetailContent({product}) {
           iconLabel="wishlist"
           Icon={<span className="material-symbols-outlined">favorite</span>}
         />
-        <ActionButton type="outlined" text="หยิบลงตะกร้า" />
+        <ActionButton
+          type="outlined"
+          text="หยิบลงตะกร้า"
+          onClick={() => addToCart({ productId: product.id, quantity: count })}
+        />
         <ActionButton text="ซื้อเลย" />
       </DetailFooterStyled>
     </>

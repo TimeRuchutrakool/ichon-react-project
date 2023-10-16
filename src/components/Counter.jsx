@@ -1,7 +1,9 @@
 import styled from "styled-components";
 
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext } from "react";
 import Paragraph from "./Paragraph";
+import { useAddCart } from "../features/cart/useAddCart";
+import { useRemoveCart } from "../features/cart/useRemoveCart";
 
 const CounterStyled = styled.div`
   display: flex;
@@ -28,13 +30,11 @@ const Button = styled.button`
 
 const CounterContext = createContext();
 
-function Counter({ children }) {
-  const [count, setCount] = useState(1);
-  const increase = () => setCount((count) => count + 1);
-  const decrease = () => setCount((count) => count - 1);
-
+function Counter({ children, count, setCount, isAutoAddAndRemove, productId }) {
   return (
-    <CounterContext.Provider value={{ count, increase, decrease, setCount }}>
+    <CounterContext.Provider
+      value={{ count, setCount, isAutoAddAndRemove, productId }}
+    >
       <CounterStyled>{children}</CounterStyled>
     </CounterContext.Provider>
   );
@@ -54,12 +54,28 @@ function CountLabel() {
 }
 
 function Increase({ icon }) {
-  const { increase } = useContext(CounterContext);
+  const { addToCart } = useAddCart();
+  const { count, setCount, isAutoAddAndRemove, productId } =
+    useContext(CounterContext);
+  const increase = () => {
+    setCount((count) => count + 1);
+    if (isAutoAddAndRemove) {
+      addToCart({ productId, quantity: count });
+    }
+  };
   return <Button onClick={increase}>{icon}</Button>;
 }
 
 function Decrease({ icon }) {
-  const { count, decrease } = useContext(CounterContext);
+  const { removeFromCart } = useRemoveCart();
+  const { count, setCount, isAutoAddAndRemove, productId } =
+    useContext(CounterContext);
+  const decrease = () => {
+    setCount((count) => count - 1);
+    if (isAutoAddAndRemove) {
+      removeFromCart({ productId, quantity: count });
+    }
+  };
   return (
     <Button onClick={decrease} disabled={count <= 1}>
       {icon}

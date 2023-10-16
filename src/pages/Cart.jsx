@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Heading from "../components/Heading";
 import CartPurchase from "../features/cart/CartPurchase";
 import CartProductsList from "../features/cart/CartProductsList";
+import { useCart } from "../features/cart/useCart";
 
 const CartStyled = styled.div`
   display: flex;
@@ -16,11 +17,12 @@ const CartDetail = styled.div`
 `;
 
 function Cart() {
+  const { cart } = useCart();
   return (
     <CartStyled>
-      <Heading as="h2">ตะกร้าสินค้า (2)</Heading>
+      <Heading as="h2">ตะกร้าสินค้า ({cart?.data.cart.length})</Heading>
       <CartDetail>
-        <CartProductsList />
+        <CartProductsList cart={cart?.data.cart} />
         <CartPurchase />
       </CartDetail>
     </CartStyled>

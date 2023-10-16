@@ -8,12 +8,12 @@ const CartProductsListStyled = styled.ul`
   margin-right: 2rem;
 `;
 
-function CartProductsList() {
+function CartProductsList({ cart }) {
   return (
     <CartProductsListStyled>
-      <CartProductCard />
-      <CartProductCard />
-      <CartProductCard />
+      {[...(cart ?? [])].map((cartItem) => (
+        <CartProductCard key={cartItem.id} cartItem={cartItem} />
+      ))}
     </CartProductsListStyled>
   );
 }

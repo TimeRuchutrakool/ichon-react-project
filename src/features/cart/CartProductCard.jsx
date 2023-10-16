@@ -3,6 +3,8 @@ import ProductImageWithTitle from "../../components/ProductImageWithTitle";
 import PriceLabel from "../../components/PriceLabel";
 import Counter from "../../components/Counter";
 import IconButton from "../../components/IconButton";
+import { useState } from "react";
+import { useDeleteCart } from "./useDeleteCart";
 
 const CartProductCardStyled = styled.li`
   padding: 0.5rem 1rem;
@@ -28,17 +30,24 @@ const ProductControls = styled.div`
   gap: 3rem;
 `;
 
-function CartProductCard() {
+function CartProductCard({ cartItem }) {
+  const [count, setCount] = useState(() => cartItem.quantity);
+  const { deleteCart } = useDeleteCart();
   return (
     <CartProductCardStyled>
       <ProductImageWithTitle
-        img="https://media-cdn.bnn.in.th/277229/Samsung-Smartphone-Galaxy-A14-1-square_medium.jpg"
-        title="สมาร์ทโฟน Samsung Galaxy A14 (4+128GB) Silver"
+        img={cartItem.product.ProductImage[0].imageUrl}
+        title={cartItem.product?.name}
       />
       <CartProductCardFooterContainer>
-        <PriceLabel price={16900} />
+        <PriceLabel price={cartItem.product?.price} />
         <ProductControls>
-          <Counter>
+          <Counter
+            count={count}
+            setCount={setCount}
+            isAutoAddAndRemove={true}
+            productId={cartItem.product?.id}
+          >
             <Counter.Decrease
               icon={<span className="material-symbols-outlined">remove</span>}
             />
@@ -50,6 +59,7 @@ function CartProductCard() {
           <IconButton
             Icon={<span className="material-symbols-outlined">delete</span>}
             color="var(--color-gray-700)"
+            onClick={() => deleteCart(cartItem.product?.id)}
           />
         </ProductControls>
       </CartProductCardFooterContainer>

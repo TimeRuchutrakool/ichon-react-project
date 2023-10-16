@@ -51,7 +51,10 @@ function ProductCard({ product }) {
       <div style={{ padding: "1rem" }}>
         <ProductCardStyled>
           <BrandLabel>{product?.brand?.name}</BrandLabel>
-          <ProductImage src={product?.productImage} alt={product?.name} />
+          <ProductImage
+            src={product?.ProductImage[0].imageUrl}
+            alt={product?.name}
+          />
           <TextContentStyled>
             <ProductName>{cutOffWord(product?.name, 70)}</ProductName>
             <ProductDesc>{cutOffWord(product?.description, 90)}</ProductDesc>
