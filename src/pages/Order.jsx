@@ -3,6 +3,8 @@ import ActionButton from "../components/ActionButton";
 import OrderProgress from "../features/orders/OrderProgress";
 import OrderedProducts from "../features/orders/OrderedProducts";
 import AddressControls from "../features/orders/AddressControls";
+import { useCart } from "../features/cart/useCart";
+import { useUser } from "../features/auth/useUser";
 
 const OrderStyled = styled.div`
   display: flex;
@@ -19,13 +21,16 @@ const OrderContainer = styled.div`
 `;
 
 function Order() {
+  const { cart } = useCart();
+  const { user } = useUser();
+  const isAbleToPay = user.data.address ? false : true;
   return (
     <OrderStyled>
       <OrderContainer>
         <OrderProgress />
-        <OrderedProducts />
-        <AddressControls />
-        <ActionButton text="จ่ายเงิน" width="15rem" />
+        <OrderedProducts cart={cart?.data.cart} total={cart?.data.total} />
+        <AddressControls user={user.data} />
+        <ActionButton text="จ่ายเงิน" width="15rem" disabled={isAbleToPay} />
       </OrderContainer>
     </OrderStyled>
   );

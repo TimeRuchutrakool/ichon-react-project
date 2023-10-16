@@ -48,7 +48,7 @@ const NumberContainer = styled.div`
   align-items: center;
 `;
 
-function OrderedProducts() {
+function OrderedProducts({ cart, total }) {
   return (
     <OrderedProductsStyled>
       <Heading as="h4" $small={true}>
@@ -67,48 +67,32 @@ function OrderedProducts() {
             รายการย่อย
           </Paragraph>
         </OrderedProductRow>
-        <OrderedProductRow>
-          <ProductImageWithTitle
-            img="https://media-cdn.bnn.in.th/277229/Samsung-Smartphone-Galaxy-A14-1-square_medium.jpg"
-            title="สมาร์ทโฟน Samsung Galaxy A14 (4+128GB) Silver"
-          />
-          <NumberContainer>
-            <Paragraph $subheader={false} $small={true}>
-              {formatCurrency(16900)}
-            </Paragraph>
-          </NumberContainer>
-          <NumberContainer>
-            <Paragraph $subheader={false} $small={true}>
-              2
-            </Paragraph>
-          </NumberContainer>
-          <NumberContainer>
-            <Paragraph $subheader={false} $small={true}>
-              {formatCurrency(33800)}
-            </Paragraph>
-          </NumberContainer>
-        </OrderedProductRow>
-        <OrderedProductRow>
-          <ProductImageWithTitle
-            img="https://media-cdn.bnn.in.th/277229/Samsung-Smartphone-Galaxy-A14-1-square_medium.jpg"
-            title="สมาร์ทโฟน Samsung Galaxy A14 (4+128GB) Silver"
-          />
-          <NumberContainer>
-            <Paragraph $subheader={false} $small={true}>
-              {formatCurrency(16900)}
-            </Paragraph>
-          </NumberContainer>
-          <NumberContainer>
-            <Paragraph $subheader={false} $small={true}>
-              2
-            </Paragraph>
-          </NumberContainer>
-          <NumberContainer>
-            <Paragraph $subheader={false} $small={true}>
-              {formatCurrency(33800)}
-            </Paragraph>
-          </NumberContainer>
-        </OrderedProductRow>
+        {cart.map((cartItem) => (
+          <OrderedProductRow key={cartItem.id}>
+            <ProductImageWithTitle
+              img={cartItem.product.ProductImage[0]?.imageUrl}
+              title={cartItem.product.name}
+            />
+            <NumberContainer>
+              <Paragraph $subheader={false} $small={true}>
+                {formatCurrency(cartItem.product.price)}
+              </Paragraph>
+            </NumberContainer>
+            <NumberContainer>
+              <Paragraph $subheader={false} $small={true}>
+                {cartItem.quantity}
+              </Paragraph>
+            </NumberContainer>
+            <NumberContainer>
+              <Paragraph $subheader={false} $small={true}>
+                {formatCurrency(
+                  Number(cartItem.product.price) * cartItem.quantity
+                )}
+              </Paragraph>
+            </NumberContainer>
+          </OrderedProductRow>
+        ))}
+
         <OrderedProductRow>
           <div></div>
           <div></div>
@@ -116,7 +100,7 @@ function OrderedProducts() {
             ยอดสั่งซื้อทั้งหมด
           </Paragraph>
           <Paragraph $subheader={false} $small={true}>
-            {formatCurrency(67600)}
+            {formatCurrency(total)}
           </Paragraph>
         </OrderedProductRow>
       </OrderedProductsList>

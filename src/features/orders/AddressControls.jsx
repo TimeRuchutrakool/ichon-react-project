@@ -28,8 +28,9 @@ const NameAndPhone = styled.div`
   gap: 1rem;
 `;
 
-function AddressControls() {
+function AddressControls({ user }) {
   const { dispatch } = useModal();
+
   return (
     <AddressControlsStyled>
       <AddressHeader>
@@ -49,14 +50,14 @@ function AddressControls() {
       <InformationContainer>
         <NameAndPhone>
           <Paragraph $subheader={false} $small={true}>
-            ธาม ฤชุตระกูล
+            {user.firstName} {user.lastName}
           </Paragraph>
           <Paragraph $subheader={false} $small={true}>
-            0993929394
+            {user.phone}
           </Paragraph>
         </NameAndPhone>
         <Paragraph $subheader={false} $small={true}>
-          1064 ถนนเจริญกรุง แขวงสี่พระยา, เขตบางรัก, จังหวัดกรุงเทพมหานคร, 10500
+          {user.address ?? "กรุณากรอกข้อมูลที่อยู่เพื่อการจัดส่งสินค้า"}
         </Paragraph>
       </InformationContainer>
     </AddressControlsStyled>

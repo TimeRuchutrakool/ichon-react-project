@@ -22,6 +22,7 @@ function ActionButton({
   width = "100%",
   small = false,
   onClick = () => {},
+  disabled = false,
 }) {
   const isOutlined = type === "outlined";
   return (
@@ -30,6 +31,7 @@ function ActionButton({
       $width={width}
       $small={small}
       onClick={onClick}
+      disabled={disabled}
     >
       {text}
     </ButtonStyled>
