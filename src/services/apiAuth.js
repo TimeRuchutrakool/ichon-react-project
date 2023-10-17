@@ -1,9 +1,12 @@
 import axios from "../config/axios";
 import { removeAccessToken } from "../utils/token";
 
-export const getCurrentUser = async () => {
-  const res = await axios.get("/api/auth/me");
-  return res.data;
+export const getCurrentUser = async (token) => {
+  if (token) {
+    const res = await axios.get("/api/auth/me");
+    return res.data;
+  }
+  return null;
 };
 
 export const login = async (credential) => {

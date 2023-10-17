@@ -1,4 +1,3 @@
-import { createPortal } from "react-dom";
 import styled, { keyframes } from "styled-components";
 
 const rotate = keyframes`
@@ -23,7 +22,7 @@ const SpinnerStyled = styled.div`
 `;
 
 function Spinner() {
-  return createPortal(<SpinnerStyled />, document.body);
+  return <SpinnerStyled />;
 }
 
 export default Spinner;

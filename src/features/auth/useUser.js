@@ -6,7 +6,7 @@ export function useUser() {
   const token = getAccessToken();
   const { isLoading, data: user } = useQuery({
     queryKey: ["user", token],
-    queryFn: getCurrentUser,
+    queryFn: () => getCurrentUser(token),
     retry: false,
   });
 

@@ -48,7 +48,9 @@ function ProductDetailContent({ product }) {
         <ActionButton
           type="outlined"
           text="หยิบลงตะกร้า"
-          onClick={() => addToCart({ productId: product.id, quantity: count })}
+          onClick={() => {
+            addToCart({ productId: product.id, quantity: count });
+          }}
         />
         <ActionButton text="ซื้อเลย" />
       </DetailFooterStyled>

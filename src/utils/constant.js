@@ -4,4 +4,4 @@ export const sortOptions = [
   { id: 2, value: "price-desc", label: "ราคาสูง-ต่ำ" },
 ];
 
-export const PAGE_SIZE = 6;
+export const PAGE_SIZE = 5;

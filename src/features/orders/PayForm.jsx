@@ -5,8 +5,8 @@ import FileInput from "../../components/FileInput";
 import FormRow from "../../components/FormRow";
 import { useForm } from "react-hook-form";
 import ActionButton from "../../components/ActionButton";
-import { useNavigate } from "react-router-dom";
-import { useModal } from "../../hooks/useModal";
+import { useCreateOrder } from "./useCreateOrder";
+import Spinner from "../../components/Spinner";
 
 const PayFormStyled = styled.form`
   width: 35rem;
@@ -29,12 +29,33 @@ const AccountInfo = styled.div`
   gap: 1rem;
 `;
 
+const SpinnerLayout = styled.div`
+  width: 35rem;
+  height: 40rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 function PayForm() {
-  const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
-  const {dispatch} = useModal()
+  const { createOrder, isLoading } = useCreateOrder();
+  const onSubmit = (data) => {
+    const image = typeof data.image === "string" ? data.image : data.image[0];
+    const formData = new FormData();
+    formData.append("slipImage", image);
+    createOrder(formData);
+  };
+
+  if (isLoading)
+    return (
+      <SpinnerLayout>
+        <Spinner />
+      </SpinnerLayout>
+    );
+
   return (
-    <PayFormStyled onSubmit={handleSubmit()}>
+    <PayFormStyled onSubmit={handleSubmit(onSubmit)}>
       <Heading $small={true} as="h1">
         อัพโหลด e-slip
       </Heading>
@@ -58,13 +79,7 @@ function PayForm() {
           {...register("image")}
         />
       </FormRow>
-      <ActionButton
-        text="ยืนยันการสั่งซื้อ"
-        onClick={() => {
-          dispatch({ type: "close" });
-          navigate("/user");
-        }}
-      />
+      <ActionButton text="ยืนยันการสั่งซื้อ" />
     </PayFormStyled>
   );
 }
