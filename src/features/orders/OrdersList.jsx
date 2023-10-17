@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import OrderListItem from "./OrderListItem";
+import Paragraph from "../../components/Paragraph";
 
 const OrdersListStyled = styled.ul`
   list-style: none;
@@ -8,6 +9,8 @@ const OrdersListStyled = styled.ul`
 `;
 
 function OrdersList({ orders }) {
+  if (orders?.length === 0)
+    return <Paragraph $small={false} $subheader={true}>ยังไม่มีรายการคำสั่งซื้อ</Paragraph>;
   return (
     <OrdersListStyled>
       {orders?.map((order) => (

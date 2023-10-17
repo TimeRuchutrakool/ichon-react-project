@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import WishlistListItem from "./WishlistListItem";
+import Paragraph from "../../components/Paragraph";
 
 const WishlistListStyled = styled.ul`
   list-style: none;
@@ -8,6 +9,12 @@ const WishlistListStyled = styled.ul`
 `;
 
 function WishlistList({ wishlist }) {
+  if (wishlist?.length === 0)
+    return (
+      <Paragraph $small={false} $subheader={true}>
+        ยังไม่มีสินค้าในรายการโปรด
+      </Paragraph>
+    );
   return (
     <WishlistListStyled>
       {wishlist?.map((product) => (

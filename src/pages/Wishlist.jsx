@@ -10,6 +10,7 @@ const WishListStyled = styled.aside`
 `;
 function Wishlist() {
   const { wishlist } = useGetWishlist();
+  
   return (
     <WishListStyled>
       <Heading as="h1">รายการอยากได้({wishlist?.data?.wishes.length})</Heading>

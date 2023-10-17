@@ -110,7 +110,7 @@ function Header() {
           onClick={() => navigate("/cart")}
         />
       </SectionHeaderStyled>
-      {isOpenCategoryMenu && <CategoryMenu />}
+      {isOpenCategoryMenu && <CategoryMenu setIsOpenCategoryMenu={setIsOpenCategoryMenu}/>}
     </HeaderStyled>
   );
 }

@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import CategoryButtonItem from "./CategoryButtonItem";
-import { useState } from "react";
-import { mockCategories } from "../../data/mockData";
+import { useEffect, useState } from "react";
 import CategoryMenuItemsHeader from "./CategoryMenuItemsHeader";
 import CategoryMenuItemsBody from "./CategoryMenuItemsBody";
+import { useCategories } from "../../features/product/useCategories";
 
 const CategoryMenuStyled = styled.div`
   width: 100%;
@@ -27,24 +27,35 @@ const CategoryMenuItemsStyled = styled.aside`
   overflow: scroll;
 `;
 
-function CategoryMenu() {
-  const [selectedCategory, setSelectedCategory] = useState(mockCategories[0]);
+function CategoryMenu({setIsOpenCategoryMenu}) {
+  const { categories, isLoading } = useCategories();
+  const fetchedCategories = categories?.data?.categories;
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  useEffect(() => {
+    setSelectedCategory(() =>
+      fetchedCategories ? fetchedCategories[0] : null
+    );
+  }, [fetchedCategories]);
   return (
     <CategoryMenuStyled>
-      <CategoryMenuListStyled>
-        {mockCategories.map((category) => (
-          <CategoryButtonItem
-            category={category}
-            key={category.categoryId}
-            selectedCategory={selectedCategory}
-            setSelectedCategory={setSelectedCategory}
-          />
-        ))}
-      </CategoryMenuListStyled>
-      <CategoryMenuItemsStyled>
-        <CategoryMenuItemsHeader title={selectedCategory.categoryTitle} />
-        <CategoryMenuItemsBody category={selectedCategory} />
-      </CategoryMenuItemsStyled>
+      {!isLoading && (
+        <>
+          <CategoryMenuListStyled>
+            {fetchedCategories?.map((category) => (
+              <CategoryButtonItem
+                category={category}
+                key={category.id}
+                selectedCategory={selectedCategory}
+                setSelectedCategory={setSelectedCategory}
+              />
+            ))}
+          </CategoryMenuListStyled>
+          <CategoryMenuItemsStyled>
+            <CategoryMenuItemsHeader title={selectedCategory?.name} />
+            <CategoryMenuItemsBody category={selectedCategory} setIsOpenCategoryMenu={setIsOpenCategoryMenu}/>
+          </CategoryMenuItemsStyled>
+        </>
+      )}
     </CategoryMenuStyled>
   );
 }

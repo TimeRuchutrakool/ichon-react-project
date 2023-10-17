@@ -11,7 +11,6 @@ const OrdersStyled = styled.aside`
 
 function Orders() {
   const { orders } = useOrders();
-  console.log(orders?.data?.orders);
   return (
     <OrdersStyled>
       <Heading as="h1">รายการคำสั่งซื้อ</Heading>

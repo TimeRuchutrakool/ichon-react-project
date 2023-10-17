@@ -22,7 +22,7 @@ function CategoryButtonItem({
   selectedCategory,
   setSelectedCategory,
 }) {
-  const isSelectCategory = selectedCategory?.categoryId === category.categoryId;
+  const isSelectCategory = selectedCategory?.id === category?.id;
 
   const handleSelectedCategory = () => {
     setSelectedCategory(category);
@@ -33,7 +33,7 @@ function CategoryButtonItem({
       onClick={handleSelectedCategory}
       $isSelectCategory={isSelectCategory}
     >
-      <span>{category.categoryTitle}</span>
+      <span>{category?.name}</span>
       <span className="material-symbols-outlined">navigate_next</span>
     </CategoryButtonStyled>
   );
