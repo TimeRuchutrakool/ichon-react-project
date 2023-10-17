@@ -34,17 +34,14 @@ const Total = styled.div`
 `;
 
 const orderStatusMap = [
-  {
-    status: "ยกเลิก",
-    color: "var(--color-red-500)",
-  },
-  { status: "สำเร็จ", color: "var(--color-green-400)" },
-  { status: "รออนุมัติ", color: "var(--color-red-300)" },
+  "var(--color-blue-700)",
+  "var(--color-green-400)",
+  "var(--color-red-500)",
 ];
 
 function OrderListItem({ order }) {
   const total = order.OrderItem.reduce((acc, cur) => {
-    acc + Number(cur.product.price);
+    return acc + Number(cur.product.price) * cur.quantity;
   }, 0);
   return (
     <OrderListItemStyled>
@@ -80,7 +77,7 @@ function OrderListItem({ order }) {
       <SpaceLayout>
         <Paragraph $subheader={false} $small={true}>
           สถานะ:{" "}
-          <span style={{ color: `${orderStatusMap[order.statusId].color}` }}>
+          <span style={{ color: `${orderStatusMap[order.statusId - 1]}` }}>
             {order.status.name}
           </span>
         </Paragraph>

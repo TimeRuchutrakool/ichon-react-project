@@ -7,6 +7,8 @@ import Heading from "../../components/Heading";
 import Paragraph from "../../components/Paragraph";
 import { useAddCart } from "../cart/useAddCart";
 import { useState } from "react";
+import { useAddWish } from "../wishlist/useaddWish";
+import { useRemoveWish } from "../wishlist/useRemoveWish";
 
 const DetailFooterStyled = styled.div`
   display: flex;
@@ -18,6 +20,8 @@ const DetailFooterStyled = styled.div`
 
 function ProductDetailContent({ product }) {
   const { addToCart } = useAddCart();
+  const { addWish } = useAddWish();
+  const { removeWish } = useRemoveWish();
   const [count, setCount] = useState(1);
   return (
     <>
@@ -42,8 +46,20 @@ function ProductDetailContent({ product }) {
       <DetailFooterStyled>
         <IconButton
           color="var(--color-gray-700)"
-          iconLabel="wishlist"
-          Icon={<span className="material-symbols-outlined">favorite</span>}
+          Icon={
+            <span
+              className={`material-symbols-outlined ${
+                product.WishItem.length === 0 ? "outlined" : "filled"
+              }`}
+            >
+              favorite
+            </span>
+          }
+          onClick={() => {
+            product.WishItem.length === 0
+              ? addWish(product.id)
+              : removeWish(product.id);
+          }}
         />
         <ActionButton
           type="outlined"

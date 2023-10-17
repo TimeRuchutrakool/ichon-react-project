@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Heading from "../components/Heading";
-// import OrdersList from "../features/orders/OrdersList";
+import OrdersList from "../features/orders/OrdersList";
 import { useOrders } from "../features/orders/useOrders";
 
 const OrdersStyled = styled.aside`
@@ -15,7 +15,7 @@ function Orders() {
   return (
     <OrdersStyled>
       <Heading as="h1">รายการคำสั่งซื้อ</Heading>
-      {/* <OrdersList orders={orders?.data?.orders} /> */}
+      <OrdersList orders={orders?.data?.orders} />
     </OrdersStyled>
   );
 }

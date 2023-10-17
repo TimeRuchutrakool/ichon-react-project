@@ -10,7 +10,7 @@ const OrdersListStyled = styled.ul`
 function OrdersList({ orders }) {
   return (
     <OrdersListStyled>
-      {orders.map((order) => (
+      {orders?.map((order) => (
         <OrderListItem key={order.id} order={order} />
       ))}
     </OrdersListStyled>
