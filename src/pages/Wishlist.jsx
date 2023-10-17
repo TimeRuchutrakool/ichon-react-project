@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Heading from "../components/Heading";
 import WishlistList from "../features/wishlist/WishlistList";
-import { mockWishList } from "../data/mockData";
+import { useGetWishlist } from "../features/wishlist/useGetWishlist";
 
 const WishListStyled = styled.aside`
   display: flex;
@@ -9,11 +9,11 @@ const WishListStyled = styled.aside`
   gap: 2rem;
 `;
 function Wishlist() {
-  const wishlist = mockWishList
+  const { wishlist } = useGetWishlist();
   return (
     <WishListStyled>
-      <Heading as="h1">รายการอยากได้(2)</Heading>
-      <WishlistList wishlist={wishlist}/>
+      <Heading as="h1">รายการอยากได้({wishlist?.data?.wishes.length})</Heading>
+      <WishlistList wishlist={wishlist?.data?.wishes} />
     </WishListStyled>
   );
 }

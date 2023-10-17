@@ -9,6 +9,7 @@ export function useRemoveWish() {
     onSuccess: () => {
       toast.success("นำออกจากรายการโปรดสำเร็จ");
       queryClient.invalidateQueries({ queryKey: ["product"] });
+      queryClient.invalidateQueries({ queryKey: ["wishlist"] });
     },
     onError: () => {
       toast.error("นำออกจากรายการโปรดไม่สำเร็จ กรุณาลองใหม่อีกครั้ง");

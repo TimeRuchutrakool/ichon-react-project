@@ -4,6 +4,8 @@ import PriceLabel from "../../components/PriceLabel";
 import ActionButton from "../../components/ActionButton";
 import IconButton from "../../components/IconButton";
 import { cutOffWord } from "../../utils/helper";
+import { useAddCart } from "../cart/useAddCart";
+import { useRemoveWish } from "./useRemoveWish";
 
 const WishlistListItemStyled = styled.li`
   display: flex;
@@ -23,23 +25,27 @@ const OrderFooter = styled.div`
 `;
 
 function WishlistListItem({ product }) {
+  const { addToCart } = useAddCart();
+  const { removeWish } = useRemoveWish();
   return (
     <WishlistListItemStyled>
       <ProductImageWithTitle
-        img={product.productImage}
-        title={cutOffWord(product.productTitle, 100)}
+        img={product.ProductImage[0].imageUrl}
+        title={cutOffWord(product?.name, 100)}
       />
       <OrderFooter>
-        <PriceLabel price={product.productPrice} />
+        <PriceLabel price={product.price} />
         <ActionButton
           type="outlined"
           text="หยิบลงตะกร้า"
           small={true}
           width="fit-content"
+          onClick={() => addToCart({ productId: product.id, quantity: 1 })}
         />
         <IconButton
           color="var(--color-gray-700)"
           Icon={<span className="material-symbols-outlined">delete</span>}
+          onClick={() => removeWish(product.id)}
         />
       </OrderFooter>
     </WishlistListItemStyled>

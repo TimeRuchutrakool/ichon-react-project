@@ -10,8 +10,8 @@ const WishlistListStyled = styled.ul`
 function WishlistList({ wishlist }) {
   return (
     <WishlistListStyled>
-      {wishlist.map((product) => (
-        <WishlistListItem key={product.productId} product={product} />
+      {wishlist?.map((product) => (
+        <WishlistListItem key={product.id} product={product?.product} />
       ))}
     </WishlistListStyled>
   );
