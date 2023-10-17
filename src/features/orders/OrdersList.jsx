@@ -11,7 +11,7 @@ function OrdersList({ orders }) {
   return (
     <OrdersListStyled>
       {orders.map((order) => (
-        <OrderListItem key={order.orderId} order={order} />
+        <OrderListItem key={order.id} order={order} />
       ))}
     </OrdersListStyled>
   );

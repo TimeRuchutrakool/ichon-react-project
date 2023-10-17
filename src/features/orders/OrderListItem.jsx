@@ -43,22 +43,25 @@ const orderStatusMap = [
 ];
 
 function OrderListItem({ order }) {
+  const total = order.OrderItem.reduce((acc, cur) => {
+    acc + Number(cur.product.price);
+  }, 0);
   return (
     <OrderListItemStyled>
       <SpaceLayout>
         <Heading as="h4" $small={true}>
-          หมายเลขคำสั่งซื้อ: {order.orderId}
+          หมายเลขคำสั่งซื้อ: {order.id}
         </Heading>
         <Paragraph $subheader={true} $small={true}>
           {formatDate(order.createdAt)}
         </Paragraph>
       </SpaceLayout>
       <ProductsList>
-        {order.products.map((product) => (
-          <ProductLayout key={product.productId}>
+        {order.OrderItem.map((product) => (
+          <ProductLayout key={product.id}>
             <ProductImageWithTitle
-              img={product.productImage}
-              title={product.productTitle}
+              img={product.product.ProductImage[0].imageUrl}
+              title={product.product.name}
             />
             <span>
               <Paragraph $subheader={false} $small={true}>
@@ -66,7 +69,7 @@ function OrderListItem({ order }) {
               </Paragraph>
 
               <PriceLabel
-                price={product.productPrice}
+                price={product.product.price}
                 color="var(--color-black-900)"
                 fontSize="var(--font-size-xsm)"
               />
@@ -77,15 +80,15 @@ function OrderListItem({ order }) {
       <SpaceLayout>
         <Paragraph $subheader={false} $small={true}>
           สถานะ:{" "}
-          <span style={{ color: `${orderStatusMap[order.orderStatus].color}` }}>
-            {orderStatusMap[order.orderStatus].status}
+          <span style={{ color: `${orderStatusMap[order.statusId].color}` }}>
+            {order.status.name}
           </span>
         </Paragraph>
         <Total>
           <Paragraph $subheader={false} $small={true}>
             รวมสุทธิ
           </Paragraph>
-          <PriceLabel price={order.total} fontSize="var(--font-size-xsm)" />
+          <PriceLabel price={total} fontSize="var(--font-size-xsm)" />
         </Total>
       </SpaceLayout>
     </OrderListItemStyled>
