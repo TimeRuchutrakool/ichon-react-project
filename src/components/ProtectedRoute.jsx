@@ -9,14 +9,15 @@ function ProtectedRoute({ children }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!user?.data) {
+    if (!user) {
       navigate("/");
       dispatch({ type: "login" });
-    } else if (user?.data.role === "ADMIN") {
-      navigate("/admin", { replace: false });
+    } else if (user.role === "ADMIN") {
+      navigate("/admin/home");
     }
-  }, [dispatch, navigate, user?.data]);
-  if (user?.data) return children;
+  }, [dispatch, navigate, user]);
+
+  if (user) return children;
 }
 
 export default ProtectedRoute;

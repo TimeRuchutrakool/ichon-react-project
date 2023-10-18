@@ -3,6 +3,7 @@ import LoginForm from "../features/auth/LoginForm";
 import SignUpForm from "../features/auth/SignUpForm";
 import AddressForm from "../features/orders/AddressForm";
 import PayForm from "../features/orders/PayForm";
+import AddNewProductForm from "../features/admin/AddNewProductForm";
 
 export const ModalContext = createContext();
 
@@ -22,6 +23,8 @@ function reducer(state, action) {
       return { ...state, form: <AddressForm /> };
     case "pay":
       return { ...state, form: <PayForm /> };
+    case "addProduct":
+      return { ...state, form: <AddNewProductForm /> };
 
     default:
       throw new Error("Unknown action");

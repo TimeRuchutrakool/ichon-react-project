@@ -80,7 +80,7 @@ function Header() {
         {user ? (
           <Dropdown
             trigger={
-              <IconButton iconLabel={user.data.firstName} onClick={() => {}} />
+              <IconButton iconLabel={user.firstName} onClick={() => {}} />
             }
             showDropdown={showDropdown}
             setShowDropdown={setShowDropdown}
@@ -110,7 +110,9 @@ function Header() {
           onClick={() => navigate("/cart")}
         />
       </SectionHeaderStyled>
-      {isOpenCategoryMenu && <CategoryMenu setIsOpenCategoryMenu={setIsOpenCategoryMenu}/>}
+      {isOpenCategoryMenu && (
+        <CategoryMenu setIsOpenCategoryMenu={setIsOpenCategoryMenu} />
+      )}
     </HeaderStyled>
   );
 }

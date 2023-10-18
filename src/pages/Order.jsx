@@ -25,13 +25,13 @@ function Order() {
   const { cart } = useCart();
   const { user } = useUser();
   const { dispatch, setIsPaying } = useModal();
-  const isAbleToPay = user.data.address ? false : true;
+  const isAbleToPay = user.address ? false : true;
   return (
     <OrderStyled>
       <OrderContainer>
         <OrderProgress />
         <OrderedProducts cart={cart?.data.cart} total={cart?.data.total} />
-        <AddressControls user={user.data} />
+        <AddressControls user={user} />
         <ActionButton
           text="จ่ายเงิน"
           width="15rem"

@@ -12,6 +12,6 @@ export function useUser() {
 
   return {
     isLoading,
-    user,
+    user: user?.data,
   };
 }

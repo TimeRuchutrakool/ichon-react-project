@@ -15,8 +15,12 @@ import UserLayout from "../components/UserLayout";
 import Orders from "../pages/Orders";
 import Wishlist from "../pages/Wishlist";
 import ProtectedRoute from "../components/ProtectedRoute";
-import Admin from "../pages/Admin";
 import { SortContextProvider } from "../context/SortContext";
+import AdminLayout from "../components/AdminLayout";
+import AdminHome from "../features/admin/AdminHome";
+import AdminOrders from "../features/admin/AdminOrders";
+import AdminProducts from "../features/admin/AdminProducts";
+import AdminUsers from "../features/admin/AdminUsers";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -66,10 +70,16 @@ const router = createBrowserRouter(
         path="/admin"
         element={
           <ProtectedRoute>
-            <Admin />
+            <AdminLayout />
           </ProtectedRoute>
         }
-      />
+      >
+        <Route index element={<Navigate replace to="home" />} />
+        <Route path="home" element={<AdminHome />} />
+        <Route path="orders" element={<AdminOrders />} />
+        <Route path="products" element={<AdminProducts />} />
+        <Route path="users" element={<AdminUsers />} />
+      </Route>
       <Route path="*" element={<p>Wrong path</p>} />
     </>
   )

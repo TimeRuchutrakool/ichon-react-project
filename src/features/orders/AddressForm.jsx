@@ -29,7 +29,7 @@ const ButtonLayout = styled.div`
 function AddressForm() {
   const { user } = useUser();
   const { dispatch } = useModal();
-  const address = user.data?.address?.split(" ");
+  const address = user.address.split(" ");
   const [houseNum, alley, distinct, area, province, zipCode] = address
     ? address
     : [];
@@ -67,18 +67,18 @@ function AddressForm() {
         <Input
           placeholder="ชื่อ"
           $width="100%"
-          defaultValue={watch("firstName", user.data?.firstName)}
+          defaultValue={watch("firstName", user.firstName)}
           {...register("firstName", { required: "* กรุณากรอกชื่อจริง" })}
-          onChange={()=>{}}
+          onChange={() => {}}
         />
       </FormRow>
       <FormRow error={errors?.lastName?.message}>
         <Input
           placeholder="นามสกุล"
           $width="100%"
-          value={watch("lastName", user.data?.lastName)}
+          defaultValue={watch("lastName", user.lastName)}
           {...register("lastName", { required: "* กรุณากรอกนามสกุล" })}
-          onChange={()=>{}}
+          onChange={() => {}}
         />
       </FormRow>
       <CompositeInput $columns="1fr 1fr 1fr">
@@ -86,27 +86,27 @@ function AddressForm() {
           <Input
             placeholder="บ้านเลขที่"
             $width="10rem"
-            value={watch("houseNum", houseNum)}
+            defaultValue={watch("houseNum", houseNum)}
             {...register("houseNum", { required: "* กรุณากรอกบ้านเลขที่" })}
-            onChange={()=>{}}
+            onChange={() => {}}
           />
         </FormRow>
         <FormRow error={errors?.alley?.message}>
           <Input
             placeholder="ซอย"
             $width="10rem"
-            value={watch("alley", alley)}
+            defaultValue={watch("alley", alley)}
             {...register("alley", { required: "* กรุณากรอกซอย" })}
-            onChange={()=>{}}
+            onChange={() => {}}
           />
         </FormRow>
         <FormRow error={errors?.distinct?.message}>
           <Input
             placeholder="แขวง"
             $width="10rem"
-            value={watch("distinct", distinct)}
+            defaultValue={watch("distinct", distinct)}
             {...register("distinct", { required: "* กรุณากรอกแขวง" })}
-            onChange={()=>{}}
+            onChange={() => {}}
           />
         </FormRow>
       </CompositeInput>
@@ -115,18 +115,18 @@ function AddressForm() {
           <Input
             placeholder="เขต"
             $width="fit-content"
-            value={watch("area", area)}
+            defaultValue={watch("area", area)}
             {...register("area", { required: "* กรุณากรอกเขต" })}
-            onChange={()=>{}}
+            onChange={() => {}}
           />
         </FormRow>
         <FormRow error={errors?.province?.message}>
           <Input
             placeholder="จังหวัด"
             $width="fit-content"
-            value={watch("province", province)}
+            defaultValue={watch("province", province)}
             {...register("province", { required: "* กรุณากรอกจังหวัด" })}
-            onChange={()=>{}}
+            onChange={() => {}}
           />
         </FormRow>
       </CompositeInput>
@@ -135,7 +135,7 @@ function AddressForm() {
           <Input
             placeholder="รหัสไปรษณีย์"
             $width="fit-content"
-            value={watch("zipCode", zipCode)}
+            defaultValue={watch("zipCode", zipCode)}
             {...register("zipCode", {
               required: "* กรุณากรอกรหัสไปรษณีย์",
               pattern: {
@@ -143,14 +143,14 @@ function AddressForm() {
                 message: "* กรุณากรอกรหัสไปรษณีย์ให้ถูกต้อง",
               },
             })}
-            onChange={()=>{}}
+            onChange={() => {}}
           />
         </FormRow>
         <FormRow error={errors?.phone?.message}>
           <Input
             placeholder="เบอร์โทรศัพท์"
             $width="fit-content"
-            value={watch("phone", user.data?.phone)}
+            defaultValue={watch("phone", user.phone)}
             {...register("phone", {
               required: "* กรุณากรอกเบอร์โทรศัพท์",
               pattern: {
@@ -158,7 +158,7 @@ function AddressForm() {
                 message: "* กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง",
               },
             })}
-            onChange={()=>{}}
+            onChange={() => {}}
           />
         </FormRow>
       </CompositeInput>
