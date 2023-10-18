@@ -507,3 +507,6 @@ export const mockUser = {
   address:
     "1064 ถนนเจริญกรุง แขวงสี่พระยา, เขตบางรัก, จังหวัดกรุงเทพมหานคร, 10500",
 };
+
+export const slipImage =
+  "https://upload.wikimedia.org/wikipedia/commons/b/b7/Harrier_Hound_-Pedigree_Harrier.jpg";

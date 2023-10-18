@@ -22,7 +22,7 @@ const DetailInput = styled.textarea`
   }
 `;
 
-function AddNewProductForm() {
+function EditProductForm() {
   const {
     register,
     handleSubmit,
@@ -35,49 +35,64 @@ function AddNewProductForm() {
   };
   return (
     <AddNewProductFormStyled onSubmit={handleSubmit(onSubmit)}>
-      <Heading as="h4">ADD NEW PRODUCT</Heading>
+      <Heading as="h4">EDIT PRODUCT</Heading>
       <FormRow error={errors?.name?.message}>
         <Input
           placeholder="ชื่อสินค้า"
+          defaultValue="iPhone 8 plus"
           {...register("name", { required: "กรุณากรอกชื่อสินค้า" })}
+          onChange={() => {}}
         />
       </FormRow>
       <FormRow error={errors?.brandTitle?.message}>
         <Input
           placeholder="ชื่อแบรนด์"
+          defaultValue="APPLE"
           {...register("brandTitle", { required: "กรุณากรอกชื่อแบรนด์" })}
+          onChange={() => {}}
         />
       </FormRow>
       <FormRow error={errors?.price?.message}>
         <Input
           placeholder="ราคา"
           type="number"
+          defaultValue={12345}
           {...register("price", {
             required: "กรุณากรอกราคาสินค้า",
             valueAsNumber: "กรุณากรอกตัวเลข",
           })}
+          onChange={() => {}}
         />
       </FormRow>
       <FormRow error={errors?.description?.message}>
         <DetailInput
           placeholder="รายละเอียดสินค้า"
           rows={3}
+          defaultValue="iPhone 8 plus"
           {...register("description", {
             required: "กรุณากรอกรายละเอียดสินค้า",
           })}
+          onChange={() => {}}
         />
       </FormRow>
       <FormRow error={errors?.categoryTitle?.message}>
         <Input
           placeholder="ชื่อประเภทสินค้า"
+          defaultValue="MOBILE PHONE"
           {...register("categoryTitle", { required: "กรุณากรอกประเภทสินค้า" })}
+          onChange={() => {}}
         />
       </FormRow>
       <FormRow error={errors?.stock?.message}>
         <Input
           placeholder="จำนวนสินค้า"
+          defaultValue={5}
           type="number"
-          {...register("stock", { required: "กรุณากรอกจำนวนสินค้า",valueAsNumber: "กรุณากรอกตัวเลข", })}
+          {...register("stock", {
+            required: "กรุณากรอกจำนวนสินค้า",
+            valueAsNumber: "กรุณากรอกตัวเลข",
+          })}
+          onChange={() => {}}
         />
       </FormRow>
       <FormRow>
@@ -94,4 +109,4 @@ function AddNewProductForm() {
   );
 }
 
-export default AddNewProductForm;
+export default EditProductForm;

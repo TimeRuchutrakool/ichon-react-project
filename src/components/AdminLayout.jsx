@@ -2,6 +2,9 @@ import { Outlet } from "react-router-dom";
 import styled from "styled-components";
 import AdminMenu from "../features/admin/AdminMenu";
 import AdminNavbar from "../features/admin/AdminNavbar";
+import { useModal } from "../hooks/useModal";
+import { BlurBackgroundStyled } from "../features/admin/AdminStyled";
+import  Modal  from "./Modal";
 
 const AdminLayoutStyled = styled.div`
   display: grid;
@@ -18,7 +21,14 @@ const ContentLayout = styled.div`
 `;
 
 function AdminLayout() {
+  const {formModal} = useModal()
   return (
+    <>
+    {formModal.form && (
+        <BlurBackgroundStyled>
+          <Modal>{formModal.form}</Modal>
+        </BlurBackgroundStyled>
+      )}
     <AdminLayoutStyled>
       <AdminMenu />
       <ContentLayout>
@@ -28,6 +38,7 @@ function AdminLayout() {
         </OutletStyled>
       </ContentLayout>
     </AdminLayoutStyled>
+    </>
   );
 }
 

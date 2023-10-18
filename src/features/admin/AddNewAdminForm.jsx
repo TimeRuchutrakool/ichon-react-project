@@ -1,39 +1,30 @@
-import Input from "../../components/Input";
-import ActionButton from "../../components/ActionButton";
-import {
-  AccountButton,
-  FormStyled,
-  InputBoxStyled,
-  AccountButtonStyled,
-  Text,
-} from "./AuthFormStyled";
-import { useModal } from "../../hooks/useModal";
-import { useForm } from "react-hook-form";
+import styled from "styled-components";
+import Heading from "../../components/Heading";
 import FormRow from "../../components/FormRow";
-import { useSignup } from "./useSignup";
-import Spinner from "../../components/Spinner";
+import Input from "../../components/Input";
+import { useForm } from "react-hook-form";
 
-function SignUpForm() {
-  const { dispatch } = useModal();
+const AddNewAdminFormStyled = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+`;
+function AddNewAdminForm() {
   const {
     register,
     handleSubmit,
     formState: { errors },
-    getValues,
     reset,
+    getValues
   } = useForm();
-  const { isLoading, signup } = useSignup();
-
-  const onSubmit = (info) => {
-    signup(info, { onSettled: () => reset() });
+  const onSubmit = (obj) => {
+    console.log(obj);
+    reset();
   };
-  if (isLoading) return <Spinner />;
-
   return (
-    <FormStyled onSubmit={handleSubmit(onSubmit)}>
-      <Text $isBold={true}>สร้างบัญชีใหม่</Text>
-      <InputBoxStyled>
-        <FormRow error={errors?.firstName?.message}>
+    <AddNewAdminFormStyled onSubmit={handleSubmit(onSubmit)}>
+      <Heading as="h4">ADD NEW PRODUCT</Heading>
+      <FormRow error={errors?.firstName?.message}>
           <Input
             placeholder="ชื่อ"
             {...register("firstName", { required: "* กรุณากรอกชื่อจริง" })}
@@ -94,21 +85,8 @@ function SignUpForm() {
             })}
           />
         </FormRow>
-      </InputBoxStyled>
-      <ActionButton text="สมัครสมาชิก" />
-      <AccountButtonStyled>
-        <span>เป็นสมาชิกอยู่แล้ว, </span>
-        <AccountButton
-          onClick={(e) => {
-            e.preventDefault();
-            dispatch({ type: "login" });
-          }}
-        >
-          เข้าสู่ระบบ
-        </AccountButton>
-      </AccountButtonStyled>
-    </FormStyled>
+    </AddNewAdminFormStyled>
   );
 }
 
-export default SignUpForm;
+export default AddNewAdminForm;

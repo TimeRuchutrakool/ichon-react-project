@@ -1,5 +1,11 @@
+import styled from "styled-components";
 import Heading from "../../components/Heading";
+import AddNewAdminForm from "./AddNewAdminForm";
 import { ContentArea, ContentContainer } from "./AdminStyled";
+
+const AddNewAdminFormContainer = styled.div`
+  margin: 5rem;
+`;
 
 function AdminUsers() {
   return (
@@ -7,7 +13,11 @@ function AdminUsers() {
       <Heading $small={false} as="h1" className="header">
         Users
       </Heading>
-      <ContentArea></ContentArea>
+      <ContentArea>
+        <AddNewAdminFormContainer>
+          <AddNewAdminForm />
+        </AddNewAdminFormContainer>
+      </ContentArea>
     </ContentContainer>
   );
 }

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Logo from "../../components/Logo";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const AdminMenuStyled = styled.div`
   width: 100%;
@@ -25,6 +25,8 @@ const MenuListItem = styled.li`
   width: 15rem;
   border-radius: 0.5rem;
   cursor: pointer;
+  background-color: ${(props) =>
+    props.$isActive ? "var(--color-yellow-600)" : "transparent"};
 `;
 
 const adminMenu = [
@@ -52,6 +54,8 @@ const adminMenu = [
 
 function AdminMenu() {
   const navigate = useNavigate();
+  const location = useLocation();
+
   return (
     <AdminMenuStyled>
       <Logo disabled={true} />
@@ -62,6 +66,9 @@ function AdminMenu() {
             onClick={() => {
               navigate(menu.path);
             }}
+            $isActive={
+              location.pathname.split("/")[2] === menu.title.toLowerCase()
+            }
           >
             {menu.icon}
             <span>{menu.title}</span>

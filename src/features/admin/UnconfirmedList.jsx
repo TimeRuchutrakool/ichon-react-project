@@ -1,12 +1,15 @@
 import ActionButton from "../../components/ActionButton";
 import Heading from "../../components/Heading";
 import Paragraph from "../../components/Paragraph";
-import { GrayButton, OrderTableList, OrderTableRow } from "./AdminStyled";
+import { slipImage } from "../../data/mockData";
+import { useModal } from "../../hooks/useModal";
+import { GrayButton, TableList, TableRow } from "./AdminStyled";
 
 function UnconfirmedList() {
+  const { dispatch } = useModal();
   return (
-    <OrderTableList>
-      <OrderTableRow>
+    <TableList>
+      <TableRow>
         <Heading as="h4" $small={true}>
           ORDER ID
         </Heading>
@@ -17,28 +20,46 @@ function UnconfirmedList() {
           E-SLIP
         </Heading>
         <div></div>
-      </OrderTableRow>
-      <OrderTableRow>
+      </TableRow>
+      <TableRow>
         <Paragraph $small={true}>1</Paragraph>
         <Paragraph $small={true}>20/03/2023</Paragraph>
-        <GrayButton>Preview</GrayButton>
+        <GrayButton
+          onClick={() =>
+            dispatch({
+              type: "slipPreview",
+              payload: slipImage,
+            })
+          }
+        >
+          Preview
+        </GrayButton>
         <ActionButton
           width="fit-content"
           text="ยืนยันคำสั่งซื้อ"
           small={true}
         />
-      </OrderTableRow>
-      <OrderTableRow>
+      </TableRow>
+      <TableRow>
         <Paragraph $small={true}>1</Paragraph>
         <Paragraph $small={true}>20/03/2023</Paragraph>
-        <GrayButton>Preview</GrayButton>
+        <GrayButton
+          onClick={() =>
+            dispatch({
+              type: "slipPreview",
+              payload:slipImage,
+            })
+          }
+        >
+          Preview
+        </GrayButton>
         <ActionButton
           width="fit-content"
           text="ยืนยันคำสั่งซื้อ"
           small={true}
         />
-      </OrderTableRow>
-    </OrderTableList>
+      </TableRow>
+    </TableList>
   );
 }
 
