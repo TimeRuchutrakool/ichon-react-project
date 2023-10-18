@@ -54,8 +54,12 @@ export const BlurBackgroundStyled = styled.div`
 `;
 
 export const EditOperation = styled.div`
-
-  width: 40%;
+  width: 60%;
   display: flex;
   justify-content: space-between;
+`;
+
+export const CancelButton = styled(GrayButton)`
+  background-color: var(--color-red-500);
+  color: var(--color-white-0);
 `;

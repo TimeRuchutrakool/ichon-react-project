@@ -1,11 +1,15 @@
 import Heading from "../../components/Heading";
 import Paragraph from "../../components/Paragraph";
-import { slipImage } from "../../data/mockData";
+import Spinner from "../../components/Spinner";
+import { useGetOrders } from "../../hooks/adminHooks/useGetOrders";
 import { useModal } from "../../hooks/useModal";
+import { formatDate } from "../../utils/helper";
 import { GrayButton, TableList, TableRow } from "./AdminStyled";
 
 function ConfirmedList() {
   const { dispatch } = useModal();
+  const { orders, isLoading } = useGetOrders(2);
+  if (isLoading) return <Spinner />;
   return (
     <TableList>
       <TableRow>
@@ -20,34 +24,23 @@ function ConfirmedList() {
         </Heading>
         <div></div>
       </TableRow>
-      <TableRow>
-        <Paragraph $small={true}>1</Paragraph>
-        <Paragraph $small={true}>20/03/2023</Paragraph>
-        <GrayButton
-          onClick={() =>
-            dispatch({
-              type: "slipPreview",
-              payload: slipImage,
-            })
-          }
-        >
-          Preview
-        </GrayButton>
-      </TableRow>
-      <TableRow>
-        <Paragraph $small={true}>1</Paragraph>
-        <Paragraph $small={true}>20/03/2023</Paragraph>
-        <GrayButton
-          onClick={() =>
-            dispatch({
-              type: "slipPreview",
-              payload: slipImage,
-            })
-          }
-        >
-          Preview
-        </GrayButton>
-      </TableRow>
+
+      {orders?.map((order) => (
+        <TableRow key={order.id}>
+          <Paragraph $small={true}>{order.id}</Paragraph>
+          <Paragraph $small={true}>{formatDate(order.createdAt)}</Paragraph>
+          <GrayButton
+            onClick={() =>
+              dispatch({
+                type: "slipPreview",
+                payload: order.slipUrl,
+              })
+            }
+          >
+            Preview
+          </GrayButton>
+        </TableRow>
+      ))}
     </TableList>
   );
 }

@@ -1,23 +1,14 @@
-import ActionButton from "../../components/ActionButton";
 import Heading from "../../components/Heading";
 import Paragraph from "../../components/Paragraph";
 import Spinner from "../../components/Spinner";
 import { useGetOrders } from "../../hooks/adminHooks/useGetOrders";
-import { useUpdateOrderStatus } from "../../hooks/adminHooks/useUpdateOrderStatus";
 import { useModal } from "../../hooks/useModal";
 import { formatDate } from "../../utils/helper";
-import {
-  CancelButton,
-  EditOperation,
-  GrayButton,
-  TableList,
-  TableRow,
-} from "./AdminStyled";
+import { GrayButton, TableList, TableRow } from "./AdminStyled";
 
-function UnconfirmedList() {
+function CancelledList() {
   const { dispatch } = useModal();
-  const { orders, isLoading } = useGetOrders(1);
-  const { updateStatus } = useUpdateOrderStatus();
+  const { orders, isLoading } = useGetOrders(3);
   if (isLoading) return <Spinner />;
   return (
     <TableList>
@@ -48,23 +39,10 @@ function UnconfirmedList() {
           >
             Preview
           </GrayButton>
-          <EditOperation>
-            <CancelButton
-              onClick={() => updateStatus({ statusId: 3, orderId: order.id })}
-            >
-              ยกเลิก
-            </CancelButton>
-            <ActionButton
-              width="fit-content"
-              text="ยืนยัน"
-              small={true}
-              onClick={() => updateStatus({ statusId: 2, orderId: order.id })}
-            />
-          </EditOperation>
         </TableRow>
       ))}
     </TableList>
   );
 }
 
-export default UnconfirmedList;
+export default CancelledList;

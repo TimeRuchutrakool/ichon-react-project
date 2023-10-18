@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import Paragraph from "../../components/Paragraph";
 import IconButton from "../../components/IconButton";
+import { useUser } from "../auth/useUser";
+import { useLogout } from "../auth/useLogout";
 
 const AdminNavbarStyled = styled.div`
   display: flex;
@@ -13,13 +15,16 @@ const AdminNavbarStyled = styled.div`
 `;
 
 function AdminNavbar() {
+  const { user } = useUser();
+  const { logout } = useLogout();
   return (
     <AdminNavbarStyled>
       <Paragraph $small={false} $subheader={false}>
-        Time Ruchutrakool
+        {user.firstName} {user.lastName}
       </Paragraph>
       <IconButton
         Icon={<span className="material-symbols-outlined">logout</span>}
+        onClick={logout}
       />
     </AdminNavbarStyled>
   );

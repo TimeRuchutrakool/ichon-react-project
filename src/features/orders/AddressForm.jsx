@@ -29,7 +29,7 @@ const ButtonLayout = styled.div`
 function AddressForm() {
   const { user } = useUser();
   const { dispatch } = useModal();
-  const address = user.address.split(" ");
+  const address = user.address?.split(" ");
   const [houseNum, alley, distinct, area, province, zipCode] = address
     ? address
     : [];
