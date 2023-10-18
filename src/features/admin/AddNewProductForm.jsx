@@ -5,6 +5,10 @@ import FormRow from "../../components/FormRow";
 import FileInput from "../../components/FileInput";
 import { useForm } from "react-hook-form";
 import ActionButton from "../../components/ActionButton";
+import { useState } from "react";
+import { useCreateProduct } from "../../hooks/adminHooks/useCreateProduct";
+import { useModal } from "../../hooks/useModal";
+import Spinner from "../../components/Spinner";
 
 const AddNewProductFormStyled = styled.form`
   display: flex;
@@ -23,16 +27,35 @@ const DetailInput = styled.textarea`
 `;
 
 function AddNewProductForm() {
+  const { createProduct, isSuccess,isLoading } = useCreateProduct();
+  const { dispatch } = useModal();
+  const [images, setImages] = useState([]);
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
   } = useForm();
-  const onSubmit = (obj) => {
-    console.log(obj);
-    reset();
+  const onChangeMultipleFile = (e) => {
+    if (e.target.files) {
+      const imageArray = Array.from(e.target.files);
+      setImages(() => imageArray);
+    }
   };
+  const onSubmit = (data) => {
+    const formData = new FormData();
+    for (const key of Object.keys(data)) {
+      if (key !== "image") formData.append(key, data[key]);
+    }
+    for (const image of images) {
+      formData.append("image", image);
+    }
+
+    createProduct(formData);
+    reset();
+    if(isSuccess) dispatch({type:'close'})
+  };
+  if (isLoading) return <Spinner />;
   return (
     <AddNewProductFormStyled onSubmit={handleSubmit(onSubmit)}>
       <Heading as="h4">ADD NEW PRODUCT</Heading>
@@ -77,7 +100,10 @@ function AddNewProductForm() {
         <Input
           placeholder="จำนวนสินค้า"
           type="number"
-          {...register("stock", { required: "กรุณากรอกจำนวนสินค้า",valueAsNumber: "กรุณากรอกตัวเลข", })}
+          {...register("stock", {
+            required: "กรุณากรอกจำนวนสินค้า",
+            valueAsNumber: "กรุณากรอกตัวเลข",
+          })}
         />
       </FormRow>
       <FormRow>
@@ -87,6 +113,7 @@ function AddNewProductForm() {
           accept="image/*"
           multiple
           {...register("image")}
+          onChange={onChangeMultipleFile}
         />
       </FormRow>
       <ActionButton text="Confirm" />

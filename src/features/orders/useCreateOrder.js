@@ -8,7 +8,10 @@ export function useCreateOrder() {
   const { dispatch } = useModal();
   const navigate = useNavigate();
   const { mutate: createOrder, isLoading } = useMutation({
-    mutationFn: (image) => createOrderApi(image),
+    mutationFn: (image) => {
+      console.log(image);
+      createOrderApi(image);
+    },
     onSuccess: () => {
       toast.success("สั่งสินค้าสำเร็จ");
       dispatch({ type: "close" });

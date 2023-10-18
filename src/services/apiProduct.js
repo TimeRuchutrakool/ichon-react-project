@@ -22,3 +22,8 @@ export const getProductList = async (path) => {
   const res = await axios.get(`/api/product/${path}`);
   return res.data;
 };
+
+export const createProduct = async (info) => {
+  const res = await axios.post("/api/product", info);
+  return res.data;
+};
