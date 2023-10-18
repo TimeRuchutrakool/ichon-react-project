@@ -13,7 +13,12 @@ export const getProduct = async (productId) => {
   return res.data;
 };
 
-export const getCategories = async ()=>{
-  const res = await axios.get('/api/product/categories')
-  return res.data
-}
+export const getCategories = async () => {
+  const res = await axios.get("/api/product/categories");
+  return res.data;
+};
+
+export const getProductList = async (path) => {
+  const res = await axios.get(`/api/product/${path}`);
+  return res.data;
+};

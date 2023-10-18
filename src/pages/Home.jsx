@@ -11,13 +11,13 @@ function Home() {
       <ProductsView
         view={{
           headerTitle: "Best Seller รวมสินค้าขายดี",
-          view: `/best-seller`,
+          view: `top-sales-product`,
         }}
       />
       <ProductsView
         view={{
           headerTitle: "New Arrival ตามเทรนด์ก่อนใคร",
-          view: `/new-arrival`,
+          view: `new-arrival`,
         }}
       />
     </>

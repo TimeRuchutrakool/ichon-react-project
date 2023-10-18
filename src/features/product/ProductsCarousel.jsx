@@ -64,7 +64,7 @@ function ProductsCarousel({
       modules={[FreeMode, Mousewheel]}
       className="swiper"
     >
-      {products.map(render)}
+      {products?.map(render)}
       {showButton && (
         <>
           <NextButton>
