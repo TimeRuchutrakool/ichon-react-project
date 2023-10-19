@@ -35,7 +35,6 @@ function PayForm() {
   const { createOrder, isLoading } = useCreateOrder();
   const onSubmit = (data) => {
     const image = typeof data.image === "string" ? data.image : data.image[0];
-    console.log(image);
     const formData = new FormData();
     formData.append("slipImage", image);
     createOrder(formData);

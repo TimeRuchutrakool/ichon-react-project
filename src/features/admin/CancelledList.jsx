@@ -1,3 +1,4 @@
+import ActionButton from "../../components/ActionButton";
 import Heading from "../../components/Heading";
 import Paragraph from "../../components/Paragraph";
 import Spinner from "../../components/Spinner";
@@ -39,6 +40,12 @@ function CancelledList() {
           >
             Preview
           </GrayButton>
+          <ActionButton
+            text="สินค้าที่สั่ง"
+            width="fit-content"
+            small={true}
+            onClick={() => dispatch({ type: "seeOrderedProductd" })}
+          />
         </TableRow>
       ))}
     </TableList>

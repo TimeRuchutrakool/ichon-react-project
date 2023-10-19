@@ -6,6 +6,7 @@ import PayForm from "../features/orders/PayForm";
 import AddNewProductForm from "../features/admin/AddNewProductForm";
 import EditProductForm from "../features/admin/EditProductForm";
 import SlipImage from "../features/admin/SlipImage";
+import OrderedProductList from "../features/admin/OrderedProductList";
 
 export const ModalContext = createContext();
 
@@ -31,6 +32,8 @@ function reducer(state, action) {
       return { ...state, form: <EditProductForm product={action.payload} /> };
     case "slipPreview":
       return { ...state, form: <SlipImage src={action.payload} /> };
+    case "seeOrderedProductd":
+      return { ...state, form: <OrderedProductList /> };
 
     default:
       throw new Error("Unknown action");

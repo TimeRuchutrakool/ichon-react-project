@@ -55,7 +55,7 @@ export const BlurBackgroundStyled = styled.div`
 `;
 
 export const EditOperation = styled.div`
-  width: 60%;
+  width: 70%;
   display: flex;
   justify-content: space-between;
 `;

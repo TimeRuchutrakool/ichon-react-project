@@ -55,6 +55,12 @@ function UnconfirmedList() {
               ยกเลิก
             </CancelButton>
             <ActionButton
+              text="สินค้าที่สั่ง"
+              width="fit-content"
+              small={true}
+              onClick={() => dispatch({type:'seeOrderedProductd'})}
+            />
+            <ActionButton
               width="fit-content"
               text="ยืนยัน"
               small={true}

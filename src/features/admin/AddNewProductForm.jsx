@@ -7,7 +7,6 @@ import { useForm } from "react-hook-form";
 import ActionButton from "../../components/ActionButton";
 import { useState } from "react";
 import { useCreateProduct } from "../../hooks/adminHooks/useCreateProduct";
-import { useModal } from "../../hooks/useModal";
 import Spinner from "../../components/Spinner";
 import { SpinnerLayout } from "./SpinnerLayout";
 
@@ -29,7 +28,7 @@ const DetailInput = styled.textarea`
 
 function AddNewProductForm() {
   const { createProduct, isLoading } = useCreateProduct();
-  const { dispatch } = useModal();
+  
   const [images, setImages] = useState([]);
   const {
     register,
@@ -54,7 +53,6 @@ function AddNewProductForm() {
 
     createProduct(formData);
     reset();
-    dispatch({ type: "close" });
   };
   if (isLoading)
     return (
