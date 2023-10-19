@@ -3,13 +3,9 @@ import { createProduct as createProductApi } from "../../services/apiProduct";
 import toast from "react-hot-toast";
 
 export function useCreateProduct() {
-  const {
-    mutate: createProduct,
-    isLoading,
-    isSuccess,
-  } = useMutation({
-    mutationFn: (data) => {
-      createProductApi(data);
+  const { mutate: createProduct, isLoading } = useMutation({
+    mutationFn: async (data) => {
+      await createProductApi(data);
     },
     onSuccess: () => {
       toast.success("เพิ่มสินค้าใหม่สำเร็จ");
@@ -20,5 +16,5 @@ export function useCreateProduct() {
     },
   });
 
-  return { createProduct, isLoading, isSuccess };
+  return { createProduct, isLoading };
 }

@@ -27,3 +27,13 @@ export const createProduct = async (info) => {
   const res = await axios.post("/api/product", info);
   return res.data;
 };
+
+export const getAllProducts = async () => {
+  const res = await axios.get("/api/product/admin");
+  return res.data;
+};
+
+export const editProduct = async (data) => {
+  const res = await axios.patch("/api/product/admin", data);
+  return res.data;
+};

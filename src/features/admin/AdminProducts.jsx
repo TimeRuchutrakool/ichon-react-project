@@ -2,6 +2,7 @@ import ActionButton from "../../components/ActionButton";
 import Heading from "../../components/Heading";
 import IconButton from "../../components/IconButton";
 import Paragraph from "../../components/Paragraph";
+import { useAdminProduct } from "../../hooks/adminHooks/useAdminProducts";
 import { useModal } from "../../hooks/useModal";
 import {
   ContentArea,
@@ -13,6 +14,7 @@ import {
 
 function AdminProducts() {
   const { dispatch } = useModal();
+  const { products } = useAdminProduct();
   return (
     <ContentContainer>
       <Heading $small={false} as="h1" className="header">
@@ -38,22 +40,28 @@ function AdminProducts() {
             </Heading>
             <div></div>
           </TableRow>
-          <TableRow>
-            <Paragraph $small={true}>1</Paragraph>
-            <Paragraph $small={true}>iPhone 8Plus</Paragraph>
-            <Paragraph $small={true}>2</Paragraph>
-            <EditOperation>
-              <IconButton
-                Icon={<span className="material-symbols-outlined">edit</span>}
-                color="var(--color-gray-700)"
-                onClick={() => dispatch({ type: "editProduct" })}
-              />
-              <IconButton
-                Icon={<span className="material-symbols-outlined">delete</span>}
-                color="var(--color-gray-700)"
-              />
-            </EditOperation>
-          </TableRow>
+          {products?.products.map((product) => (
+            <TableRow key={product.id}>
+              <Paragraph $small={true}>{product.id}</Paragraph>
+              <Paragraph $small={true}>{product.name}</Paragraph>
+              <Paragraph $small={true}>{product.stock}</Paragraph>
+              <EditOperation>
+                <IconButton
+                  Icon={<span className="material-symbols-outlined">edit</span>}
+                  color="var(--color-gray-700)"
+                  onClick={() =>
+                    dispatch({ type: "editProduct", payload: product })
+                  }
+                />
+                <IconButton
+                  Icon={
+                    <span className="material-symbols-outlined">delete</span>
+                  }
+                  color="var(--color-gray-700)"
+                />
+              </EditOperation>
+            </TableRow>
+          ))}
         </TableList>
       </ContentArea>
     </ContentContainer>

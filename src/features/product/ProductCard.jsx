@@ -52,7 +52,7 @@ function ProductCard({ product }) {
         <ProductCardStyled>
           <BrandLabel>{product?.brand?.name}</BrandLabel>
           <ProductImage
-            src={product?.ProductImage[0].imageUrl}
+            src={product?.ProductImage[0]?.imageUrl}
             alt={product?.name}
           />
           <TextContentStyled>

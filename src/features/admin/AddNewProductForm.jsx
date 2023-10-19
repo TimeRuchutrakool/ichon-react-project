@@ -27,7 +27,7 @@ const DetailInput = styled.textarea`
 `;
 
 function AddNewProductForm() {
-  const { createProduct, isSuccess,isLoading } = useCreateProduct();
+  const { createProduct, isLoading } = useCreateProduct();
   const { dispatch } = useModal();
   const [images, setImages] = useState([]);
   const {
@@ -53,7 +53,7 @@ function AddNewProductForm() {
 
     createProduct(formData);
     reset();
-    if(isSuccess) dispatch({type:'close'})
+    dispatch({ type: "close" });
   };
   if (isLoading) return <Spinner />;
   return (
@@ -112,7 +112,7 @@ function AddNewProductForm() {
           id="image"
           accept="image/*"
           multiple
-          {...register("image")}
+          {...register("image", { required: "Product image is requiredƒ" })}
           onChange={onChangeMultipleFile}
         />
       </FormRow>

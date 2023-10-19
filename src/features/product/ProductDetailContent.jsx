@@ -9,6 +9,7 @@ import { useAddCart } from "../cart/useAddCart";
 import { useState } from "react";
 import { useAddWish } from "../wishlist/useaddWish";
 import { useRemoveWish } from "../wishlist/useRemoveWish";
+import { useUser } from "../auth/useUser";
 
 const DetailFooterStyled = styled.div`
   display: flex;
@@ -23,6 +24,7 @@ function ProductDetailContent({ product }) {
   const { addWish } = useAddWish();
   const { removeWish } = useRemoveWish();
   const [count, setCount] = useState(1);
+  const { user } = useUser();
   return (
     <>
       <Heading as="h4">{product.name}</Heading>
@@ -44,23 +46,25 @@ function ProductDetailContent({ product }) {
         />
       </Counter>
       <DetailFooterStyled>
-        <IconButton
-          color="var(--color-gray-700)"
-          Icon={
-            <span
-              className={`material-symbols-outlined ${
-                product.WishItem.length === 0 ? "outlined" : "filled"
-              }`}
-            >
-              favorite
-            </span>
-          }
-          onClick={() => {
-            product.WishItem.length === 0
-              ? addWish(product.id)
-              : removeWish(product.id);
-          }}
-        />
+        {user && (
+          <IconButton
+            color="var(--color-gray-700)"
+            Icon={
+              <span
+                className={`material-symbols-outlined ${
+                  product.WishItem.length === 0 ? "outlined" : "filled"
+                }`}
+              >
+                favorite
+              </span>
+            }
+            onClick={() => {
+              product.WishItem.length === 0
+                ? addWish(product.id)
+                : removeWish(product.id);
+            }}
+          />
+        )}
         <ActionButton
           type="outlined"
           text="หยิบลงตะกร้า"

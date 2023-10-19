@@ -28,7 +28,7 @@ function reducer(state, action) {
     case "addProduct":
       return { ...state, form: <AddNewProductForm /> };
     case "editProduct":
-      return { ...state, form: <EditProductForm /> };
+      return { ...state, form: <EditProductForm product={action.payload} /> };
     case "slipPreview":
       return { ...state, form: <SlipImage src={action.payload} /> };
 
