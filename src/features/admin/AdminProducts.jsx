@@ -3,6 +3,7 @@ import Heading from "../../components/Heading";
 import IconButton from "../../components/IconButton";
 import Paragraph from "../../components/Paragraph";
 import { useAdminProduct } from "../../hooks/adminHooks/useAdminProducts";
+import { useDeleteProduct } from "../../hooks/adminHooks/useDeleteProduct";
 import { useModal } from "../../hooks/useModal";
 import {
   ContentArea,
@@ -14,6 +15,7 @@ import {
 
 function AdminProducts() {
   const { dispatch } = useModal();
+  const { deleteProduct } = useDeleteProduct();
   const { products } = useAdminProduct();
   return (
     <ContentContainer>
@@ -58,6 +60,7 @@ function AdminProducts() {
                     <span className="material-symbols-outlined">delete</span>
                   }
                   color="var(--color-gray-700)"
+                  onClick={() => deleteProduct(product.id)}
                 />
               </EditOperation>
             </TableRow>

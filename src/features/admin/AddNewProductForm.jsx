@@ -9,6 +9,7 @@ import { useState } from "react";
 import { useCreateProduct } from "../../hooks/adminHooks/useCreateProduct";
 import { useModal } from "../../hooks/useModal";
 import Spinner from "../../components/Spinner";
+import { SpinnerLayout } from "./SpinnerLayout";
 
 const AddNewProductFormStyled = styled.form`
   display: flex;
@@ -55,7 +56,12 @@ function AddNewProductForm() {
     reset();
     dispatch({ type: "close" });
   };
-  if (isLoading) return <Spinner />;
+  if (isLoading)
+    return (
+      <SpinnerLayout>
+        <Spinner />
+      </SpinnerLayout>
+    );
   return (
     <AddNewProductFormStyled onSubmit={handleSubmit(onSubmit)}>
       <Heading as="h4">ADD NEW PRODUCT</Heading>

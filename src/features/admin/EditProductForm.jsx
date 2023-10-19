@@ -6,9 +6,9 @@ import FileInput from "../../components/FileInput";
 import { useForm } from "react-hook-form";
 import ActionButton from "../../components/ActionButton";
 import { useState } from "react";
-import { useModal } from "../../hooks/useModal";
 import { useEditProduct } from "../../hooks/adminHooks/useEditProduct";
 import Spinner from "../../components/Spinner";
+import { SpinnerLayout } from "./SpinnerLayout";
 
 const AddNewProductFormStyled = styled.form`
   display: flex;
@@ -29,7 +29,6 @@ const DetailInput = styled.textarea`
 function EditProductForm({ product }) {
   const [images, setImages] = useState([]);
   const { editProduct, isLoading } = useEditProduct();
-  const { dispatch } = useModal();
   const {
     register,
     handleSubmit,
@@ -57,10 +56,14 @@ function EditProductForm({ product }) {
     }
 
     editProduct(formData);
-    dispatch({ type: "close" });
   };
 
-  if (isLoading) return <Spinner />;
+  if (isLoading)
+    return (
+      <SpinnerLayout>
+        <Spinner />
+      </SpinnerLayout>
+    );
 
   return (
     <AddNewProductFormStyled onSubmit={handleSubmit(onSubmit)}>

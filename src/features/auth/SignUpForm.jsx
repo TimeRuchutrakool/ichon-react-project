@@ -12,6 +12,7 @@ import { useForm } from "react-hook-form";
 import FormRow from "../../components/FormRow";
 import { useSignup } from "./useSignup";
 import Spinner from "../../components/Spinner";
+import { SpinnerLayout } from "../admin/SpinnerLayout";
 
 function SignUpForm() {
   const { dispatch } = useModal();
@@ -27,7 +28,12 @@ function SignUpForm() {
   const onSubmit = (info) => {
     signup(info, { onSettled: () => reset() });
   };
-  if (isLoading) return <Spinner />;
+  if (isLoading)
+    return (
+      <SpinnerLayout>
+        <Spinner />
+      </SpinnerLayout>
+    );
 
   return (
     <FormStyled onSubmit={handleSubmit(onSubmit)}>

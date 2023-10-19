@@ -37,3 +37,8 @@ export const editProduct = async (data) => {
   const res = await axios.patch("/api/product/admin", data);
   return res.data;
 };
+
+export const deleteProduct = async (productId) => {
+  const res = await axios.delete(`/api/product/admin?productId=${productId}`);
+  return res.data;
+};

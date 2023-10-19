@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import ActionButton from "../../components/ActionButton";
 import { useCreateOrder } from "./useCreateOrder";
 import Spinner from "../../components/Spinner";
+import { SpinnerLayout } from "../admin/SpinnerLayout";
 
 const PayFormStyled = styled.form`
   width: 35rem;
@@ -27,14 +28,6 @@ const AccountInfo = styled.div`
   flex-direction: column;
   justify-content: center;
   gap: 1rem;
-`;
-
-const SpinnerLayout = styled.div`
-  width: 35rem;
-  height: 40rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;
 
 function PayForm() {
