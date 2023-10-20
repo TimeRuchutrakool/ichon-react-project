@@ -19,3 +19,8 @@ export const updateOrderForAdmin = async ({ statusId, orderId }) => {
   const res = await axios.patch("/api/order/admin", { statusId, orderId });
   return res.data;
 };
+
+export const getOrderCount = async () => {
+  const res = await axios.get("/api/order/admin/orderCount");
+  return res.data;
+};

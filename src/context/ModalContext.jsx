@@ -33,7 +33,7 @@ function reducer(state, action) {
     case "slipPreview":
       return { ...state, form: <SlipImage src={action.payload} /> };
     case "seeOrderedProductd":
-      return { ...state, form: <OrderedProductList /> };
+      return { ...state, form: <OrderedProductList order={action.payload} /> };
 
     default:
       throw new Error("Unknown action");

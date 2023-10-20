@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 const SlipImageStyled = styled.img`
-  width: 40rem;
+  height: 80vh;
 `;
 
-function SlipImage({src}) {
+function SlipImage({ src }) {
   return <SlipImageStyled src={src} />;
 }
 
