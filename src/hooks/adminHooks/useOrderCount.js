@@ -6,5 +6,5 @@ export function useOrderCount() {
     queryKey: ["orderCount"],
     queryFn: getOrderCount,
   });
-  return { orderCount, isLoading };
+  return { orderCount: orderCount?.data, isLoading };
 }
