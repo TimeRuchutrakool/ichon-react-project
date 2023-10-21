@@ -41,11 +41,13 @@ function ConfirmedList() {
             Preview
           </GrayButton>
           <ActionButton
-              text="สินค้าที่สั่ง"
-              width="fit-content"
-              small={true}
-              onClick={() => dispatch({type:'seeOrderedProductd'})}
-            />
+            text="สินค้าที่สั่ง"
+            width="fit-content"
+            small={true}
+            onClick={() =>
+              dispatch({ type: "seeOrderedProductd", payload: order })
+            }
+          />
         </TableRow>
       ))}
     </TableList>

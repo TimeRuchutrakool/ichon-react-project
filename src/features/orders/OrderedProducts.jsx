@@ -67,7 +67,7 @@ function OrderedProducts({ cart, total }) {
             รายการย่อย
           </Paragraph>
         </OrderedProductRow>
-        {cart.map((cartItem) => (
+        {cart?.map((cartItem) => (
           <OrderedProductRow key={cartItem.id}>
             <ProductImageWithTitle
               img={cartItem.product.ProductImage[0]?.imageUrl}

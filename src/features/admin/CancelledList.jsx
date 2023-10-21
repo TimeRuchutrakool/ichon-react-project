@@ -44,7 +44,7 @@ function CancelledList() {
             text="สินค้าที่สั่ง"
             width="fit-content"
             small={true}
-            onClick={() => dispatch({ type: "seeOrderedProductd" })}
+            onClick={() => dispatch({ type: "seeOrderedProductd",payload:order })}
           />
         </TableRow>
       ))}

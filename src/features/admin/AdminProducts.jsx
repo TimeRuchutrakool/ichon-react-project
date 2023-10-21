@@ -45,7 +45,9 @@ function AdminProducts() {
           {products?.products.map((product) => (
             <TableRow key={product.id}>
               <Paragraph $small={true}>{product.id}</Paragraph>
-              <Paragraph $small={true}>{product.name}</Paragraph>
+              <span style={{textAlign:'center'}}>
+                <Paragraph $small={true}>{product.name}</Paragraph>
+              </span>
               <Paragraph $small={true}>{product.stock}</Paragraph>
               <EditOperation>
                 <IconButton

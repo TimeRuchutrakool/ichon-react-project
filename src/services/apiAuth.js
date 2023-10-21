@@ -28,7 +28,7 @@ export const logout = () => {
 };
 
 export const editUser = async (infoToBeUpdated) => {
-  const res = await axios.patch("/api/auth/edit", infoToBeUpdated);
+  const res = await axios.put("/api/auth/edit", infoToBeUpdated);
   return res.data;
 };
 

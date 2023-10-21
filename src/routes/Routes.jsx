@@ -21,11 +21,18 @@ import AdminHome from "../features/admin/AdminHome";
 import AdminOrders from "../features/admin/AdminOrders";
 import AdminProducts from "../features/admin/AdminProducts";
 import AdminUsers from "../features/admin/AdminUsers";
+import { ModalContextProvider } from "../context/ModalContext";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-      <Route element={<AppLayout />}>
+      <Route
+        element={
+          <ModalContextProvider>
+            <AppLayout />
+          </ModalContextProvider>
+        }
+      >
         <Route path="/" element={<Home />} />
         <Route path="/product/:brandTitle/:productId" element={<Product />} />
         <Route
@@ -69,9 +76,11 @@ const router = createBrowserRouter(
       <Route
         path="/admin"
         element={
-          <ProtectedRoute>
-            <AdminLayout />
-          </ProtectedRoute>
+          <ModalContextProvider>
+            <ProtectedRoute>
+              <AdminLayout />
+            </ProtectedRoute>
+          </ModalContextProvider>
         }
       >
         <Route index element={<Navigate replace to="home" />} />

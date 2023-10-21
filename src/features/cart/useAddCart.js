@@ -9,10 +9,11 @@ export function useAddCart() {
     mutate: addToCart,
     isSuccess,
   } = useMutation({
-    mutationFn: ({ productId, quantity }) => addToCartApi(productId, quantity),
+    mutationFn: async ({ productId, quantity }) =>
+      await addToCartApi(productId, quantity),
     onSuccess: () => {
-        queryClient.invalidateQueries({ queryKey: ["cart"] });
-        toast.success("เพิ่มสินค้าลงไปในตะกร้าสำเร็จ");
+      queryClient.invalidateQueries({ queryKey: ["cart"] });
+      toast.success("เพิ่มสินค้าลงไปในตะกร้าสำเร็จ");
     },
     onError: () => {
       toast.error("เพิ่มสินค้าลงไปในตะกร้าไม่สำเร็จ กรุณาลองใหม่อีกครั้ง");

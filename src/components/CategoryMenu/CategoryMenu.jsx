@@ -29,19 +29,18 @@ const CategoryMenuItemsStyled = styled.aside`
 
 function CategoryMenu({setIsOpenCategoryMenu}) {
   const { categories, isLoading } = useCategories();
-  const fetchedCategories = categories?.data?.categories;
   const [selectedCategory, setSelectedCategory] = useState(null);
   useEffect(() => {
     setSelectedCategory(() =>
-      fetchedCategories ? fetchedCategories[0] : null
+    categories ? categories[0] : null
     );
-  }, [fetchedCategories]);
+  }, [categories]);
   return (
     <CategoryMenuStyled>
       {!isLoading && (
         <>
           <CategoryMenuListStyled>
-            {fetchedCategories?.map((category) => (
+            {categories?.map((category) => (
               <CategoryButtonItem
                 category={category}
                 key={category.id}

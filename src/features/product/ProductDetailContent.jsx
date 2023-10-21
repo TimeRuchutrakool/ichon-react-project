@@ -10,6 +10,7 @@ import { useState } from "react";
 import { useAddWish } from "../wishlist/useaddWish";
 import { useRemoveWish } from "../wishlist/useRemoveWish";
 import { useUser } from "../auth/useUser";
+import { useNavigate } from "react-router-dom";
 
 const DetailFooterStyled = styled.div`
   display: flex;
@@ -25,6 +26,7 @@ function ProductDetailContent({ product }) {
   const { removeWish } = useRemoveWish();
   const [count, setCount] = useState(1);
   const { user } = useUser();
+  const navigate = useNavigate()
   return (
     <>
       <Heading as="h4">{product.name}</Heading>
@@ -72,7 +74,13 @@ function ProductDetailContent({ product }) {
             addToCart({ productId: product.id, quantity: count });
           }}
         />
-        <ActionButton text="ซื้อเลย" />
+        <ActionButton
+          text="ซื้อเลย"
+          onClick={() => {
+            addToCart({ productId: product.id, quantity: 1 });
+            navigate("/order")
+          }}
+        />
       </DetailFooterStyled>
     </>
   );

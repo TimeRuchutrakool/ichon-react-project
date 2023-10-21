@@ -10,16 +10,16 @@ function CategoryMenuItemsBody({ category, setIsOpenCategoryMenu }) {
   const navigate = useNavigate();
   return (
     <CategoryMenuItemsBodyStyled>
-      {category?.Product.map((product) => (
+      {category?.products.map((product) => (
         <p
           key={product.id}
           style={{ cursor: "pointer" }}
           onClick={() => {
             setIsOpenCategoryMenu((open) => !open);
-            navigate(`/search/${product.brand.name}?sortBy=general&page=1`);
+            navigate(`/search/${product.name}?sortBy=general&page=1`);
           }}
         >
-          {product.brand.name}
+          {product.name}
         </p>
       ))}
     </CategoryMenuItemsBodyStyled>

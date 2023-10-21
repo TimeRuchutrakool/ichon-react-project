@@ -23,7 +23,7 @@ const ProductTable = styled.ul`
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 2rem;
 `;
 const ProductTableList = styled.li`
   font-size: var(--font-size-xsm);
@@ -32,7 +32,6 @@ const ProductTableList = styled.li`
 `;
 
 function OrderedProductList({ order }) {
-  console.log(order);
   return (
     <OrderedProductListStyled>
       <Heading as="h4" $small={true}>

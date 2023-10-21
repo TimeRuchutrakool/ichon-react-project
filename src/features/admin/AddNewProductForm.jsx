@@ -69,6 +69,12 @@ function AddNewProductForm() {
           {...register("name", { required: "กรุณากรอกชื่อสินค้า" })}
         />
       </FormRow>
+      <FormRow error={errors?.shortName?.message}>
+        <Input
+          placeholder="ชื่อสินค้าแบบสั้น"
+          {...register("shortName", { required: "กรุณากรอกชื่อสินค้าแบบสั้น" })}
+        />
+      </FormRow>
       <FormRow error={errors?.brandTitle?.message}>
         <Input
           placeholder="ชื่อแบรนด์"

@@ -20,6 +20,12 @@ export function formatDate(dateStr) {
     minute: "2-digit",
   }).format(new Date(dateStr));
 }
+export function formatDateOnlyDay(dateStr) {
+  return new Intl.DateTimeFormat("en", {
+    day: "2-digit",
+    month: "short",
+  }).format(new Date(dateStr));
+}
 
 export function calcMinutesLeft(dateStr) {
   const d1 = new Date().getTime();

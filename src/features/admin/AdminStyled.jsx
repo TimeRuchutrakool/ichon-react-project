@@ -17,6 +17,7 @@ export const ContentArea = styled.div`
   background-color: white;
   /* padding: 3rem 0; */
   overflow: scroll;
+  border-radius: 1rem;
 `;
 
 export const TableList = styled.ul`
