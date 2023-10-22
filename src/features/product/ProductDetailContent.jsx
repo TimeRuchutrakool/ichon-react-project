@@ -12,6 +12,7 @@ import { useRemoveWish } from "../wishlist/useRemoveWish";
 import { useUser } from "../auth/useUser";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { useModal } from "../../hooks/useModal";
 
 const DetailFooterStyled = styled.div`
   display: flex;
@@ -25,11 +26,12 @@ function ProductDetailContent({ product, cart }) {
   const { addToCart } = useAddCart();
   const { addWish } = useAddWish();
   const { removeWish } = useRemoveWish();
+  const { dispatch } = useModal();
   const [count, setCount] = useState(1);
   const { user } = useUser();
   const navigate = useNavigate();
   const quantity =
-    cart.find((productInCart) => productInCart.id === product.id)?.quantity ??
+    cart?.find((productInCart) => productInCart.id === product.id)?.quantity ??
     0;
   return (
     <>
@@ -88,7 +90,9 @@ function ProductDetailContent({ product, cart }) {
           type="outlined"
           text="หยิบลงตะกร้า"
           onClick={() => {
-            if (count + quantity > product.stock) return toast.error("จำนวนสินค้าไม่เพียงพอ");
+            if (!user) return dispatch({ type: "login" });
+            if (count + quantity > product.stock)
+              return toast.error("จำนวนสินค้าไม่เพียงพอ");
             addToCart({ productId: product.id, quantity: count });
           }}
           disabled={count > product.stock}
@@ -96,6 +100,7 @@ function ProductDetailContent({ product, cart }) {
         <ActionButton
           text="ซื้อเลย"
           onClick={() => {
+            if (!user) return dispatch({ type: "login" });
             addToCart({ productId: product.id, quantity: count });
             navigate("/order");
           }}

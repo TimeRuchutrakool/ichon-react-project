@@ -1,8 +1,12 @@
 import axios from "../config/axios";
 
 export const getCart = async () => {
-  const res = await axios.get("/api/cart");
-  return res.data;
+  try {
+    const res = await axios.get("/api/cart");
+    return res.data;
+  } catch (error) {
+    return null;
+  }
 };
 
 export const addToCart = async (productId, quantity) => {

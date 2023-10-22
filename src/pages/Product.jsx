@@ -27,8 +27,8 @@ const ContentContainer = styled.aside`
 
 function Product() {
   const { isProductLoading, product } = useProduct();
-  const { cart, isCartLoading } = useCart();
-  if (isProductLoading || isCartLoading || !product || !cart)
+  const { cart } = useCart();
+  if (isProductLoading || !product)
     return <Spinner />;
 
   if (isProductLoading || !product) return <Spinner />;
@@ -38,7 +38,7 @@ function Product() {
         <ProductDetailImages images={product.images} />
       </ImageContainer>
       <ContentContainer>
-        <ProductDetailContent product={product} cart={cart.cart}/>
+        <ProductDetailContent product={product} cart={cart?.cart}/>
       </ContentContainer>
     </ProductContainerStyled>
   );
