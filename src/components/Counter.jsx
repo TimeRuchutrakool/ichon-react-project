@@ -53,7 +53,7 @@ function CountLabel() {
   return <CountInputStyled>{count}</CountInputStyled>;
 }
 
-function Increase({ icon }) {
+function Increase({ icon, disabled }) {
   const { addToCart, isLoading } = useAddCart();
   const { setCount, isAutoAddAndRemove, productId } =
     useContext(CounterContext);
@@ -64,7 +64,7 @@ function Increase({ icon }) {
     }
   };
   return (
-    <Button onClick={increase} disabled={isLoading}>
+    <Button onClick={increase} disabled={isLoading || disabled}>
       {icon}
     </Button>
   );

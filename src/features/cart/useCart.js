@@ -6,5 +6,5 @@ export function useCart() {
     queryKey: ["cart"],
     queryFn: getCart,
   });
-  return { cart, isLoading };
+  return { cart: cart?.data, isLoading };
 }

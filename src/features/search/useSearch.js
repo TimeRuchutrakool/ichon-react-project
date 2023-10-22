@@ -13,5 +13,5 @@ export function useSearch() {
     queryFn: () => searchProduct(searchedTitle, sortBy, page),
   });
 
-  return { isLoading, products };
+  return { isLoading, products: products?.data };
 }

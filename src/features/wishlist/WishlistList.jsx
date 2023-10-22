@@ -8,8 +8,9 @@ const WishlistListStyled = styled.ul`
   overflow: scroll;
 `;
 
-function WishlistList({ wishlist }) {
-  if (wishlist?.length === 0)
+function WishlistList({ wishlist, cart }) {
+  console.log(cart);
+  if (wishlist.length === 0)
     return (
       <Paragraph $small={false} $subheader={true}>
         ยังไม่มีสินค้าในรายการโปรด
@@ -17,8 +18,15 @@ function WishlistList({ wishlist }) {
     );
   return (
     <WishlistListStyled>
-      {wishlist?.map((product) => (
-        <WishlistListItem key={product.id} product={product?.product} />
+      {wishlist.map((product) => (
+        <WishlistListItem
+          key={product.id}
+          product={product}
+          isAbleToAdd={
+            (cart.find((cartItem) => cartItem.id === product.id)?.quantity ??
+              0) < product.stock-1
+          }
+        />
       ))}
     </WishlistListStyled>
   );

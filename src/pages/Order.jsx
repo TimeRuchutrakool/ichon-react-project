@@ -6,6 +6,7 @@ import AddressControls from "../features/orders/AddressControls";
 import { useCart } from "../features/cart/useCart";
 import { useUser } from "../features/auth/useUser";
 import { useModal } from "../hooks/useModal";
+import Spinner from "../components/Spinner";
 
 const OrderStyled = styled.div`
   display: flex;
@@ -22,15 +23,16 @@ const OrderContainer = styled.div`
 `;
 
 function Order() {
-  const { cart } = useCart();
+  const { cart, isLoading } = useCart();
   const { user } = useUser();
   const { dispatch, setIsPaying } = useModal();
   const isAbleToPay = user.address ? false : true;
+  if (isLoading || !cart) return <Spinner />;
   return (
     <OrderStyled>
       <OrderContainer>
         <OrderProgress />
-        <OrderedProducts cart={cart?.data.cart} total={cart?.data.total} />
+        <OrderedProducts cart={cart}/>
         <AddressControls user={user} />
         <ActionButton
           text="จ่ายเงิน"

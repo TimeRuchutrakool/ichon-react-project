@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { cutOffWord } from "../../utils/helper";
 import { Link } from "react-router-dom";
 import PriceLabel from "../../components/PriceLabel";
+import Spinner from "../../components/Spinner";
 
 const ProductCardStyled = styled.div`
   display: flex;
@@ -46,19 +47,17 @@ const ProductDesc = styled.p`
 `;
 
 function ProductCard({ product }) {
+  if (!product) return <Spinner />;
   return (
-    <Link to={`/product/${product?.brand?.name}/${product?.id}`}>
+    <Link to={`/product/${product.brand}/${product.id}`}>
       <div style={{ padding: "1rem" }}>
         <ProductCardStyled>
-          <BrandLabel>{product?.brand?.name}</BrandLabel>
-          <ProductImage
-            src={product?.ProductImage[0]?.imageUrl}
-            alt={product?.name}
-          />
+          <BrandLabel>{product.brand}</BrandLabel>
+          <ProductImage src={product.imageUrl} alt={product.name} />
           <TextContentStyled>
-            <ProductName>{cutOffWord(product?.name, 70)}</ProductName>
-            <ProductDesc>{cutOffWord(product?.description, 90)}</ProductDesc>
-            <PriceLabel price={product?.price} />
+            <ProductName>{cutOffWord(product.name, 70)}</ProductName>
+            <ProductDesc>{cutOffWord(product.description, 90)}</ProductDesc>
+            <PriceLabel price={product.price} />
           </TextContentStyled>
         </ProductCardStyled>
       </div>

@@ -11,6 +11,7 @@ import { useAddWish } from "../wishlist/useaddWish";
 import { useRemoveWish } from "../wishlist/useRemoveWish";
 import { useUser } from "../auth/useUser";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const DetailFooterStyled = styled.div`
   display: flex;
@@ -20,33 +21,49 @@ const DetailFooterStyled = styled.div`
   border-bottom: 0.1rem solid var(--color-gray-400);
 `;
 
-function ProductDetailContent({ product }) {
+function ProductDetailContent({ product, cart }) {
   const { addToCart } = useAddCart();
   const { addWish } = useAddWish();
   const { removeWish } = useRemoveWish();
   const [count, setCount] = useState(1);
   const { user } = useUser();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const quantity =
+    cart.find((productInCart) => productInCart.id === product.id)?.quantity ??
+    0;
   return (
     <>
       <Heading as="h4">{product.name}</Heading>
       <Paragraph $subheader={true} $small={false}>
-        แบรนด์: {product.brand.name}
+        แบรนด์: {product.brand}
       </Paragraph>
       <Paragraph $subheader={false} $small={true}>
         {product.description}
       </Paragraph>
       <PriceLabel price={product.price} />
-      <Counter count={count} setCount={setCount} isAutoAddAndRemove={false}>
-        <Counter.CountHeader title="Quantity" />
-        <Counter.Decrease
-          icon={<span className="material-symbols-outlined">remove</span>}
-        />
-        <Counter.CountLabel />
-        <Counter.Increase
-          icon={<span className="material-symbols-outlined">add</span>}
-        />
-      </Counter>
+      <div style={{ display: "flex", gap: "4rem", alignItems: "center" }}>
+        <Counter count={count} setCount={setCount} isAutoAddAndRemove={false}>
+          <Counter.CountHeader title="Quantity" />
+          <Counter.Decrease
+            icon={<span className="material-symbols-outlined">remove</span>}
+          />
+          <Counter.CountLabel />
+          <Counter.Increase
+            icon={<span className="material-symbols-outlined">add</span>}
+            disabled={count >= product.stock}
+          />
+        </Counter>
+        {product.stock <= 10 && (
+          <span
+            style={{
+              color: "var(--color-red-500)",
+              fontSize: "var(--font-size-xsm)",
+            }}
+          >
+            * เหลือสินค้าอีก {product.stock} ชิ้น
+          </span>
+        )}
+      </div>
       <DetailFooterStyled>
         {user && (
           <IconButton
@@ -54,14 +71,14 @@ function ProductDetailContent({ product }) {
             Icon={
               <span
                 className={`material-symbols-outlined ${
-                  product.WishItem.length === 0 ? "outlined" : "filled"
+                  product.wish.length === 0 ? "outlined" : "filled"
                 }`}
               >
                 favorite
               </span>
             }
             onClick={() => {
-              product.WishItem.length === 0
+              product.wish.length === 0
                 ? addWish(product.id)
                 : removeWish(product.id);
             }}
@@ -71,15 +88,18 @@ function ProductDetailContent({ product }) {
           type="outlined"
           text="หยิบลงตะกร้า"
           onClick={() => {
+            if (count + quantity > product.stock) return toast.error("จำนวนสินค้าไม่เพียงพอ");
             addToCart({ productId: product.id, quantity: count });
           }}
+          disabled={count > product.stock}
         />
         <ActionButton
           text="ซื้อเลย"
           onClick={() => {
-            addToCart({ productId: product.id, quantity: 1 });
-            navigate("/order")
+            addToCart({ productId: product.id, quantity: count });
+            navigate("/order");
           }}
+          disabled={count > product.stock}
         />
       </DetailFooterStyled>
     </>

@@ -40,8 +40,8 @@ const orderStatusMap = [
 ];
 
 function OrderListItem({ order }) {
-  const total = order.OrderItem.reduce((acc, cur) => {
-    return acc + Number(cur.product.price) * cur.quantity;
+  const total = order.products.reduce((acc, cur) => {
+    return acc + Number(cur.price) * cur.quantity;
   }, 0);
   return (
     <OrderListItemStyled>
@@ -54,11 +54,11 @@ function OrderListItem({ order }) {
         </Paragraph>
       </SpaceLayout>
       <ProductsList>
-        {order.OrderItem.map((product) => (
+        {order.products.map((product) => (
           <ProductLayout key={product.id}>
             <ProductImageWithTitle
-              img={product.product.ProductImage[0].imageUrl}
-              title={product.product.name}
+              img={product.imageUrl}
+              title={product.name}
             />
             <span>
               <Paragraph $subheader={false} $small={true}>
@@ -66,7 +66,7 @@ function OrderListItem({ order }) {
               </Paragraph>
 
               <PriceLabel
-                price={product.product.price}
+                price={product.price}
                 color="var(--color-black-900)"
                 fontSize="var(--font-size-xsm)"
               />
@@ -78,7 +78,7 @@ function OrderListItem({ order }) {
         <Paragraph $subheader={false} $small={true}>
           สถานะ:{" "}
           <span style={{ color: `${orderStatusMap[order.statusId - 1]}` }}>
-            {order.status.name}
+            {order.statusName}
           </span>
         </Paragraph>
         <Total>

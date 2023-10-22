@@ -48,7 +48,7 @@ const NumberContainer = styled.div`
   align-items: center;
 `;
 
-function OrderedProducts({ cart, total }) {
+function OrderedProducts({ cart }) {
   return (
     <OrderedProductsStyled>
       <Heading as="h4" $small={true}>
@@ -67,26 +67,26 @@ function OrderedProducts({ cart, total }) {
             รายการย่อย
           </Paragraph>
         </OrderedProductRow>
-        {cart?.map((cartItem) => (
-          <OrderedProductRow key={cartItem.id}>
+        {cart.cart.map((product) => (
+          <OrderedProductRow key={product.id}>
             <ProductImageWithTitle
-              img={cartItem.product.ProductImage[0]?.imageUrl}
-              title={cartItem.product.name}
+              img={product.imageUrl}
+              title={product.name}
             />
             <NumberContainer>
               <Paragraph $subheader={false} $small={true}>
-                {formatCurrency(cartItem.product.price)}
+                {formatCurrency(product.price)}
               </Paragraph>
             </NumberContainer>
             <NumberContainer>
               <Paragraph $subheader={false} $small={true}>
-                {cartItem.quantity}
+                {product.quantity}
               </Paragraph>
             </NumberContainer>
             <NumberContainer>
               <Paragraph $subheader={false} $small={true}>
                 {formatCurrency(
-                  Number(cartItem.product.price) * cartItem.quantity
+                  Number(product.price) * product.quantity
                 )}
               </Paragraph>
             </NumberContainer>
@@ -100,7 +100,7 @@ function OrderedProducts({ cart, total }) {
             ยอดสั่งซื้อทั้งหมด
           </Paragraph>
           <Paragraph $subheader={false} $small={true}>
-            {formatCurrency(total)}
+            {formatCurrency(cart.total)}
           </Paragraph>
         </OrderedProductRow>
       </OrderedProductsList>

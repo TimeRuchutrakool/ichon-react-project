@@ -26,7 +26,7 @@ function ProductDetailImages({images}) {
   };
   return (
     <>
-      <SelectedImage src={images[selectedImage]?.imageUrl} />
+      <SelectedImage src={images[selectedImage].imageUrl} />
       <ProductsCarousel
         products={images}
         slidesPerView={4}
@@ -34,7 +34,7 @@ function ProductDetailImages({images}) {
         render={(image, index) => (
           <SwiperSlide key={index} className="swiper-slide-product-image">
             <Image
-              src={image?.imageUrl}
+              src={image.imageUrl}
               onClick={handleSelectImage.bind(null, index)}
               $isSelected={selectedImage === index}
             />

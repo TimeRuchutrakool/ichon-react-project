@@ -6,5 +6,5 @@ export function useGetWishlist() {
     queryKey: ["wishlist"],
     queryFn: getWishlist,
   });
-  return { wishlist, isLoading };
+  return { wishlist: wishlist?.data, isLoading };
 }

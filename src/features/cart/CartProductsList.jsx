@@ -11,8 +11,8 @@ const CartProductsListStyled = styled.ul`
 function CartProductsList({ cart }) {
   return (
     <CartProductsListStyled>
-      {[...(cart ?? [])].map((cartItem) => (
-        <CartProductCard key={cartItem.id} cartItem={cartItem} />
+      {cart.map((product) => (
+        <CartProductCard key={product.id} product={product} />
       ))}
     </CartProductsListStyled>
   );

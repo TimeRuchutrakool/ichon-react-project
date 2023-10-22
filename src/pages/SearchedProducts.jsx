@@ -7,14 +7,14 @@ import NullHandling from "../components/NullHandling";
 
 function SearchedProducts() {
   const { isLoading, products } = useSearch();
-  if (isLoading) return <Spinner />;
-  if (products?.data.count === 0)
+  if (isLoading || !products) return <Spinner />;
+  if (products.count === 0)
     return <NullHandling>ไม่พบผลลัพธ์ที่ท่านค้นหา</NullHandling>;
   return (
     <>
-      <SearchedProductHeader count={products?.data.count} />
-      <SearchedProductBody products={products?.data.products} />
-      <SearchedProductFooter count={products?.data.count} />
+      <SearchedProductHeader count={products.count} />
+      <SearchedProductBody products={products.products} />
+      <SearchedProductFooter count={products.count} />
     </>
   );
 }

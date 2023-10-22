@@ -30,23 +30,20 @@ const ProductControls = styled.div`
   gap: 3rem;
 `;
 
-function CartProductCard({ cartItem }) {
-  const [count, setCount] = useState(() => cartItem.quantity);
+function CartProductCard({ product }) {
+  const [count, setCount] = useState(() => product.quantity);
   const { deleteCart } = useDeleteCart();
   return (
     <CartProductCardStyled>
-      <ProductImageWithTitle
-        img={cartItem.product.ProductImage[0].imageUrl}
-        title={cartItem.product?.name}
-      />
+      <ProductImageWithTitle img={product.imageUrl} title={product.name} />
       <CartProductCardFooterContainer>
-        <PriceLabel price={cartItem.product?.price} />
+        <PriceLabel price={product.price} />
         <ProductControls>
           <Counter
             count={count}
             setCount={setCount}
             isAutoAddAndRemove={true}
-            productId={cartItem.product?.id}
+            productId={product.id}
           >
             <Counter.Decrease
               icon={<span className="material-symbols-outlined">remove</span>}
@@ -54,12 +51,13 @@ function CartProductCard({ cartItem }) {
             <Counter.CountLabel />
             <Counter.Increase
               icon={<span className="material-symbols-outlined">add</span>}
+              disabled={count >= product.stock}
             />
           </Counter>
           <IconButton
             Icon={<span className="material-symbols-outlined">delete</span>}
             color="var(--color-gray-700)"
-            onClick={() => deleteCart(cartItem.product?.id)}
+            onClick={() => deleteCart(product.id)}
           />
         </ProductControls>
       </CartProductCardFooterContainer>

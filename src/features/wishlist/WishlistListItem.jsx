@@ -6,6 +6,7 @@ import IconButton from "../../components/IconButton";
 import { cutOffWord } from "../../utils/helper";
 import { useAddCart } from "../cart/useAddCart";
 import { useRemoveWish } from "./useRemoveWish";
+import toast from "react-hot-toast";
 
 const WishlistListItemStyled = styled.li`
   display: flex;
@@ -24,14 +25,14 @@ const OrderFooter = styled.div`
   margin-right: 2rem;
 `;
 
-function WishlistListItem({ product }) {
+function WishlistListItem({ product, isAbleToAdd }) {
   const { addToCart } = useAddCart();
   const { removeWish } = useRemoveWish();
   return (
     <WishlistListItemStyled>
       <ProductImageWithTitle
-        img={product.ProductImage[0].imageUrl}
-        title={cutOffWord(product?.name, 100)}
+        img={product.imageUrl}
+        title={cutOffWord(product.name, 100)}
       />
       <OrderFooter>
         <PriceLabel price={product.price} />
@@ -40,7 +41,10 @@ function WishlistListItem({ product }) {
           text="หยิบลงตะกร้า"
           small={true}
           width="fit-content"
-          onClick={() => addToCart({ productId: product.id, quantity: 1 })}
+          onClick={() => {
+            if(!isAbleToAdd) return toast.error('จำนวนสินค้าไม่เพียงพอ')
+            addToCart({ productId: product.id, quantity: 1 });
+          }}
         />
         <IconButton
           color="var(--color-gray-700)"

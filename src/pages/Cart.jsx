@@ -4,6 +4,7 @@ import CartPurchase from "../features/cart/CartPurchase";
 import CartProductsList from "../features/cart/CartProductsList";
 import { useCart } from "../features/cart/useCart";
 import NullHandling from "../components/NullHandling";
+import Spinner from "../components/Spinner";
 
 const CartStyled = styled.div`
   display: flex;
@@ -18,17 +19,17 @@ const CartDetail = styled.div`
 `;
 
 function Cart() {
-  const { cart } = useCart();
-  
+  const { cart, isLoading } = useCart();
 
-  if (cart?.data?.cart.length === 0)
+  if (isLoading || !cart) return <Spinner />;
+  if (cart.cart.length === 0)
     return <NullHandling>ยังไม่มีสินค้าในตะกร้า</NullHandling>;
   return (
     <CartStyled>
-      <Heading as="h2">ตะกร้าสินค้า ({cart?.data?.cart.length})</Heading>
+      <Heading as="h2">ตะกร้าสินค้า ({cart.cart.length})</Heading>
       <CartDetail>
-        <CartProductsList cart={cart?.data?.cart} />
-        <CartPurchase total={cart?.data?.total} />
+        <CartProductsList cart={cart.cart} />
+        <CartPurchase total={cart.total} />
       </CartDetail>
     </CartStyled>
   );

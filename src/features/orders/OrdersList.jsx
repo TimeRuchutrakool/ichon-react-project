@@ -13,7 +13,7 @@ function OrdersList({ orders }) {
     return <Paragraph $small={false} $subheader={true}>ยังไม่มีรายการคำสั่งซื้อ</Paragraph>;
   return (
     <OrdersListStyled>
-      {orders?.map((order) => (
+      {orders.map((order) => (
         <OrderListItem key={order.id} order={order} />
       ))}
     </OrdersListStyled>

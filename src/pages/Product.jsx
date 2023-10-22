@@ -4,6 +4,7 @@ import ProductDetailContent from "../features/product/ProductDetailContent";
 import ProductDetailImages from "../features/product/ProductDetailImages";
 import { useProduct } from "../features/product/useProduct";
 import Spinner from "../components/Spinner";
+import { useCart } from "../features/cart/useCart";
 
 const ProductContainerStyled = styled.div`
   display: flex;
@@ -19,22 +20,25 @@ const ImageContainer = styled.aside`
 
 const ContentContainer = styled.aside`
   width: 50%;
-  /* background-color: #c2c2ff; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 `;
 
 function Product() {
-  const { isLoading, product } = useProduct();
-  if (isLoading) return <Spinner />;
+  const { isProductLoading, product } = useProduct();
+  const { cart, isCartLoading } = useCart();
+  if (isProductLoading || isCartLoading || !product || !cart)
+    return <Spinner />;
+
+  if (isProductLoading || !product) return <Spinner />;
   return (
     <ProductContainerStyled>
       <ImageContainer>
-        <ProductDetailImages images={product.data.product.productImages} />
+        <ProductDetailImages images={product.images} />
       </ImageContainer>
       <ContentContainer>
-        <ProductDetailContent product={product.data.product}/>
+        <ProductDetailContent product={product} cart={cart.cart}/>
       </ContentContainer>
     </ProductContainerStyled>
   );

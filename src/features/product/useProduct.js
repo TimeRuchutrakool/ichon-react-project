@@ -8,5 +8,5 @@ export function useProduct() {
     queryKey: ["product"],
     queryFn: () => getProduct(productId),
   });
-  return { isLoading, product };
+  return { isLoading, product: product?.data };
 }

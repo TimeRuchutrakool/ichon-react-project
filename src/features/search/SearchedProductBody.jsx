@@ -24,7 +24,7 @@ function SearchedProductBody({products}) {
     <SearchedProductBodyStyled>
       <ProductsContainer>
         {products.map((product) => (
-          <ProductCardContainer key={product?.id}>
+          <ProductCardContainer key={product.id}>
             <ProductCard product={product} />
           </ProductCardContainer>
         ))}
